@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-11 22:42:36",
-  "generated_at_utc": "2026-11-11T14:42:36Z",
+  "generated_at": "2026-11-11 23:26:23",
+  "generated_at_utc": "2026-11-11T15:26:23Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -29,8 +29,8 @@
   "note": "数据来自 CANNJudge 公开接口 /api/problems/<id>/ranking，分数与状态以测试界面为准。"
  },
  "summary": {
-  "score_sum": 182.17,
-  "weighted_sum": 419.53,
+  "score_sum": 181.9,
+  "weighted_sum": 419.26,
   "submitted": 4,
   "passed": 4,
   "total_problems": 10
@@ -50,7 +50,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/concatd",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/concatd/ranking",
    "submitted": true,
-   "rank": 116,
+   "rank": 119,
    "submitter": "everclover",
    "status": "Pass",
    "score": 60.25,
@@ -423,7 +423,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/confusiontransposed",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/confusiontransposed/ranking",
    "submitted": true,
-   "rank": 262,
+   "rank": 265,
    "submitter": "everclover",
    "status": "Pass",
    "score": 34.61,
@@ -817,7 +817,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/layernormv3",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/layernormv3/ranking",
    "submitted": true,
-   "rank": 67,
+   "rank": 66,
    "submitter": "everclover",
    "status": "Pass",
    "score": 47.64,
@@ -1232,45 +1232,45 @@
    "url": "https://cannjudge.cn/public/ictcompetition/prelugradupdate",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/prelugradupdate/ranking",
    "submitted": true,
-   "rank": 252,
+   "rank": 251,
    "submitter": "tomatorigid",
    "status": "Pass",
-   "score": 39.67,
-   "submit_time": "2026-11-11 22:23:49",
-   "submission_id": "6af47a756bd0f9be37674202",
+   "score": 39.4,
+   "submit_time": "2026-11-11 23:23:47",
+   "submission_id": "6af488836bd0f9be378412a2",
    "testcases": [
     {
      "i": 1,
      "status": "Pass",
-     "time": 7.303333333333334,
+     "time": 6.913333333333333,
      "precision": 1,
      "best": 3.783333333333333
     },
     {
      "i": 2,
      "status": "Pass",
-     "time": 7.533333333333333,
+     "time": 6.926666666666667,
      "precision": 1,
      "best": 3.75
     },
     {
      "i": 3,
      "status": "Pass",
-     "time": 7.473333333333334,
+     "time": 6.933333333333334,
      "precision": 1,
      "best": 3.76
     },
     {
      "i": 4,
      "status": "Pass",
-     "time": 5.363333333333333,
+     "time": 5.433333333333334,
      "precision": 1,
      "best": 3.7
     },
     {
      "i": 5,
      "status": "Pass",
-     "time": 5.656666666666666,
+     "time": 5.63,
      "precision": 1,
      "best": 3.7266666666666666
     },
