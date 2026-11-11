@@ -1,11 +1,30 @@
 {
  "meta": {
-  "generated_at": "2026-11-11 20:04:08",
-  "generated_at_utc": "2026-11-11T12:04:08Z",
+  "generated_at": "2026-11-11 20:18:48",
+  "generated_at_utc": "2026-11-11T12:18:48Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
-  "contest_id": "6a9e2d04bf41025d60f21804",
   "contest_end": "2027-03-04 23:59:00",
+  "batches": [
+   {
+    "key": "b1",
+    "label": "第一批",
+    "period": "2026/11/02 – 2026/12/28",
+    "start": "2026-11-02",
+    "end": "2026-12-28 23:59:00",
+    "min_problems": 10,
+    "problem_count": 10
+   },
+   {
+    "key": "b2",
+    "label": "第二批",
+    "period": "2027/01/05 – 2027/03/04",
+    "start": "2027-01-05",
+    "end": "2027-03-04 23:59:00",
+    "min_problems": 10
+   }
+  ],
+  "current_batch": "b1",
   "source": "https://cannjudge.cn/public/ictcompetition",
   "note": "数据来自 CANNJudge 公开接口 /api/problems/<id>/ranking，分数与状态以测试界面为准。"
  },
@@ -19,6 +38,7 @@
  "problems": [
   {
    "id": 2322,
+   "batch": "b1",
    "title": "ConcatD",
    "slug": "concatd",
    "difficulty": 3,
@@ -391,6 +411,7 @@
   },
   {
    "id": 2323,
+   "batch": "b1",
    "title": "ConfusionTransposeD",
    "slug": "confusiontransposed",
    "difficulty": 3,
@@ -763,6 +784,7 @@
   },
   {
    "id": 2325,
+   "batch": "b1",
    "title": "CTCLossV2",
    "slug": "ctclossv2",
    "difficulty": 2,
@@ -783,6 +805,7 @@
   },
   {
    "id": 2326,
+   "batch": "b1",
    "title": "LayerNormV3",
    "slug": "layernormv3",
    "difficulty": 2,
@@ -1155,6 +1178,7 @@
   },
   {
    "id": 2327,
+   "batch": "b1",
    "title": "MultilabelMarginLoss",
    "slug": "multilabelmarginloss",
    "difficulty": 2,
@@ -1175,6 +1199,7 @@
   },
   {
    "id": 2328,
+   "batch": "b1",
    "title": "PadV3Grad",
    "slug": "padv3grad",
    "difficulty": 3,
@@ -1195,6 +1220,7 @@
   },
   {
    "id": 2329,
+   "batch": "b1",
    "title": "PReluGradUpdate",
    "slug": "prelugradupdate",
    "difficulty": 1,
@@ -1215,6 +1241,7 @@
   },
   {
    "id": 2330,
+   "batch": "b1",
    "title": "QuantUpdateScatter",
    "slug": "quantupdatescatter",
    "difficulty": 2,
@@ -1235,6 +1262,7 @@
   },
   {
    "id": 2331,
+   "batch": "b1",
    "title": "StridedSliceGrad",
    "slug": "stridedslicegrad",
    "difficulty": 3,
@@ -1255,6 +1283,7 @@
   },
   {
    "id": 2332,
+   "batch": "b1",
    "title": "SyncBatchNormGatherStats",
    "slug": "syncbatchnormgatherstats",
    "difficulty": 2,

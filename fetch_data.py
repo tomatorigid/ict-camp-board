@@ -22,8 +22,30 @@ import urllib.request
 from datetime import datetime, timedelta, timezone
 
 BASE = "https://cannjudge.cn"
-CONTEST_ID = "6a9e2d04bf41025d60f21804"
 TEAM = "哦不对一一哦对的对的"
+
+# 决赛分两批下发赛题：第一批已开放，第二批 2027/01/05 起。拿到第二批的 contest_id 后填进来即可，
+# 其余代码不用改；页面上会自动多出一组卡片。
+BATCHES = [
+    {
+        "key": "b1",
+        "label": "第一批",
+        "period": "2026/11/02 – 2026/12/28",
+        "start": "2026-11-02",
+        "end": "2026-12-28 23:59:00",
+        "min_problems": 10,
+        "contest_id": "6a9e2d04bf41025d60f21804",
+    },
+    {
+        "key": "b2",
+        "label": "第二批",
+        "period": "2027/01/05 – 2027/03/04",
+        "start": "2027-01-05",
+        "end": "2027-03-04 23:59:00",
+        "min_problems": 10,
+        "contest_id": None,  # TODO: 开放后填入
+    },
+]
 
 # 名称以题目列表接口为准，这里只保留展示顺序与难度兜底值
 FALLBACK_DIFFICULTY = {
@@ -71,7 +93,7 @@ def iso_local(dt_str):
     return dt.astimezone(CST).strftime("%Y-%m-%d %H:%M:%S")
 
 
-def fetch_problem(problem):
+def fetch_problem(problem, batch_key):
     pid = problem["_id"]
     slug = problem.get("canonical_name") or problem.get("name")
     q = urllib.parse.quote(TEAM)
@@ -89,6 +111,7 @@ def fetch_problem(problem):
 
     item = {
         "id": problem.get("ID"),
+        "batch": batch_key,
         "title": problem.get("title"),
         "slug": slug,
         "difficulty": problem.get("difficulty") or FALLBACK_DIFFICULTY.get(problem.get("title"), 1),
@@ -149,18 +172,29 @@ def main():
     ap.add_argument("--out", default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "data.json"))
     args = ap.parse_args()
 
-    contest = get(f"/api/contests/{CONTEST_ID}")
-    problems = get(f"/api/problems/contest/{CONTEST_ID}")
-    problems.sort(key=lambda p: p.get("ID") or 0)
-
+    contest = None
     items = []
-    for p in problems:
-        item = fetch_problem(p)
-        items.append(item)
-        flag = "✅" if item["status"] == "Pass" else ("⬜" if not item["submitted"] else "🟡")
-        print(f"{flag} {item['id']} {item['title']:<24} rank={item['rank']} score={item['score']} "
-              f"{item['submitter'] or '-'} {item['submit_time'] or '-'}")
+    used_batches = []
+    for b in BATCHES:
+        cid = b.get("contest_id")
+        if not cid:
+            used_batches.append({k: b[k] for k in ("key", "label", "period", "start", "end", "min_problems")})
+            print(f"⏳ {b['label']}（{b['period']}）尚未开放，跳过")
+            continue
+        if contest is None:
+            contest = get(f"/api/contests/{cid}")
+        problems = get(f"/api/problems/contest/{cid}")
+        problems.sort(key=lambda p: p.get("ID") or 0)
+        for p in problems:
+            item = fetch_problem(p, b["key"])
+            items.append(item)
+            flag = "✅" if item["status"] == "Pass" else ("⬜" if not item["submitted"] else "🟡")
+            print(f"{flag} [{b['label']}] {item['id']} {item['title']:<24} rank={item['rank']} "
+                  f"score={item['score']} {item['submitter'] or '-'} {item['submit_time'] or '-'}")
+        used_batches.append({k: b[k] for k in ("key", "label", "period", "start", "end", "min_problems")})
+        used_batches[-1]["problem_count"] = len(problems)
 
+    contest = contest or {}
     total_score = sum(i["score"] for i in items)
     weighted = sum(i["score"] * i["difficulty"] for i in items)
     data = {
@@ -169,8 +203,9 @@ def main():
             "generated_at_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
             "team": TEAM,
             "contest": contest.get("title") or "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
-            "contest_id": CONTEST_ID,
             "contest_end": iso_local(contest.get("end_time")),
+            "batches": used_batches,
+            "current_batch": next((b["key"] for b in used_batches if b.get("problem_count")), None),
             "source": f"{BASE}/public/ictcompetition",
             "note": "数据来自 CANNJudge 公开接口 /api/problems/<id>/ranking，分数与状态以测试界面为准。",
         },

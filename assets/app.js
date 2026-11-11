@@ -32,6 +32,7 @@
     const s = data.summary;
     $("#contest-line").textContent = m.contest;
     $("#team-line").textContent = m.team;
+    renderBatches();
     $("#meta-line").textContent =
       `数据抓取时间 ${m.generated_at}（UTC+8）　·　赛事截止 ${m.contest_end || "—"}　·　共 ${s.total_problems} 题`;
     $("#src-link").href = m.source;
@@ -47,6 +48,33 @@
         ([k, v]) => `<div class="stat"><div class="k">${k}</div><div class="v">${v}</div></div>`
       )
       .join("");
+  }
+
+  // 决赛分两批下发赛题，页头显示批次窗口与倒计时
+  function countdown(endStr) {
+    const end = new Date(String(endStr).replace(" ", "T"));
+    const ms = end - new Date();
+    if (isNaN(ms)) return "";
+    if (ms <= 0) return "已截止";
+    const d = Math.floor(ms / 86400000);
+    const h = Math.floor((ms % 86400000) / 3600000);
+    return d > 0 ? `剩 ${d} 天 ${h} 小时` : `剩 ${h} 小时`;
+  }
+
+  function renderBatches() {
+    const list = data.meta.batches || [];
+    const cut = (data.meta.contest_end || "").slice(0, 10);
+    $("#batch-line").innerHTML = list
+      .map((b) => {
+        const open = !!b.problem_count;
+        const tail = open
+          ? `${b.problem_count} 题 · ${countdown(b.end)}`
+          : "未开放";
+        return `<span class="batch${open ? " on" : ""}">
+          <b>${esc(b.label)}</b> ${esc(b.period)}<span class="cd">${esc(tail)}</span>
+        </span>`;
+      })
+      .join("") + `<span class="batch">决赛总截止 ${esc(cut)}</span>`;
   }
 
   function miniStrip(p) {
