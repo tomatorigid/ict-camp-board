@@ -105,6 +105,7 @@ select {
 .score-row { display: flex; align-items: baseline; gap: 10px; margin: 12px 0 6px; }
 .score { font-size: 30px; font-weight: 700; font-variant-numeric: tabular-nums; }
 .score small { font-size: 13px; color: var(--dim); font-weight: 400; }
+.score .none { font-size: 17px; color: var(--dim); font-weight: 500; }
 .rank { color: var(--dim); font-size: 12px; margin-left: auto; }
 .bar { height: 5px; background: #1b2530; border-radius: 999px; overflow: hidden; }
 .bar > i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), #7ee2a8); }
@@ -118,6 +119,23 @@ select {
 }
 .mini i.pass { background: var(--pass); }
 .mini i.fail { background: var(--fail); }
+
+/* 卡片上的前几个测试点：本队 vs 全场最佳 */
+.tc-table {
+  margin-top: 12px; border-top: 1px solid var(--line); padding-top: 8px;
+  font-variant-numeric: tabular-nums; font-size: 12px;
+}
+.tc-table .tc-row {
+  display: grid; grid-template-columns: 54px 1fr 1fr 52px;
+  align-items: center; padding: 2px 0; color: var(--text);
+}
+.tc-table .tc-row.head { color: var(--dim); font-size: 11px; padding-bottom: 4px; }
+.tc-table .tc-row.head .us, .tc-table .tc-row.head .best { text-align: right; }
+.tc-table .idx { color: var(--dim); }
+.tc-table .us { text-align: right; font-weight: 600; }
+.tc-table .best { text-align: right; color: var(--dim); }
+.tc-table .rel { text-align: right; color: var(--dim); font-size: 11px; }
+.tc-table .tc-row:not(.head):hover { background: rgba(79,140,255,.06); }
 
 /* ---------- detail ---------- */
 .detail {

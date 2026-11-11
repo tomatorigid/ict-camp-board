@@ -63,11 +63,37 @@
     );
   }
 
+  // 卡片上直接列出前几个已公开测试点的用时，与全场最佳并排
+  const CARD_TC_N = 5;
+
+  function tcTable(p) {
+    if (!p.submitted) return "";
+    const rows = p.testcases.filter((t) => t.time !== null && t.time !== undefined).slice(0, CARD_TC_N);
+    if (!rows.length) return "";
+    const body = rows
+      .map((t) => {
+        const rel = t.best ? `<span class="rel">${(t.time / t.best).toFixed(2)}×</span>` : `<span class="rel">—</span>`;
+        return `<div class="tc-row">
+          <span class="idx">#${t.i}</span>
+          <span class="us">${Number(t.time).toFixed(2)}</span>
+          <span class="best">${t.best ? Number(t.best).toFixed(2) : "—"}</span>
+          ${rel}
+        </div>`;
+      })
+      .join("");
+    return `<div class="tc-table">
+      <div class="tc-row head"><span class="idx">测试点</span><span class="us">本队 (μs)</span><span class="best">最佳 (μs)</span><span class="rel">倍数</span></div>
+      ${body}
+    </div>`;
+  }
+
   function card(p) {
     const d = DIFF[p.difficulty] || DIFF[1];
     const sel = selected === p.id ? " sel" : "";
     const empty = p.submitted ? "" : " empty";
-    const score = p.submitted ? fmt(p.score) : "—";
+    const score = p.submitted
+      ? `${fmt(p.score)}<small> 分</small>`
+      : `<span class="none">未提交</span>`;
     const pct = p.submitted ? Math.max(0, Math.min(100, p.score)) : 0;
     return `
       <article class="card${sel}${empty}" data-id="${p.id}">
@@ -79,13 +105,14 @@
           <span class="badge ${d.cls}">${d.label}</span>
         </div>
         <div class="score-row">
-          <div class="score">${score}<small> 分</small></div>
+          <div class="score">${score}</div>
           <div class="rank">${p.rank ? `第 ${p.rank} 名` : "未上榜"}</div>
         </div>
         <div class="bar"><i style="width:${pct}%"></i></div>
         <div class="kv"><span>最新提交者</span><b>${esc(p.submitter || "—")}</b></div>
         <div class="kv"><span>提交时间</span><b>${esc(p.submit_time || "—")}</b></div>
         <div class="kv"><span>状态</span><b>${esc(p.status)}</b></div>
+        ${tcTable(p)}
         ${miniStrip(p)}
       </article>`;
   }
