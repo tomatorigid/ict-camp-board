@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ICT 算子开发 · 队伍看板</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <span class="dot"></span>
+      <h1>ICT 算子开发 · 队伍看板</h1>
+    </div>
+    <p class="site" id="contest-line">第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）</p>
+    <p class="team" id="team-line">—</p>
+    <div class="stats" id="summary"></div>
+    <p class="meta" id="meta-line"></p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="toolbar">
+    <div class="chips" id="filters">
+      <button class="chip on" data-filter="all">全部</button>
+      <button class="chip" data-filter="pass">已通过</button>
+      <button class="chip" data-filter="pending">未提交</button>
+    </div>
+    <label class="sort">排序
+      <select id="sort">
+        <option value="id">题目顺序</option>
+        <option value="score">分数从高到低</option>
+        <option value="rank">排名从高到低</option>
+        <option value="time">提交时间从新到旧</option>
+      </select>
+    </label>
+  </section>
+
+  <section class="grid" id="grid"></section>
+
+  <section class="detail" id="detail" hidden>
+    <div class="detail-head">
+      <h2 id="detail-title"></h2>
+      <button class="close" id="detail-close" aria-label="关闭">×</button>
+    </div>
+    <div id="detail-body"></div>
+  </section>
+
+  <p class="hint" id="hint"></p>
+</main>
+
+<footer class="foot wrap">
+  <p>数据来源：<a id="src-link" href="https://cannjudge.cn/public/ictcompetition" target="_blank" rel="noreferrer">CANNJudge 公开接口</a>　·　刷新方式见仓库 <code>site/README.md</code>　·　分数、状态与测试点用时均以测试界面为准。</p>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
