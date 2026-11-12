@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-12 12:13:12",
-  "generated_at_utc": "2026-11-12T04:13:12Z",
+  "generated_at": "2026-11-12 12:36:51",
+  "generated_at_utc": "2026-11-12T04:36:51Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -29,10 +29,10 @@
   "note": "数据来自 CANNJudge 公开接口 /api/problems/<id>/ranking，分数与状态以测试界面为准。"
  },
  "summary": {
-  "score_sum": 286.6,
-  "weighted_sum": 618.26,
-  "submitted": 6,
-  "passed": 6,
+  "score_sum": 309.16,
+  "weighted_sum": 685.94,
+  "submitted": 7,
+  "passed": 7,
   "total_problems": 10
  },
  "problems": [
@@ -50,7 +50,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/concatd",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/concatd/ranking",
    "submitted": true,
-   "rank": 117,
+   "rank": 116,
    "submitter": "everclover",
    "status": "Pass",
    "score": 60.25,
@@ -423,7 +423,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/confusiontransposed",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/confusiontransposed/ranking",
    "submitted": true,
-   "rank": 265,
+   "rank": 266,
    "submitter": "everclover",
    "status": "Pass",
    "score": 34.61,
@@ -1559,16 +1559,368 @@
    "start_time": "2026-11-02 00:00:00",
    "end_time": "2026-12-28 23:59:00",
    "testcase_total": 50,
-   "team_total_teams": 0,
+   "team_total_teams": 1,
    "url": "https://cannjudge.cn/public/ictcompetition/padv3grad",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/padv3grad/ranking",
-   "submitted": false,
-   "rank": null,
-   "submitter": null,
-   "status": "未提交",
-   "score": 0.0,
-   "submit_time": null,
-   "testcases": []
+   "submitted": true,
+   "rank": 195,
+   "submitter": "tomatorigid",
+   "status": "Pass",
+   "score": 22.56,
+   "submit_time": "2026-11-12 12:32:09",
+   "submission_id": "6af541496bd0f9be37b5402d",
+   "testcases": [
+    {
+     "i": 1,
+     "status": "Pass",
+     "time": 8.803333333333333,
+     "precision": 1,
+     "best": 3.9966666666666666
+    },
+    {
+     "i": 2,
+     "status": "Pass",
+     "time": 6.466666666666667,
+     "precision": 1,
+     "best": 3.9435
+    },
+    {
+     "i": 3,
+     "status": "Pass",
+     "time": 8.886666666666667,
+     "precision": 1,
+     "best": 3.8535
+    },
+    {
+     "i": 4,
+     "status": "Pass",
+     "time": 8.813333333333333,
+     "precision": 1,
+     "best": 4.017
+    },
+    {
+     "i": 5,
+     "status": "Pass",
+     "time": 8.046666666666667,
+     "precision": 1,
+     "best": 3.9633333333333334
+    },
+    {
+     "i": 6,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 7,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 8,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 9,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 10,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 11,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 12,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 13,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 14,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 15,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 16,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 17,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 18,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 19,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 20,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 21,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 22,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 23,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 24,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 25,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 26,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 27,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 28,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 29,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 30,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 31,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 32,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 33,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 34,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 35,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 36,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 37,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 38,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 39,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 40,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 41,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 42,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 43,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 44,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 45,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 46,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 47,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 48,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 49,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 50,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    }
+   ]
   },
   {
    "id": 2329,
@@ -1584,7 +1936,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/prelugradupdate",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/prelugradupdate/ranking",
    "submitted": true,
-   "rank": 156,
+   "rank": 157,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 49.8,
