@@ -14,6 +14,8 @@
   let filter = "all";
   let sortKey = "id";
   let selected = null;
+  let lastLoadedAt = Date.now();
+  const btnRefresh = document.querySelector("#btn-refresh");
 
   const fmt = (v, digits = 2) =>
     v === null || v === undefined || v === "" ? "—" : Number(v).toFixed(digits);
@@ -250,14 +252,51 @@
     renderGrid();
   });
 
+  function setStatus(text) {
+    const el = $("#refresh-status");
+    if (el) el.textContent = text || "";
+  }
+
+  // 拉取最新 data.json：查询串 + no-store 双保险，绕过 Pages/Fastly 缓存
+  async function loadData({ manual = false } = {}) {
+    const btn = $("#btn-refresh");
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = manual ? "抓取中…" : "刷新数据";
+    }
+    if (manual) setStatus("正在重新拉取 data.json…");
+    try {
+      const res = await fetch(`data.json?t=${Date.now()}`, { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      data = await res.json();
+      renderHeader();
+      renderGrid();
+      renderDetail();
+      const at = new Date().toLocaleTimeString("zh-CN", { hour12: false });
+      setStatus(`页面于 ${at} 重新拉取 · 每 5 分钟自动刷新`);
+      lastLoadedAt = Date.now();
+    } catch (err) {
+      setStatus(`刷新失败：${err.message}（继续显示上一次数据）`);
+    } finally {
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = "刷新数据";
+      }
+    }
+  }
+
   $("#detail-close").addEventListener("click", () => {
     selected = null;
     renderGrid();
     renderDetail();
   });
 
+  if (btnRefresh) {
+    btnRefresh.addEventListener("click", () => loadData({ manual: true }));
+  }
+
   try {
-    const res = await fetch("data.json", { cache: "no-store" });
+    const res = await fetch(`data.json?t=${Date.now()}`, { cache: "no-store" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     data = await res.json();
   } catch (err) {
@@ -269,4 +308,17 @@
   renderHeader();
   renderGrid();
   renderDetail();
+  setStatus(`页面于 ${new Date().toLocaleTimeString("zh-CN", { hour12: false })} 加载 · 每 5 分钟自动刷新`);
+  lastLoadedAt = Date.now();
+
+  // 每 5 分钟自动刷新（页面隐藏时跳过，回到前台立即补一次）
+  const REFRESH_MS = 5 * 60 * 1000;
+  setInterval(() => {
+    if (document.visibilityState === "visible") loadData();
+  }, REFRESH_MS);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible" && Date.now() - lastLoadedAt > REFRESH_MS) {
+      loadData();
+    }
+  });
 })();

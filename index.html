@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ICT 算子开发 · 队伍看板</title>
-<link rel="stylesheet" href="assets/style.css?v=20261111c">
+<link rel="stylesheet" href="assets/style.css?v=20261112a">
 </head>
 <body>
 <header class="top">
@@ -36,6 +36,8 @@
         <option value="time">提交时间从新到旧</option>
       </select>
     </label>
+    <button class="chip refresh" id="btn-refresh" title="重新拉取最新 data.json（绕过缓存）">刷新数据</button>
+    <span class="refresh-status" id="refresh-status"></span>
   </section>
 
   <section class="grid" id="grid"></section>
@@ -52,9 +54,9 @@
 </main>
 
 <footer class="foot wrap">
-  <p>数据来源：<a id="src-link" href="https://cannjudge.cn/public/ictcompetition" target="_blank" rel="noreferrer">CANNJudge 公开接口</a>　·　刷新方式见仓库 <code>site/README.md</code>　·　分数、状态与测试点用时均以测试界面为准。</p>
+  <p>数据来源：<a id="src-link" href="https://cannjudge.cn/public/ictcompetition" target="_blank" rel="noreferrer">CANNJudge 公开接口</a>　·　页面每 5 分钟自动重新拉取，也可点「刷新数据」手动拉取（CI 每 10 分钟抓一次上游数据）　·　分数、状态与测试点用时均以测试界面为准。</p>
 </footer>
 
-<script src="assets/app.js?v=20261111c"></script>
+<script src="assets/app.js?v=20261112a"></script>
 </body>
 </html>
