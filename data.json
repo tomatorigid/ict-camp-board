@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-12 12:36:51",
-  "generated_at_utc": "2026-11-12T04:36:51Z",
+  "generated_at": "2026-11-12 19:39:41",
+  "generated_at_utc": "2026-11-12T11:39:41Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -29,9 +29,9 @@
   "note": "数据来自 CANNJudge 公开接口 /api/problems/<id>/ranking，分数与状态以测试界面为准。"
  },
  "summary": {
-  "score_sum": 309.16,
-  "weighted_sum": 685.94,
-  "submitted": 7,
+  "score_sum": 311.08,
+  "weighted_sum": 692.55,
+  "submitted": 8,
   "passed": 7,
   "total_problems": 10
  },
@@ -50,7 +50,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/concatd",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/concatd/ranking",
    "submitted": true,
-   "rank": 116,
+   "rank": 118,
    "submitter": "everclover",
    "status": "Pass",
    "score": 60.25,
@@ -423,10 +423,10 @@
    "url": "https://cannjudge.cn/public/ictcompetition/confusiontransposed",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/confusiontransposed/ranking",
    "submitted": true,
-   "rank": 266,
+   "rank": 277,
    "submitter": "everclover",
    "status": "Pass",
-   "score": 34.61,
+   "score": 34.59,
    "submit_time": "2026-11-08 19:28:55",
    "submission_id": "6af05cf76bd0f9be37199c14",
    "testcases": [
@@ -435,7 +435,7 @@
      "status": "Pass",
      "time": 6.976666666666667,
      "precision": 1,
-     "best": 3.6633333333333336
+     "best": 3.5833333333333335
     },
     {
      "i": 2,
@@ -817,10 +817,10 @@
    "url": "https://cannjudge.cn/public/ictcompetition/layernormv3",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/layernormv3/ranking",
    "submitted": true,
-   "rank": 67,
+   "rank": 73,
    "submitter": "everclover",
    "status": "Pass",
-   "score": 47.49,
+   "score": 47.45,
    "submit_time": "2026-11-10 00:21:43",
    "submission_id": "6af1f3176bd0f9be37e9f499",
    "testcases": [
@@ -1190,45 +1190,45 @@
    "url": "https://cannjudge.cn/public/ictcompetition/multilabelmarginloss",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/multilabelmarginloss/ranking",
    "submitted": true,
-   "rank": 156,
+   "rank": 161,
    "submitter": "tomatorigid",
    "status": "Pass",
-   "score": 34.08,
-   "submit_time": "2026-11-12 10:26:30",
-   "submission_id": "6af523d66bd0f9be377a2e9d",
+   "score": 33.31,
+   "submit_time": "2026-11-12 14:54:49",
+   "submission_id": "6af562b96bd0f9be37f6ddb1",
    "testcases": [
     {
      "i": 1,
      "status": "Pass",
-     "time": 7.183333333333334,
+     "time": 7.54,
      "precision": 1,
      "best": 4.190166666666666
     },
     {
      "i": 2,
      "status": "Pass",
-     "time": 6.916666666666667,
+     "time": 7.38,
      "precision": 1,
      "best": 4.12
     },
     {
      "i": 3,
      "status": "Pass",
-     "time": 7.916666666666667,
+     "time": 8.053333333333333,
      "precision": 1,
      "best": 4.42
     },
     {
      "i": 4,
      "status": "Pass",
-     "time": 7.866666666666666,
+     "time": 7.786666666666667,
      "precision": 1,
      "best": 4.406666666666666
     },
     {
      "i": 5,
      "status": "Pass",
-     "time": 8.66,
+     "time": 8.803333333333333,
      "precision": 1,
      "best": 4.866666666666666
     },
@@ -1563,45 +1563,45 @@
    "url": "https://cannjudge.cn/public/ictcompetition/padv3grad",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/padv3grad/ranking",
    "submitted": true,
-   "rank": 195,
+   "rank": 165,
    "submitter": "tomatorigid",
    "status": "Pass",
-   "score": 22.56,
-   "submit_time": "2026-11-12 12:32:09",
-   "submission_id": "6af541496bd0f9be37b5402d",
+   "score": 25.34,
+   "submit_time": "2026-11-12 12:44:55",
+   "submission_id": "6af544476bd0f9be37bb13f1",
    "testcases": [
     {
      "i": 1,
      "status": "Pass",
-     "time": 8.803333333333333,
+     "time": 7.663333333333333,
      "precision": 1,
      "best": 3.9966666666666666
     },
     {
      "i": 2,
      "status": "Pass",
-     "time": 6.466666666666667,
+     "time": 5.963333333333333,
      "precision": 1,
      "best": 3.9435
     },
     {
      "i": 3,
      "status": "Pass",
-     "time": 8.886666666666667,
+     "time": 7.74,
      "precision": 1,
      "best": 3.8535
     },
     {
      "i": 4,
      "status": "Pass",
-     "time": 8.813333333333333,
+     "time": 7.6033333333333335,
      "precision": 1,
      "best": 4.017
     },
     {
      "i": 5,
      "status": "Pass",
-     "time": 8.046666666666667,
+     "time": 7.2,
      "precision": 1,
      "best": 3.9633333333333334
     },
@@ -1936,10 +1936,10 @@
    "url": "https://cannjudge.cn/public/ictcompetition/prelugradupdate",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/prelugradupdate/ranking",
    "submitted": true,
-   "rank": 157,
+   "rank": 164,
    "submitter": "tomatorigid",
    "status": "Pass",
-   "score": 49.8,
+   "score": 49.79,
    "submit_time": "2026-11-12 10:31:36",
    "submission_id": "6af525086bd0f9be377c8276",
    "testcases": [
@@ -2309,10 +2309,10 @@
    "url": "https://cannjudge.cn/public/ictcompetition/quantupdatescatter",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/quantupdatescatter/ranking",
    "submitted": true,
-   "rank": 37,
+   "rank": 40,
    "submitter": "tomatorigid",
    "status": "Pass",
-   "score": 60.37,
+   "score": 60.35,
    "submit_time": "2026-11-12 12:08:44",
    "submission_id": "6af53bcc6bd0f9be37aa8daf",
    "testcases": [
@@ -2678,16 +2678,368 @@
    "start_time": "2026-11-02 00:00:00",
    "end_time": "2026-12-28 23:59:00",
    "testcase_total": 50,
-   "team_total_teams": 0,
+   "team_total_teams": 1,
    "url": "https://cannjudge.cn/public/ictcompetition/stridedslicegrad",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/stridedslicegrad/ranking",
-   "submitted": false,
-   "rank": null,
-   "submitter": null,
-   "status": "未提交",
+   "submitted": true,
+   "rank": 278,
+   "submitter": "tomatorigid",
+   "status": "Runtime Error",
    "score": 0.0,
-   "submit_time": null,
-   "testcases": []
+   "submit_time": "2026-11-12 14:43:48",
+   "submission_id": "6af560246bd0f9be37f1cbee",
+   "testcases": [
+    {
+     "i": 1,
+     "status": "Pass",
+     "time": 6.14,
+     "precision": 1,
+     "best": 3.96
+    },
+    {
+     "i": 2,
+     "status": "Pass",
+     "time": 5.446666666666666,
+     "precision": 1,
+     "best": 3.6566666666666667
+    },
+    {
+     "i": 3,
+     "status": "Pass",
+     "time": 5.023333333333333,
+     "precision": 1,
+     "best": 3.61
+    },
+    {
+     "i": 4,
+     "status": "Pass",
+     "time": 5.8533333333333335,
+     "precision": 1,
+     "best": 3.62
+    },
+    {
+     "i": 5,
+     "status": "Pass",
+     "time": 5.05,
+     "precision": 1,
+     "best": 3.6966666666666668
+    },
+    {
+     "i": 6,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 7,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 8,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 9,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 10,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 11,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 12,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 13,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 14,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 15,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 16,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 17,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 18,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 19,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 20,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 21,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 22,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 23,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 24,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 25,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 26,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 27,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 28,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 29,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 30,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 31,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 32,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 33,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 34,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 35,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 36,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 37,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 38,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 39,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 40,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 41,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 42,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 43,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 44,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 45,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 46,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 47,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 48,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 49,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    },
+    {
+     "i": 50,
+     "status": "Hidden",
+     "time": null,
+     "precision": null,
+     "best": null
+    }
+   ]
   },
   {
    "id": 2332,
