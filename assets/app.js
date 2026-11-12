@@ -1,324 +1,415 @@
-/* ICT 算子开发 · 队伍看板
- * 数据来自 data.json（由 fetch_data.py 从 CANNJudge 公开接口生成）
+/* ICT 算子开发 · 队伍题目面板
+ * 数据来自 data.json（fetch_data.py 从 CANNJudge 公开接口生成）
+ * 设计：瑞士国际主义（归藏设计语言）
  */
-(async function () {
+(function () {
+  "use strict";
+
   const $ = (s) => document.querySelector(s);
 
   const DIFF = {
-    3: { label: "难题 ×3", cls: "d3" },
-    2: { label: "中题 ×2", cls: "d2" },
-    1: { label: "易题 ×1", cls: "d1" },
+    3: { label: "难 ×3", cls: "d3" },
+    2: { label: "中 ×2", cls: "d2" },
+    1: { label: "易 ×1", cls: "d1" },
   };
 
-  let data = null;
-  let filter = "all";
-  let sortKey = "id";
-  let selected = null;
-  let lastLoadedAt = Date.now();
-  const btnRefresh = document.querySelector("#btn-refresh");
+  const STATUS_CLS = {
+    Pass: "pass",
+    "Wrong Answer": "fail",
+    "Runtime Error": "fail",
+    "Compile Error": "fail",
+    "Time Limit Exceeded": "fail",
+  };
 
-  const fmt = (v, digits = 2) =>
-    v === null || v === undefined || v === "" ? "—" : Number(v).toFixed(digits);
+  const STATUS_ZH = {
+    Pass: "通过",
+    "Wrong Answer": "答案错误",
+    "Runtime Error": "运行异常",
+    "Compile Error": "编译失败",
+    "Time Limit Exceeded": "超时",
+    Skipped: "未执行",
+    Hidden: "隐藏",
+  };
 
-  const us = (v, digits = 2) =>
-    v === null || v === undefined ? "—" : `${Number(v).toFixed(digits)} μs`;
+  const state = {
+    data: null,
+    filter: "all",
+    sort: "id",
+    selected: null,
+    loadedAt: Date.now(),
+  };
+
+  const btnRefresh = $("#btn-refresh");
+  const statusEl = $("#refresh-status");
+
+  /* ---------- 小工具 ---------- */
+  const num = (v) => (v === null || v === undefined || v === "" ? null : Number(v));
+
+  const fmt = (v, d = 2) => {
+    const n = num(v);
+    return n === null ? "—" : n.toFixed(d);
+  };
+
+  const us = (v, d = 2) => {
+    const n = num(v);
+    return n === null ? "—" : n.toFixed(d);
+  };
 
   function esc(s) {
-    return String(s ?? "").replace(/[&<>"']/g, (c) =>
+    return String(s === null || s === undefined ? "" : s).replace(/[&<>"']/g, (c) =>
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])
     );
   }
 
-  function renderHeader() {
-    const m = data.meta;
-    const s = data.summary;
-    $("#contest-line").textContent = m.contest;
-    $("#team-line").textContent = m.team;
-    renderBatches();
-    $("#meta-line").textContent =
-      `数据抓取时间 ${m.generated_at}（UTC+8）　·　赛事截止 ${m.contest_end || "—"}　·　共 ${s.total_problems} 题`;
-    $("#src-link").href = m.source;
-
-    const cells = [
-      ["已提交题数", `${s.submitted}<small> / ${s.total_problems}</small>`],
-      ["已通过题数", `${s.passed}<small> / ${s.total_problems}</small>`],
-      ["单题分数合计", `${fmt(s.score_sum, 1)}<small> 分</small>`],
-      ["难度加权合计", `${fmt(s.weighted_sum, 1)}<small> 分</small>`],
-    ];
-    $("#summary").innerHTML = cells
-      .map(
-        ([k, v]) => `<div class="stat"><div class="k">${k}</div><div class="v">${v}</div></div>`
-      )
-      .join("");
+  function hhmmss(iso) {
+    if (!iso) return "—";
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return String(iso);
+    const p = (n) => String(n).padStart(2, "0");
+    return `${p(d.getMonth() + 1)}/${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;
   }
 
-  // 决赛分两批下发赛题，页头显示批次窗口与倒计时
-  function countdown(endStr) {
-    const end = new Date(String(endStr).replace(" ", "T"));
-    const ms = end - new Date();
-    if (isNaN(ms)) return "";
-    if (ms <= 0) return "已截止";
-    const d = Math.floor(ms / 86400000);
-    const h = Math.floor((ms % 86400000) / 3600000);
-    return d > 0 ? `剩 ${d} 天 ${h} 小时` : `剩 ${h} 小时`;
+  // 平均倍数：可见测试点 Σ(ours) / Σ(best)，越小越好
+  function gapOf(p) {
+    const rows = (p.testcases || []).filter((t) => num(t.time) !== null && num(t.best) > 0);
+    if (!rows.length) return null;
+    let ours = 0;
+    let best = 0;
+    for (const t of rows) {
+      ours += num(t.time);
+      best += num(t.best);
+    }
+    return best > 0 ? ours / best : null;
+  }
+
+  function passedCount(p) {
+    return (p.testcases || []).filter((t) => t.status === "Pass").length;
+  }
+
+  function isBehind(p) {
+    if (!p.submitted) return false;
+    const r = num(p.rank);
+    return r === null || r > 100;
+  }
+
+  /* ---------- 头部 ---------- */
+  function renderHeader() {
+    const m = state.data.meta || {};
+    const s = state.data.summary || {};
+    const total = s.total_problems || (state.data.problems || []).length || 10;
+
+    if (m.team) $("#team-line").textContent = m.team;
+    if (m.contest) $("#contest-line").textContent = m.contest;
+
+    $("#n-submitted").textContent = s.submitted ?? "—";
+    $("#n-submitted-sub").textContent = `/ ${total} 题`;
+    $("#n-passed").textContent = s.passed ?? "—";
+    $("#n-passed-sub").textContent = `/ ${total} 题`;
+    $("#n-score").textContent = fmt(s.score_sum, 2);
+    $("#n-weighted").textContent = fmt(s.weighted_sum, 2);
+
+    const bits = [];
+    if (m.generated_at) bits.push(`抓取 ${m.generated_at}`);
+    if (m.contest_end) bits.push(`截止 ${m.contest_end}`);
+    $("#meta-line").textContent = bits.join("　·　");
+
+    renderBatches();
+    if (m.source) $("#src-link").href = m.source;
   }
 
   function renderBatches() {
-    const list = data.meta.batches || [];
-    const cut = (data.meta.contest_end || "").slice(0, 10);
-    $("#batch-line").innerHTML = list
+    const wrap = $("#batch-line");
+    const list = (state.data.meta && state.data.meta.batches) || [];
+    if (!list.length) {
+      wrap.innerHTML = "";
+      return;
+    }
+    // 当前批次：结束时间未到且最靠前的那个；都过期则最后一个
+    const now = Date.now();
+    let active = list[list.length - 1];
+    for (const b of list) {
+      const end = b.end ? new Date(b.end).getTime() : null;
+      if (end && end > now) {
+        active = b;
+        break;
+      }
+    }
+    wrap.innerHTML = list
       .map((b) => {
-        const open = !!b.problem_count;
-        const tail = open
-          ? `${b.problem_count} 题 · ${countdown(b.end)}`
-          : "未开放";
-        return `<span class="batch${open ? " on" : ""}">
-          <b>${esc(b.label)}</b> ${esc(b.period)}<span class="cd">${esc(tail)}</span>
-        </span>`;
-      })
-      .join("") + `<span class="batch">决赛总截止 ${esc(cut)}</span>`;
-  }
-
-  function miniStrip(p) {
-    if (!p.submitted) return "";
-    return (
-      `<div class="mini">` +
-      p.testcases
-        .map((t) => {
-          const cls = t.status === "Pass" ? "pass" : t.status && t.status !== "Hidden" ? "fail" : "";
-          return `<i class="${cls}" title="测试点 ${t.i}：${esc(t.status || "—")} ${t.time ? us(t.time) : ""}"></i>`;
-        })
-        .join("") +
-      `</div>`
-    );
-  }
-
-  // 卡片上直接列出前几个已公开测试点的用时，与全场最佳并排
-  const CARD_TC_N = 5;
-
-  function tcTable(p) {
-    if (!p.submitted) return "";
-    const rows = p.testcases.filter((t) => t.time !== null && t.time !== undefined).slice(0, CARD_TC_N);
-    if (!rows.length) return "";
-    const body = rows
-      .map((t) => {
-        const rel = t.best ? `<span class="rel">${(t.time / t.best).toFixed(2)}×</span>` : `<span class="rel">—</span>`;
-        return `<div class="tc-row">
-          <span class="idx">#${t.i}</span>
-          <span class="us">${Number(t.time).toFixed(2)}</span>
-          <span class="best">${t.best ? Number(t.best).toFixed(2) : "—"}</span>
-          ${rel}
-        </div>`;
+        const on = b === active ? " on" : "";
+        const cnt = b.problem_count ? `${b.problem_count} 题` : "";
+        return `<span class="batch${on}"><b>${esc(b.label)}</b><span>${esc(b.period || "")}</span>${
+          cnt ? `<span class="cd">${esc(cnt)}</span>` : ""
+        }</span>`;
       })
       .join("");
-    return `<div class="tc-table">
-      <div class="tc-row head"><span class="idx">测试点</span><span class="us">本队 (μs)</span><span class="best">最佳 (μs)</span><span class="rel">倍数</span></div>
-      ${body}
+  }
+
+  /* ---------- 列表 ---------- */
+  function visibleProblems() {
+    const all = state.data.problems || [];
+    const filtered = all.filter((p) => {
+      if (state.filter === "pass") return p.status === "Pass";
+      if (state.filter === "pending") return !p.submitted;
+      if (state.filter === "behind") return isBehind(p);
+      return true;
+    });
+
+    const key = state.sort;
+    const score = (v) => (num(v) === null ? -1 : num(v));
+    return filtered.slice().sort((a, b) => {
+      if (key === "score") return score(b.score) - score(a.score);
+      if (key === "rank") {
+        const ra = num(a.rank);
+        const rb = num(b.rank);
+        if (ra === null && rb === null) return a.id - b.id;
+        if (ra === null) return 1;
+        if (rb === null) return -1;
+        return ra - rb;
+      }
+      if (key === "gap") {
+        const ga = gapOf(a);
+        const gb = gapOf(b);
+        if (ga === null && gb === null) return a.id - b.id;
+        if (ga === null) return 1;
+        if (gb === null) return -1;
+        return gb - ga;
+      }
+      if (key === "time") return String(b.submit_time || "").localeCompare(String(a.submit_time || ""));
+      return a.id - b.id;
+    });
+  }
+
+  function barRow(t) {
+    const time = num(t.time);
+    const best = num(t.best);
+    const ratio = time !== null && best > 0 ? time / best : null;
+    const width = time !== null && best > 0 ? Math.max(2, Math.min(100, (best / time) * 100)) : 0;
+    const warn = ratio !== null && ratio > 1.5 ? " warn" : "";
+    return `<div class="tc-row">
+      <span class="i">${String(t.i).padStart(2, "0")}</span>
+      <span class="us">${us(time)}</span>
+      <span class="tc-bar" title="best ${us(best)} μs"><i style="width:${width.toFixed(1)}%"></i></span>
+      <span class="rel${warn}">${ratio === null ? "—" : ratio.toFixed(2) + "×"}</span>
     </div>`;
   }
 
-  function card(p) {
-    const d = DIFF[p.difficulty] || DIFF[1];
-    const sel = selected === p.id ? " sel" : "";
-    const empty = p.submitted ? "" : " empty";
-    const score = p.submitted
-      ? `${fmt(p.score)}<small> 分</small>`
-      : `<span class="none">未提交</span>`;
-    const pct = p.submitted ? Math.max(0, Math.min(100, p.score)) : 0;
-    return `
-      <article class="card${sel}${empty}" data-id="${p.id}">
-        <div class="card-top">
-          <div>
-            <div class="card-idx">#${p.id} · ${esc(p.slug)}</div>
-            <h3>${esc(p.title)}</h3>
-          </div>
-          <span class="badge ${d.cls}">${d.label}</span>
-        </div>
-        <div class="score-row">
-          <div class="score">${score}</div>
-          <div class="rank">${p.rank ? `第 ${p.rank} 名` : "未上榜"}</div>
-        </div>
-        <div class="bar"><i style="width:${pct}%"></i></div>
-        <div class="kv"><span>最新提交者</span><b>${esc(p.submitter || "—")}</b></div>
-        <div class="kv"><span>提交时间</span><b>${esc(p.submit_time || "—")}</b></div>
-        <div class="kv"><span>状态</span><b>${esc(p.status)}</b></div>
-        ${tcTable(p)}
-        ${miniStrip(p)}
-      </article>`;
+  function ordinalOf(p) {
+    const list = state.data.problems || [];
+    const i = list.indexOf(p);
+    return i < 0 ? 0 : i + 1;
   }
 
-  function visible() {
-    let list = data.problems.slice();
-    if (filter === "pass") list = list.filter((p) => p.status === "Pass");
-    if (filter === "pending") list = list.filter((p) => !p.submitted);
-    const by = {
-      id: (a, b) => a.id - b.id,
-      score: (a, b) => b.score - a.score || a.id - b.id,
-      rank: (a, b) => (a.rank ?? 1e9) - (b.rank ?? 1e9) || b.score - a.score,
-      time: (a, b) => String(b.submit_time || "").localeCompare(String(a.submit_time || "")),
-    }[sortKey];
-    return list.sort(by);
+  function card(p) {
+    const ord = ordinalOf(p);
+    const d = DIFF[p.difficulty] || { label: `难度 ${p.difficulty ?? "?"}`, cls: "" };
+    const score = num(p.score);
+    const rank = num(p.rank);
+    const gap = gapOf(p);
+    const sel = state.selected === p.id ? " sel" : "";
+    const empty = p.submitted ? "" : " empty";
+
+    const scoreHtml = !p.submitted
+      ? `<div class="score-v none">未提交</div>`
+      : score === null
+      ? `<div class="score-v none">—</div>`
+      : `<div class="score-v">${score.toFixed(2)}<small>分</small></div>`;
+
+    const rankHtml = rank === null
+      ? `<div class="rank-line">${p.submitted ? esc(STATUS_ZH[p.status] || p.status || "—") : "—"}</div>`
+      : `<div class="rank-line"><b>#${rank}</b>${isBehind(p) ? `<span class="flag">未进前 100</span>` : ""}</div>`;
+
+    const rows = (p.testcases || []).slice(0, 5).map(barRow).join("");
+
+    return `<article class="card${sel}${empty}" data-id="${p.id}">
+      <div class="card-top">
+        <span class="card-idx">${String(ord).padStart(2, "0")}</span>
+        <div class="card-head">
+          <div class="card-slug">${esc(p.slug || "")}</div>
+          <h3 class="card-title">${esc(p.title)}</h3>
+        </div>
+        <span class="badge ${d.cls}">${esc(d.label)}</span>
+      </div>
+      <div class="score-row">
+        ${scoreHtml}
+        ${rankHtml}
+      </div>
+      <div class="kv">
+        <span>倍数 <b>${gap === null ? "—" : gap.toFixed(2) + "×"}</b></span>
+        <span>通过 <b>${passedCount(p)}</b>/${p.testcase_total || 50}</span>
+      </div>
+      <div class="kv">
+        <span>${p.submitted ? esc(STATUS_ZH[p.status] || p.status) : "未提交"}</span>
+        <span>${p.submit_time ? esc(hhmmss(p.submit_time)) : "—"}</span>
+      </div>
+      <div class="tc-list">${rows}</div>
+    </article>`;
   }
 
   function renderGrid() {
-    const list = visible();
+    const list = visibleProblems();
     $("#grid").innerHTML = list.map(card).join("");
-    $("#hint").textContent =
-      list.length === 0 ? "该筛选下没有题目。" : `共 ${list.length} 题　·　点击卡片查看每个测试点的用时`;
+    const all = (state.data.problems || []).length;
+    const hint =
+      list.length === all
+        ? `共 ${all} 题　·　点击任意卡片查看 50 个测试点明细`
+        : `筛出 ${list.length} / ${all} 题　·　点击卡片查看明细`;
+    $("#hint").textContent = hint;
+
     $("#grid").querySelectorAll(".card").forEach((el) => {
-      el.addEventListener("click", () => {
-        const id = Number(el.dataset.id);
-        selected = selected === id ? null : id;
-        renderGrid();
-        renderDetail();
-      });
+      el.addEventListener("click", () => select(Number(el.dataset.id)));
     });
+  }
+
+  /* ---------- 明细 ---------- */
+  function select(id) {
+    state.selected = state.selected === id ? null : id;
+    renderGrid();
+    renderDetail();
   }
 
   function renderDetail() {
     const box = $("#detail");
-    const p = data.problems.find((x) => x.id === selected);
+    const id = state.selected;
+    if (id === null) {
+      box.hidden = true;
+      $("#detail-body").innerHTML = "";
+      return;
+    }
+    const p = (state.data.problems || []).find((x) => x.id === id);
     if (!p) {
       box.hidden = true;
       return;
     }
-    box.hidden = false;
-    $("#detail-title").textContent = `#${p.id} ${p.title}　·　${p.status}　·　${fmt(p.score)} 分`;
-    const d = DIFF[p.difficulty] || DIFF[1];
 
-    if (!p.submitted) {
-      $("#detail-body").innerHTML =
-        `<p class="hint">这题还没有提交记录。题目页：<a href="${esc(p.url)}" target="_blank" rel="noreferrer">${esc(p.url)}</a></p>`;
-      return;
+    const d = DIFF[p.difficulty] || { label: `难度 ${p.difficulty}` };
+    $("#detail-eyebrow").textContent = `题目 ${String(ordinalOf(p)).padStart(2, "0")} · ${d.label} · ${p.slug || ""}`;
+    $("#detail-title").textContent = p.title;
+
+    const gap = gapOf(p);
+    const tcs = p.testcases || [];
+    const total = p.testcase_total || Math.max(50, tcs.length);
+
+    const cells = [];
+    for (let i = 1; i <= total; i += 1) {
+      const t = tcs.find((x) => x.i === i);
+      const st = t ? t.status : "Hidden";
+      const cls = STATUS_CLS[st] || (st === "Skipped" ? "hidden" : "");
+      const tip = t && num(t.time) !== null ? `#${i} ${us(t.time)} μs / best ${us(t.best)}` : `#${i} ${STATUS_ZH[st] || st || "未知"}`;
+      cells.push(`<span class="tc ${cls}" title="${esc(tip)}">${i}</span>`);
     }
 
-    const cells = p.testcases
+    const visible = tcs.filter((t) => num(t.time) !== null);
+    const tableRows = visible
       .map((t) => {
-        const cls =
-          t.status === "Pass" ? "pass" : t.status && t.status !== "Hidden" ? "fail" : "hidden";
-        const title = `测试点 ${t.i}：${t.status || "—"}${t.time ? "，" + us(t.time) : ""}${
-          t.best ? "，最佳 " + us(t.best) : ""
-        }`;
-        return `<div class="tc ${cls}" title="${esc(title)}">${t.i}</div>`;
+        const ratio = num(t.best) > 0 ? num(t.time) / num(t.best) : null;
+        const cls = STATUS_CLS[t.status] || "";
+        return `<tr>
+          <td>#${String(t.i).padStart(2, "0")}</td>
+          <td>${esc(STATUS_ZH[t.status] || t.status || "—")}</td>
+          <td class="num">${us(t.time)} μs</td>
+          <td class="num">${us(t.best)} μs</td>
+          <td class="num">${ratio === null ? "—" : ratio.toFixed(2) + "×"}</td>
+        </tr>`;
       })
       .join("");
-
-    const rows = p.testcases
-      .filter((t) => t.status !== "Hidden")
-      .map((t) => {
-        const rel = t.best && t.time ? (t.time / t.best).toFixed(2) : "—";
-        return `<tr><td class="num">${t.i}</td><td>${esc(t.status)}</td><td class="num">${us(
-          t.time
-        )}</td><td class="num">${us(t.best)}</td><td class="num">${rel === "—" ? "—" : rel + "×"}</td></tr>`;
-      })
-      .join("");
-
-    const visibleCount = p.testcases.filter((t) => t.status !== "Hidden").length;
 
     $("#detail-body").innerHTML = `
-      <div class="kv" style="margin-top:14px">
-        <span>难度 ${d.label}</span>
-        <span>排名 <b>${p.rank ?? "—"}</b></span>
-        <span>最新提交者 <b>${esc(p.submitter || "—")}</b></span>
-        <span>提交时间 <b>${esc(p.submit_time || "—")}</b></span>
-        <span>测试点 <b>${p.testcase_total}</b>（公开 ${visibleCount}）</span>
+      <div class="kv">
+        <span>状态 <b>${p.submitted ? esc(STATUS_ZH[p.status] || p.status) : "未提交"}</b></span>
+        <span>分数 <b>${fmt(p.score)}</b></span>
+        <span>名次 <b>${num(p.rank) === null ? "—" : "#" + num(p.rank)}</b></span>
+        <span>平均倍数 <b>${gap === null ? "—" : gap.toFixed(2) + "×"}</b></span>
+        <span>提交人 <b>${esc(p.submitter || "—")}</b></span>
+        <span>提交于 <b>${p.submit_time ? esc(hhmmss(p.submit_time)) : "—"}</b></span>
       </div>
-      <div class="tc-grid">${cells}</div>
       <div class="legend">
-        <span class="p">Pass</span><span class="f">Fail/Error</span><span>未公开（Hidden）</span>
+        <span class="p">通过</span><span class="f">失败</span><span>隐藏 / 未执行</span>
       </div>
+      <div class="tc-grid">${cells.join("")}</div>
       ${
-        rows
-          ? `<table><thead><tr><th>测试点</th><th>状态</th><th>本队用时</th><th>全场最佳</th><th>倍数</th></tr></thead><tbody>${rows}</tbody></table>`
-          : `<p class="hint">该题没有公开测试点用时，只有分数可用。</p>`
+        tableRows
+          ? `<table>
+              <thead><tr><th>测试点</th><th>状态</th><th class="num">用时</th><th class="num">最佳</th><th class="num">倍数</th></tr></thead>
+              <tbody>${tableRows}</tbody>
+            </table>`
+          : `<p class="hint mono">该题暂无可见测试点数据。</p>`
       }
-      <p class="hint">题目页：<a href="${esc(p.url)}" target="_blank" rel="noreferrer">${esc(
-      p.url
-    )}</a>　·　排名页：<a href="${esc(p.ranking_url)}" target="_blank" rel="noreferrer">${esc(
-      p.ranking_url
-    )}</a></p>`;
+      <p class="hint mono">
+        ${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noreferrer">题目页</a>` : ""}
+        ${p.ranking_url ? `　·　<a href="${esc(p.ranking_url)}" target="_blank" rel="noreferrer">提交排名</a>` : ""}
+      </p>`;
+    box.hidden = false;
   }
 
+  /* ---------- 交互 ---------- */
   $("#filters").addEventListener("click", (e) => {
-    const b = e.target.closest(".chip");
-    if (!b) return;
-    filter = b.dataset.filter;
-    $("#filters").querySelectorAll(".chip").forEach((c) => c.classList.toggle("on", c === b));
+    const btn = e.target.closest("[data-filter]");
+    if (!btn) return;
+    state.filter = btn.dataset.filter;
+    $("#filters").querySelectorAll(".chip").forEach((c) => c.classList.toggle("on", c === btn));
     renderGrid();
   });
 
   $("#sort").addEventListener("change", (e) => {
-    sortKey = e.target.value;
+    state.sort = e.target.value;
     renderGrid();
   });
 
-  function setStatus(text) {
-    const el = $("#refresh-status");
-    if (el) el.textContent = text || "";
-  }
-
-  // 拉取最新 data.json：查询串 + no-store 双保险，绕过 Pages/Fastly 缓存
-  async function loadData({ manual = false } = {}) {
-    const btn = $("#btn-refresh");
-    if (btn) {
-      btn.disabled = true;
-      btn.textContent = manual ? "抓取中…" : "刷新数据";
-    }
-    if (manual) setStatus("正在重新拉取 data.json…");
-    try {
-      const res = await fetch(`data.json?t=${Date.now()}`, { cache: "no-store" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      data = await res.json();
-      renderHeader();
-      renderGrid();
-      renderDetail();
-      const at = new Date().toLocaleTimeString("zh-CN", { hour12: false });
-      setStatus(`页面于 ${at} 重新拉取 · 每 5 分钟自动刷新`);
-      lastLoadedAt = Date.now();
-    } catch (err) {
-      setStatus(`刷新失败：${err.message}（继续显示上一次数据）`);
-    } finally {
-      if (btn) {
-        btn.disabled = false;
-        btn.textContent = "刷新数据";
-      }
-    }
-  }
-
   $("#detail-close").addEventListener("click", () => {
-    selected = null;
+    state.selected = null;
     renderGrid();
     renderDetail();
   });
 
-  if (btnRefresh) {
-    btnRefresh.addEventListener("click", () => loadData({ manual: true }));
+  function setStatus(text) {
+    if (statusEl) statusEl.textContent = text;
   }
 
-  try {
-    const res = await fetch(`data.json?t=${Date.now()}`, { cache: "no-store" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    data = await res.json();
-  } catch (err) {
-    document.querySelector("main").innerHTML =
-      `<p class="hint">读取 data.json 失败：${esc(err.message)}。请在 <code>site/</code> 下起一个静态服务器（<code>python -m http.server 8000</code>），不要直接用 file:// 打开。</p>`;
-    return;
-  }
-
-  renderHeader();
-  renderGrid();
-  renderDetail();
-  setStatus(`页面于 ${new Date().toLocaleTimeString("zh-CN", { hour12: false })} 加载 · 每 5 分钟自动刷新`);
-  lastLoadedAt = Date.now();
-
-  // 每 5 分钟自动刷新（页面隐藏时跳过，回到前台立即补一次）
-  const REFRESH_MS = 5 * 60 * 1000;
-  setInterval(() => {
-    if (document.visibilityState === "visible") loadData();
-  }, REFRESH_MS);
-  document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "visible" && Date.now() - lastLoadedAt > REFRESH_MS) {
-      loadData();
+  async function loadData(manual) {
+    if (manual) {
+      btnRefresh.disabled = true;
+      setStatus("正在拉取最新数据…");
     }
+    try {
+      const res = await fetch(`data.json?t=${Date.now()}`, { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      state.data = await res.json();
+      state.loadedAt = Date.now();
+      renderHeader();
+      renderGrid();
+      renderDetail();
+      const t = new Date(state.loadedAt);
+      const p = (n) => String(n).padStart(2, "0");
+      setStatus(`页面于 ${p(t.getHours())}:${p(t.getMinutes())}:${p(t.getSeconds())} 拉取 · 每 5 分钟自动刷新`);
+    } catch (err) {
+      setStatus(`拉取失败：${err.message}（保留上次数据）`);
+    } finally {
+      if (manual) btnRefresh.disabled = false;
+    }
+  }
+
+  btnRefresh.addEventListener("click", () => loadData(true));
+
+  /* chrome 时钟 */
+  function tick() {
+    const el = $("#chrome-clock");
+    if (!el) return;
+    const d = new Date();
+    const p = (n) => String(n).padStart(2, "0");
+    el.textContent = `${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`;
+  }
+
+  /* 自动刷新：每 5 分钟，页面隐藏时跳过，回前台补拉 */
+  setInterval(() => {
+    if (!document.hidden) loadData(false);
+  }, 5 * 60 * 1000);
+
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden && Date.now() - state.loadedAt > 5 * 60 * 1000) loadData(false);
   });
+
+  tick();
+  setInterval(tick, 1000);
+  loadData(false);
 })();
