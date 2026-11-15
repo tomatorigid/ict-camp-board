@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-16 01:26:56",
-  "generated_at_utc": "2026-11-15T17:26:56Z",
+  "generated_at": "2026-11-16 05:59:49",
+  "generated_at_utc": "2026-11-15T21:59:49Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -29,8 +29,8 @@
   "note": "数据来自 CANNJudge 公开接口 /api/problems/<id>/ranking，分数与状态以测试界面为准。"
  },
  "summary": {
-  "score_sum": 309.2,
-  "weighted_sum": 687.92,
+  "score_sum": 309.16,
+  "weighted_sum": 687.84,
   "submitted": 8,
   "passed": 7,
   "total_problems": 10
@@ -50,7 +50,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/concatd",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/concatd/ranking",
    "submitted": true,
-   "rank": 128,
+   "rank": 127,
    "submitter": "everclover",
    "status": "Pass",
    "score": 60.25,
@@ -820,7 +820,7 @@
    "rank": 91,
    "submitter": "everclover",
    "status": "Pass",
-   "score": 46.83,
+   "score": 46.79,
    "submit_time": "2026-11-10 00:21:43",
    "submission_id": "6af1f3176bd0f9be37e9f499",
    "testcases": [
@@ -829,7 +829,7 @@
      "status": "Pass",
      "time": 5.473333333333334,
      "precision": 1,
-     "best": 4.03
+     "best": 4.023333333333333
     },
     {
      "i": 2,
@@ -1563,7 +1563,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/padv3grad",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/padv3grad/ranking",
    "submitted": true,
-   "rank": 199,
+   "rank": 200,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 24.65,
@@ -1936,7 +1936,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/prelugradupdate",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/prelugradupdate/ranking",
    "submitted": true,
-   "rank": 186,
+   "rank": 188,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 49.77,
