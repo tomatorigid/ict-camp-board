@@ -240,6 +240,10 @@
       </div>
       <div class="kv">
         <span>${p.submitted ? esc(STATUS_ZH[p.status] || p.status) : "未提交"}</span>
+        <span class="who">${p.submitted ? esc(p.submitter || "—") : "—"}</span>
+      </div>
+      <div class="kv kv-dim">
+        <span>提交于</span>
         <span>${p.submit_time ? esc(hhmmss(p.submit_time)) : "—"}</span>
       </div>
       <div class="tc-list">${rows}</div>

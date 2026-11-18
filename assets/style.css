@@ -172,6 +172,9 @@ select{
 .kv{display:flex;justify-content:space-between;gap:var(--sp-4);font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-top:var(--sp-2)}
 .kv b{color:var(--body);font-weight:500}
 .card.sel .kv b{color:#fff}
+.kv .who{color:var(--ink);max-width:60%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kv-dim{color:var(--faint)}
+.card.sel .kv-dim{color:rgba(255,255,255,.5)}
 
 .tc-list{margin-top:var(--sp-5);display:grid;gap:6px}
 .tc-row{
