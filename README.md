@@ -21,11 +21,22 @@
 
 分数、状态、用时**一律以 CANNJudge 测试界面为准**；本页面只是同一份公开数据的可视化，若与界面不一致，以界面为准并在仓库提 issue。
 
+## 提交趋势折线图
+
+点开任意题目卡片，明细块下方有一条折线图：
+
+- **横轴**：日期（北京时间），每个点是一次提交
+- **纵轴**：默认"可见测试点平均用时"（μs，越低越好），可切到"排行榜分数"（越高越好）
+- **本队**（蓝线）：历次提交，点色区分状态（蓝=Pass，黑=其他）；由 `data.json` 的 `problems[].history.mine` 提供
+- **对手**（灰点）：排行榜前 30 名的快照，每次刷新只追加新的 submission，不重复；由 `problems[].history.rivals` 提供
+
+历史数据是**增量累积**的：CANNJudge 的提交列表接口只对本人开放（匿名 401、查他人 403），所以本队历史靠带登录态抓取（`/api/submissions/user/<uid>`），对手历史只能靠每次刷新时对排行榜做快照。第一次运行后折线是空的，随着刷新逐渐变长。
+
 ## 数据怎么刷新
 
 两种方式，效果相同：
 
-1. **自动**：`.github/workflows/refresh.yml` 每 6 小时跑一次 `fetch_data.py`，`data.json` 有变化就提交；也可以在 Actions 页手动 `Run workflow`。
+1. **自动**：`.github/workflows/refresh.yml` 每 10 分钟跑一次 `fetch_data.py`，`data.json` 有变化就提交；也可以在 Actions 页手动 `Run workflow`。
 2. **手动**：本地执行
 
    ```bash
@@ -33,7 +44,7 @@
    git add data.json && git commit -m "chore: refresh" && git push
    ```
 
-`fetch_data.py` 只访问两个公开接口，不需要 token：
+`fetch_data.py` 默认只访问公开接口，不需要 token：
 
 ```
 GET https://cannjudge.cn/api/problems/contest/<contest_id>
@@ -41,6 +52,17 @@ GET https://cannjudge.cn/api/problems/<problem_id>/ranking?page=1&size=50&q=<队
 ```
 
 队伍名、赛事 ID 写在脚本顶部的 `TEAM` / `CONTEST_ID` 常量里。
+
+### 让 CI 也刷新本队历史（可选）
+
+上面两个方向（本队历史 / 对手快照）里，对手快照匿名就能抓，**本队历史需要登录态**。在仓库 `Settings → Secrets and variables → Actions` 配任意一种即可：
+
+| Secret | 说明 |
+|--------|------|
+| `CANNJUDGE_COOKIE` | 直接一条 `name=value; name2=value2` 的会话 Cookie |
+| `CANNJUDGE_ACCOUNT` + `CANNJUDGE_PASSWORD` | 邮箱 + 密码，脚本会用验证码（内联 SVG，明文可解）自动登录 |
+
+不配也能正常跑：`history.mine` 保留旧数据，`history.rivals` 照常增量更新。Cookie 过期后 CI 会打日志提示，重配一条新的即可。
 
 ## 本地预览
 
