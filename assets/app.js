@@ -189,8 +189,8 @@
     const warn = ratio !== null && ratio > 1.5 ? " warn" : "";
     return `<div class="tc-row">
       <span class="i">${String(t.i).padStart(2, "0")}</span>
-      <span class="us">${us(time)}</span>
-      <span class="tc-bar" title="best ${us(best)} μs"><i style="width:${width.toFixed(1)}%"></i></span>
+      <span class="us">${us(time, 0)}</span>
+      <span class="tc-bar" title="best ${us(best, 0)} μs"><i style="width:${width.toFixed(1)}%"></i></span>
       <span class="rel${warn}">${ratio === null ? "—" : ratio.toFixed(2) + "×"}</span>
     </div>`;
   }
@@ -300,7 +300,7 @@
       const t = tcs.find((x) => x.i === i);
       const st = t ? t.status : "Hidden";
       const cls = STATUS_CLS[st] || (st === "Skipped" ? "hidden" : "");
-      const tip = t && num(t.time) !== null ? `#${i} ${us(t.time)} μs / best ${us(t.best)}` : `#${i} ${STATUS_ZH[st] || st || "未知"}`;
+      const tip = t && num(t.time) !== null ? `#${i} ${us(t.time, 0)} μs / best ${us(t.best, 0)}` : `#${i} ${STATUS_ZH[st] || st || "未知"}`;
       cells.push(`<span class="tc ${cls}" title="${esc(tip)}">${i}</span>`);
     }
 
@@ -312,8 +312,8 @@
         return `<tr>
           <td>#${String(t.i).padStart(2, "0")}</td>
           <td>${esc(STATUS_ZH[t.status] || t.status || "—")}</td>
-          <td class="num">${us(t.time)} μs</td>
-          <td class="num">${us(t.best)} μs</td>
+          <td class="num">${us(t.time, 0)} μs</td>
+          <td class="num">${us(t.best, 0)} μs</td>
           <td class="num">${ratio === null ? "—" : ratio.toFixed(2) + "×"}</td>
         </tr>`;
       })

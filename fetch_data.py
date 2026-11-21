@@ -111,6 +111,16 @@ def iso_local(dt_str):
     return dt.astimezone(CST).strftime("%Y-%m-%d %H:%M:%S")
 
 
+def us_of(v):
+    """排行榜行里的 time / tbest 单位是 ms → μs（None 原样返回）。"""
+    if v is None:
+        return None
+    try:
+        return round(float(v) * 1000, 1)
+    except (TypeError, ValueError):
+        return None
+
+
 def fetch_problem(problem, batch_key):
     pid = problem["_id"]
     slug = problem.get("canonical_name") or problem.get("name")
@@ -164,9 +174,10 @@ def fetch_problem(problem, batch_key):
             {
                 "i": idx,
                 "status": res.get("testcase_status"),
-                "time": res.get("time"),
+                # 排行榜行里的 time/tbest 单位是 ms，统一换成 μs（历史点也按 μs 存）
+                "time": us_of(res.get("time")),
                 "precision": res.get("precision_ratio"),
-                "best": best.get(res.get("testcase_id")),
+                "best": us_of(best.get(res.get("testcase_id"))),
             }
         )
 
