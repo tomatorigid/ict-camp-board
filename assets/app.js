@@ -394,6 +394,7 @@
     const vs = pts.map((x) => x.v);
     let x0 = Math.min(...ts), x1 = Math.max(...ts);
     if (x0 === x1) { x0 -= 36e5 * 12; x1 += 36e5 * 12; }
+    else { const xp = (x1 - x0) * 0.02; x0 -= xp; x1 += xp; }
     let y0 = Math.min(...vs), y1 = Math.max(...vs);
     if (y0 === y1) { y0 -= Math.max(1, Math.abs(y0) * 0.1); y1 += Math.max(1, Math.abs(y1) * 0.1); }
     const pad = (y1 - y0) * 0.08;
@@ -413,7 +414,8 @@
     for (let i = 0; i <= 4; i += 1) {
       const t = x0 + ((x1 - x0) * i) / 4;
       const d = new Date(t);
-      grid += `<text x="${X(t)}" y="${H - 10}" text-anchor="middle" class="tr-lab">${d.getMonth() + 1}/${d.getDate()}</text>`;
+      const anchor = i === 0 ? "start" : i === 4 ? "end" : "middle";
+      grid += `<text x="${X(t).toFixed(1)}" y="${H - 10}" text-anchor="${anchor}" class="tr-lab">${d.getMonth() + 1}/${d.getDate()}</text>`;
     }
 
     const byUser = {};
