@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-21 18:04:42",
-  "generated_at_utc": "2026-11-21T10:04:42Z",
+  "generated_at": "2026-11-22 01:25:38",
+  "generated_at_utc": "2026-11-21T17:25:38Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -29,8 +29,8 @@
   "note": "数据来自 CANNJudge 公开接口 /api/problems/<id>/ranking；history.mine 来自登录接口（本队登录账号的全量提交），history.team 是本队排行榜行的增量快照（含其他队友账号），history.rivals 是公开排行榜前 N 名的增量快照。分数与状态以测试界面为准。"
  },
  "summary": {
-  "score_sum": 305.51,
-  "weighted_sum": 680.41,
+  "score_sum": 304.43,
+  "weighted_sum": 680.37,
   "submitted": 8,
   "passed": 7,
   "total_problems": 10
@@ -51,7 +51,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/concatd",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/concatd/ranking",
    "submitted": true,
-   "rank": 170,
+   "rank": 174,
    "submitter": "everclover",
    "status": "Pass",
    "score": 60.18,
@@ -716,6 +716,42 @@
       "a": 3854.0,
       "s": 80.68,
       "n": 5
+     },
+     {
+      "k": "6ae8744c1dac5d235b3f9287|6b01881085ad43bbe002c140",
+      "t": "2026-11-21 20:01:20",
+      "u": "asdf",
+      "st": "Pass",
+      "a": 4019.3,
+      "s": 71.89,
+      "n": 5
+     },
+     {
+      "k": "6ae850e21dac5d235bf66e6c|6b01b8ce85ad43bbe0792940",
+      "t": "2026-11-21 23:29:18",
+      "u": "fr0zen99",
+      "st": "Pass",
+      "a": 3917.3,
+      "s": 73.76,
+      "n": 5
+     },
+     {
+      "k": "6aec1d571dac5d235b54b1e3|6b01c48485ad43bbe09438ef",
+      "t": "2026-11-22 00:19:16",
+      "u": "baichuan",
+      "st": "Pass",
+      "a": 4168.7,
+      "s": 72.81,
+      "n": 5
+     },
+     {
+      "k": "6ae947df1dac5d235bc63586|6b01cd2b85ad43bbe0aa0a41",
+      "t": "2026-11-22 00:56:11",
+      "u": "BXTS",
+      "st": "Pass",
+      "a": 4036.0,
+      "s": 71.93,
+      "n": 5
      }
     ],
     "team": [
@@ -747,10 +783,10 @@
    "url": "https://cannjudge.cn/public/ictcompetition/confusiontransposed",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/confusiontransposed/ranking",
    "submitted": true,
-   "rank": 383,
+   "rank": 393,
    "submitter": "everclover",
    "status": "Pass",
-   "score": 34.34,
+   "score": 34.33,
    "submit_time": "2026-11-08 19:28:55",
    "submission_id": "6af05cf76bd0f9be37199c14",
    "testcases": [
@@ -1448,6 +1484,33 @@
       "a": 3716.8,
       "s": 75.06,
       "n": 5
+     },
+     {
+      "k": "6aa6aa5e2d3dd2c5ae855150|6b01788885ad43bbe0d6ac32",
+      "t": "2026-11-21 18:55:04",
+      "u": "seeleawa",
+      "st": "Pass",
+      "a": 3733.3,
+      "s": 74.41,
+      "n": 5
+     },
+     {
+      "k": "6ae983fc1dac5d235b487860|6b01b01685ad43bbe065ed00",
+      "t": "2026-11-21 22:52:06",
+      "u": "wyz",
+      "st": "Pass",
+      "a": 3702.7,
+      "s": 74.54,
+      "n": 5
+     },
+     {
+      "k": "6ae6a1391dac5d235ba8cd7c|6b01bdfe85ad43bbe0847895",
+      "t": "2026-11-21 23:51:26",
+      "u": "Gemo555",
+      "st": "Pass",
+      "a": 3707.3,
+      "s": 77.67,
+      "n": 5
      }
     ],
     "team": [
@@ -1828,6 +1891,60 @@
       "a": 4737.3,
       "s": 64.56,
       "n": 5
+     },
+     {
+      "k": "6ab8d2f9694b590c3c04032a|6b0197e985ad43bbe0318a76",
+      "t": "2026-11-21 21:08:57",
+      "u": "CQ668",
+      "st": "Pass",
+      "a": 5613.3,
+      "s": 65.67,
+      "n": 5
+     },
+     {
+      "k": "6affe20985ad43bbe0f168a9|6b019eba85ad43bbe03fc194",
+      "t": "2026-11-21 21:38:02",
+      "u": "zzzzzzzz",
+      "st": "Pass",
+      "a": 5597.3,
+      "s": 61.26,
+      "n": 5
+     },
+     {
+      "k": "6ae4a7981dac5d235bb74c65|6b01a20a85ad43bbe0468c06",
+      "t": "2026-11-21 21:52:10",
+      "u": "li1",
+      "st": "Pass",
+      "a": 4527.3,
+      "s": 66.86,
+      "n": 5
+     },
+     {
+      "k": "6ae86e781dac5d235b33ebad|6b01a79685ad43bbe052b85f",
+      "t": "2026-11-21 22:15:50",
+      "u": "Yuan",
+      "st": "Pass",
+      "a": 5690.0,
+      "s": 60.57,
+      "n": 5
+     },
+     {
+      "k": "6aec1d571dac5d235b54b1e3|6b01c99385ad43bbe0a14ed8",
+      "t": "2026-11-22 00:40:51",
+      "u": "baichuan",
+      "st": "Pass",
+      "a": 5187.3,
+      "s": 64.09,
+      "n": 5
+     },
+     {
+      "k": "6ae416151dac5d235b2dbc6a|6b01d1c685ad43bbe0b4f949",
+      "t": "2026-11-22 01:15:50",
+      "u": "columbinahypo",
+      "st": "Pass",
+      "a": 5579.3,
+      "s": 61.74,
+      "n": 5
      }
     ],
     "team": [],
@@ -1849,10 +1966,10 @@
    "url": "https://cannjudge.cn/public/ictcompetition/layernormv3",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/layernormv3/ranking",
    "submitted": true,
-   "rank": 127,
+   "rank": 128,
    "submitter": "everclover",
    "status": "Pass",
-   "score": 44.93,
+   "score": 44.92,
    "submit_time": "2026-11-10 00:21:43",
    "submission_id": "6af1f3176bd0f9be37e9f499",
    "testcases": [
@@ -1882,7 +1999,7 @@
      "status": "Pass",
      "time": 5526.7,
      "precision": 1,
-     "best": 3890.0
+     "best": 3873.3
     },
     {
      "i": 5,
@@ -2478,6 +2595,15 @@
       "a": 5180.7,
       "s": 65.23,
       "n": 5
+     },
+     {
+      "k": "6aec1d571dac5d235b54b1e3|6b01ccec85ad43bbe0a97555",
+      "t": "2026-11-22 00:55:08",
+      "u": "baichuan",
+      "st": "Pass",
+      "a": 5273.3,
+      "s": 66.29,
+      "n": 5
      }
     ],
     "team": [
@@ -2509,45 +2635,45 @@
    "url": "https://cannjudge.cn/public/ictcompetition/multilabelmarginloss",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/multilabelmarginloss/ranking",
    "submitted": true,
-   "rank": 176,
+   "rank": 166,
    "submitter": "tomatorigid",
    "status": "Pass",
-   "score": 36.63,
-   "submit_time": "2026-11-21 07:57:28",
-   "submission_id": "6b00de6885ad43bbe0b01d02",
+   "score": 37.7,
+   "submit_time": "2026-11-22 00:50:07",
+   "submission_id": "6b01cbbf85ad43bbe0a68f7c",
    "testcases": [
     {
      "i": 1,
      "status": "Pass",
-     "time": 5820.0,
+     "time": 5643.3,
      "precision": 1,
      "best": 4100.0
     },
     {
      "i": 2,
      "status": "Pass",
-     "time": 5580.0,
+     "time": 5663.3,
      "precision": 1,
      "best": 4056.7
     },
     {
      "i": 3,
      "status": "Pass",
-     "time": 6256.7,
+     "time": 6280.0,
      "precision": 1,
      "best": 4420.0
     },
     {
      "i": 4,
      "status": "Pass",
-     "time": 6050.0,
+     "time": 6043.3,
      "precision": 1,
      "best": 4406.7
     },
     {
      "i": 5,
      "status": "Pass",
-     "time": 7750.0,
+     "time": 7250.0,
      "precision": 1,
      "best": 4460.0
     },
@@ -3219,6 +3345,69 @@
       "a": 4935.3,
       "s": 59.41,
       "n": 5
+     },
+     {
+      "k": "6ab269a90304f72a566f0a8f|6b01815f85ad43bbe0efbd51",
+      "t": "2026-11-21 19:32:47",
+      "u": "zz6",
+      "st": "Pass",
+      "a": 4992.0,
+      "s": 53.91,
+      "n": 5
+     },
+     {
+      "k": "6aef27b36bd0f9be37f9e02d|6b0189ed85ad43bbe0089cad",
+      "t": "2026-11-21 20:09:17",
+      "u": "虫",
+      "st": "Pass",
+      "a": 4754.7,
+      "s": 58.94,
+      "n": 5
+     },
+     {
+      "k": "6af13f686bd0f9be3790bd28|6b01b07f85ad43bbe066b979",
+      "t": "2026-11-21 22:53:51",
+      "u": "15985662180Gyq",
+      "st": "Pass",
+      "a": 4820.7,
+      "s": 59.14,
+      "n": 5
+     },
+     {
+      "k": "6ae757fd1dac5d235b69d212|6b01ccbd85ad43bbe0a8ffbb",
+      "t": "2026-11-22 00:54:21",
+      "u": "UESTC队-琛",
+      "st": "Pass",
+      "a": 5531.3,
+      "s": 53.48,
+      "n": 5
+     },
+     {
+      "k": "6aa680d92d3dd2c5ae77b2c8|6b01cf1385ad43bbe0aebe4c",
+      "t": "2026-11-22 01:04:19",
+      "u": "hundredlove",
+      "st": "Pass",
+      "a": 5102.7,
+      "s": 64.23,
+      "n": 5
+     },
+     {
+      "k": "6aea29e21dac5d235baff609|6b01d14c85ad43bbe0b3da2f",
+      "t": "2026-11-22 01:13:48",
+      "u": "1935094971@qq.com",
+      "st": "Pass",
+      "a": 4914.0,
+      "s": 56.22,
+      "n": 5
+     },
+     {
+      "k": "6ae97c7c1dac5d235b373a8f|6b01d24285ad43bbe0b60681",
+      "t": "2026-11-22 01:17:54",
+      "u": "pober",
+      "st": "Pass",
+      "a": 4658.0,
+      "s": 56.07,
+      "n": 5
      }
     ],
     "team": [
@@ -3229,6 +3418,15 @@
       "st": "Pass",
       "a": 6291.3,
       "s": 36.75,
+      "n": 5
+     },
+     {
+      "k": "6b01cbbf85ad43bbe0a68f7c",
+      "t": "2026-11-22 00:50:07",
+      "u": "tomatorigid",
+      "st": "Pass",
+      "a": 6176.0,
+      "s": 37.7,
       "n": 5
      }
     ],
@@ -4132,6 +4330,69 @@
       "a": 5223.3,
       "s": 51.35,
       "n": 5
+     },
+     {
+      "k": "6ae834821dac5d235bb8eede|6b01822385ad43bbe0f1ee35",
+      "t": "2026-11-21 19:36:03",
+      "u": "Usagi537",
+      "st": "Pass",
+      "a": 4946.0,
+      "s": 50.76,
+      "n": 5
+     },
+     {
+      "k": "6ab269a90304f72a566f0a8f|6b0182cd85ad43bbe0f3ad44",
+      "t": "2026-11-21 19:38:53",
+      "u": "zz6",
+      "st": "Pass",
+      "a": 4556.7,
+      "s": 47.44,
+      "n": 5
+     },
+     {
+      "k": "6af2a4496bd0f9be37f53e97|6b01bbad85ad43bbe07f5155",
+      "t": "2026-11-21 23:41:33",
+      "u": "Xwj016",
+      "st": "Pass",
+      "a": 4070.7,
+      "s": 50.03,
+      "n": 5
+     },
+     {
+      "k": "6aae45c2b0477ec41ed0186c|6b01c00485ad43bbe08923c8",
+      "t": "2026-11-22 00:00:04",
+      "u": "jasmine",
+      "st": "Pass",
+      "a": 4216.0,
+      "s": 55.01,
+      "n": 5
+     },
+     {
+      "k": "6aec9da31dac5d235b73bc17|6b01cb8c85ad43bbe0a60dd1",
+      "t": "2026-11-22 00:49:17",
+      "u": "tanglangqing",
+      "st": "Pass",
+      "a": 3988.7,
+      "s": 61.21,
+      "n": 5
+     },
+     {
+      "k": "6af5a1176bd0f9be3778881d|6b01d12a85ad43bbe0b38942",
+      "t": "2026-11-22 01:13:14",
+      "u": "ccc",
+      "st": "Pass",
+      "a": 4062.0,
+      "s": 46.99,
+      "n": 5
+     },
+     {
+      "k": "6abfaf84694b590c3c951169|6b01d1dc85ad43bbe0b52a5c",
+      "t": "2026-11-22 01:16:12",
+      "u": "Xzx",
+      "st": "Pass",
+      "a": 4870.0,
+      "s": 50.52,
+      "n": 5
      }
     ],
     "team": [
@@ -4398,45 +4659,45 @@
    "url": "https://cannjudge.cn/public/ictcompetition/prelugradupdate",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/prelugradupdate/ranking",
    "submitted": true,
-   "rank": 221,
+   "rank": 244,
    "submitter": "tomatorigid",
    "status": "Pass",
-   "score": 49.11,
-   "submit_time": "2026-11-21 06:18:29",
-   "submission_id": "6b00c73585ad43bbe097634b",
+   "score": 46.98,
+   "submit_time": "2026-11-22 00:31:49",
+   "submission_id": "6b01c77585ad43bbe09c0fb1",
    "testcases": [
     {
      "i": 1,
      "status": "Pass",
-     "time": 4586.7,
+     "time": 4730.0,
      "precision": 1,
      "best": 3533.3
     },
     {
      "i": 2,
      "status": "Pass",
-     "time": 4636.7,
+     "time": 4790.0,
      "precision": 1,
      "best": 3543.3
     },
     {
      "i": 3,
      "status": "Pass",
-     "time": 4546.7,
+     "time": 4733.3,
      "precision": 1,
      "best": 3616.7
     },
     {
      "i": 4,
      "status": "Pass",
-     "time": 5536.7,
+     "time": 5593.3,
      "precision": 1,
      "best": 3623.3
     },
     {
      "i": 5,
      "status": "Pass",
-     "time": 5793.3,
+     "time": 5596.7,
      "precision": 1,
      "best": 3583.3
     },
@@ -5036,6 +5297,24 @@
       "a": 4048.7,
       "s": 72.61,
       "n": 5
+     },
+     {
+      "k": "6aec9da31dac5d235b73bc17|6b01ae6485ad43bbe0622fae",
+      "t": "2026-11-21 22:44:52",
+      "u": "tanglangqing",
+      "st": "Pass",
+      "a": 3997.3,
+      "s": 74.34,
+      "n": 5
+     },
+     {
+      "k": "6ae868a61dac5d235b27bd7a|6b01c57285ad43bbe0969fff",
+      "t": "2026-11-22 00:23:14",
+      "u": "lr",
+      "st": "Pass",
+      "a": 4131.3,
+      "s": 72.22,
+      "n": 5
      }
     ],
     "team": [
@@ -5046,6 +5325,15 @@
       "st": "Pass",
       "a": 5020.0,
       "s": 49.11,
+      "n": 5
+     },
+     {
+      "k": "6b01c77585ad43bbe09c0fb1",
+      "t": "2026-11-22 00:31:49",
+      "u": "tomatorigid",
+      "st": "Pass",
+      "a": 5088.7,
+      "s": 46.98,
       "n": 5
      }
     ],
@@ -5437,7 +5725,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/quantupdatescatter",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/quantupdatescatter/ranking",
    "submitted": true,
-   "rank": 77,
+   "rank": 83,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 56.34,
@@ -6120,6 +6408,51 @@
       "a": 4406.7,
       "s": 76.15,
       "n": 5
+     },
+     {
+      "k": "6ab269a90304f72a566f0a8f|6b0180a985ad43bbe0edc61d",
+      "t": "2026-11-21 19:29:45",
+      "u": "zz6",
+      "st": "Pass",
+      "a": 4300.7,
+      "s": 72.68,
+      "n": 5
+     },
+     {
+      "k": "6aec9da31dac5d235b73bc17|6b01844b85ad43bbe0f7cfdd",
+      "t": "2026-11-21 19:45:15",
+      "u": "tanglangqing",
+      "st": "Pass",
+      "a": 4114.0,
+      "s": 78.61,
+      "n": 5
+     },
+     {
+      "k": "6a708690eff6447fafa3d79a|6b01884485ad43bbe0034f8f",
+      "t": "2026-11-21 20:02:12",
+      "u": "xuball",
+      "st": "Pass",
+      "a": 4266.0,
+      "s": 74.37,
+      "n": 5
+     },
+     {
+      "k": "6af940896bd0f9be3790e444|6b0196d285ad43bbe02f0edd",
+      "t": "2026-11-21 21:04:18",
+      "u": "HaloYearn",
+      "st": "Pass",
+      "a": 4337.3,
+      "s": 73.83,
+      "n": 5
+     },
+     {
+      "k": "6ae8789d1dac5d235b48ec0d|6b01a81585ad43bbe053d2a8",
+      "t": "2026-11-21 22:17:57",
+      "u": "chrdw071007",
+      "st": "Pass",
+      "a": 4389.3,
+      "s": 73.65,
+      "n": 5
      }
     ],
     "team": [
@@ -6287,46 +6620,46 @@
    "url": "https://cannjudge.cn/public/ictcompetition/stridedslicegrad",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/stridedslicegrad/ranking",
    "submitted": true,
-   "rank": 394,
+   "rank": 404,
    "submitter": "tomatorigid",
-   "status": "Wrong Answer",
+   "status": "Runtime Error",
    "score": 0.0,
-   "submit_time": "2026-11-21 15:53:19",
-   "submission_id": "6b014def85ad43bbe075d25c",
+   "submit_time": "2026-11-22 01:01:32",
+   "submission_id": "6b01ce6c85ad43bbe0ad139b",
    "testcases": [
     {
      "i": 1,
      "status": "Pass",
-     "time": 9950.0,
+     "time": 9533.3,
      "precision": 1,
      "best": 3763.3
     },
     {
      "i": 2,
      "status": "Pass",
-     "time": 5226.7,
+     "time": 5306.7,
      "precision": 1,
      "best": 3546.7
     },
     {
      "i": 3,
      "status": "Pass",
-     "time": 5913.3,
+     "time": 5873.3,
      "precision": 1,
      "best": 3513.3
     },
     {
      "i": 4,
      "status": "Pass",
-     "time": 5630.0,
+     "time": 5713.3,
      "precision": 1,
      "best": 3576.7
     },
     {
      "i": 5,
-     "status": "Wrong Answer",
-     "time": 5880.0,
-     "precision": 0.6666666666666667,
+     "status": "Pass",
+     "time": 5976.7,
+     "precision": 1,
      "best": 3696.7
     },
     {
@@ -6970,6 +7303,69 @@
       "a": 4864.0,
       "s": 60.29,
       "n": 5
+     },
+     {
+      "k": "6aa9225a2d3dd2c5ae5f7edb|6b0176c885ad43bbe0d1eeaf",
+      "t": "2026-11-21 18:47:36",
+      "u": "我常常因为名字不够雷霆而自卑",
+      "st": "Pass",
+      "a": 4640.7,
+      "s": 63.94,
+      "n": 5
+     },
+     {
+      "k": "6ae74d5e1dac5d235b5c6d63|6b019c4d85ad43bbe03ad1c1",
+      "t": "2026-11-21 21:27:41",
+      "u": "K",
+      "st": "Pass",
+      "a": 4282.0,
+      "s": 62.85,
+      "n": 5
+     },
+     {
+      "k": "6ae5b8be1dac5d235bb86168|6b01ae4285ad43bbe061e115",
+      "t": "2026-11-21 22:44:18",
+      "u": "hunxiao",
+      "st": "Pass",
+      "a": 4632.7,
+      "s": 62.86,
+      "n": 5
+     },
+     {
+      "k": "6ae098c81dac5d235b80df9b|6b01b56285ad43bbe0717a10",
+      "t": "2026-11-21 23:14:42",
+      "u": "112233",
+      "st": "Pass",
+      "a": 4604.7,
+      "s": 67.52,
+      "n": 5
+     },
+     {
+      "k": "6aec1d571dac5d235b54b1e3|6b01c73185ad43bbe09b6122",
+      "t": "2026-11-22 00:30:41",
+      "u": "baichuan",
+      "st": "Pass",
+      "a": 4340.7,
+      "s": 63.63,
+      "n": 5
+     },
+     {
+      "k": "6aec9da31dac5d235b73bc17|6b01cab885ad43bbe0a41351",
+      "t": "2026-11-22 00:45:44",
+      "u": "tanglangqing",
+      "st": "Pass",
+      "a": 4226.7,
+      "s": 61.52,
+      "n": 5
+     },
+     {
+      "k": "6aa7fdcf2d3dd2c5aef6d406|6b01d2c385ad43bbe0b73049",
+      "t": "2026-11-22 01:20:03",
+      "u": "BLBK5",
+      "st": "Pass",
+      "a": 4254.0,
+      "s": 64.89,
+      "n": 5
      }
     ],
     "team": [
@@ -6990,6 +7386,15 @@
       "a": 6520.0,
       "s": 0.0,
       "n": 4
+     },
+     {
+      "k": "6b01ce6c85ad43bbe0ad139b",
+      "t": "2026-11-22 01:01:32",
+      "u": "tomatorigid",
+      "st": "Runtime Error",
+      "a": 6480.7,
+      "s": 0.0,
+      "n": 5
      }
     ],
     "mine": [
@@ -7623,6 +8028,15 @@
       "n": 5
      },
      {
+      "k": "6af2c05a6bd0f9be372dc918|6af5dc296bd0f9be37f76a33",
+      "t": "2026-11-12 23:32:57",
+      "u": "霞露零的小号",
+      "st": "Pass",
+      "a": 4428.7,
+      "s": 67.82,
+      "n": 5
+     },
+     {
       "k": "6ae8286f1dac5d235b9fea7e|6af740e96bd0f9be37c33dbd",
       "t": "2026-11-14 00:55:05",
       "u": "13313789175",
@@ -7809,6 +8223,15 @@
       "st": "Pass",
       "a": 4141.3,
       "s": 72.89,
+      "n": 5
+     },
+     {
+      "k": "6af686d76bd0f9be37262deb|6b01c02785ad43bbe08978d4",
+      "t": "2026-11-22 00:00:39",
+      "u": "tusake",
+      "st": "Pass",
+      "a": 4154.8,
+      "s": 68.76,
       "n": 5
      }
     ],
