@@ -412,18 +412,32 @@
       grid += `<line x1="${L}" y1="${y}" x2="${W - R}" y2="${y}" class="tr-grid"/>` +
         `<text x="${L - 6}" y="${y + 4}" text-anchor="end" class="tr-lab">${f(v)}</text>`;
     }
-    // 日期刻度：5 个等距槽位，标注该槽位那次提交的日期（同日期只标一次）
-    let lastLabel = "";
-    for (let i = 0; i <= 4; i += 1) {
-      const qi = N > 1 ? Math.round((i * (N - 1)) / 4) : 0;
+    // 日期刻度：5 个等距槽位，标注该槽位那次提交的日期（同日期只标一次，优先保留最右侧）
+    const dateOf = (qi) => {
       const t = ptTime(ordered[qi]);
-      const d = t === null ? null : new Date(t);
-      const text = d ? `${d.getMonth() + 1}/${d.getDate()}` : "";
-      const anchor = i === 0 ? "start" : i === 4 ? "end" : "middle";
-      const show = text && (i === 0 || i === 4 || text !== lastLabel);
-      if (text) lastLabel = text;
-      if (show) grid += `<text x="${X(qi).toFixed(1)}" y="${H - 10}" text-anchor="${anchor}" class="tr-lab">${text}</text>`;
+      return t === null ? "" : `${new Date(t).getMonth() + 1}/${new Date(t).getDate()}`;
+    };
+    const ticks = [];
+    for (let i = 0; i <= 4; i += 1) {
+      ticks.push({ qi: N > 1 ? Math.round((i * (N - 1)) / 4) : 0, text: dateOf(N > 1 ? Math.round((i * (N - 1)) / 4) : 0) });
     }
+    let last = "";
+    for (const t of ticks) {
+      if (t.text === last) t.text = "";
+      else last = t.text;
+    }
+    if (ticks.length > 1 && !ticks[ticks.length - 1].text) {
+      const own = dateOf(ticks[ticks.length - 1].qi);
+      for (let i = ticks.length - 2; i >= 1; i -= 1) {
+        if (ticks[i].text) { ticks[i].text = ""; break; }
+      }
+      ticks[ticks.length - 1].text = own;
+    }
+    ticks.forEach((t, i) => {
+      if (!t.text) return;
+      const anchor = i === 0 ? "start" : i === 4 ? "end" : "middle";
+      grid += `<text x="${X(t.qi).toFixed(1)}" y="${H - 10}" text-anchor="${anchor}" class="tr-lab">${t.text}</text>`;
+    });
     // 槽位引导线（点少时才画，避免糊成一片）
     if (N > 1 && N <= 40) {
       for (const p of ordered) {
