@@ -399,7 +399,7 @@
     if (y0 === y1) { y0 -= Math.max(1, Math.abs(y0) * 0.1); y1 += Math.max(1, Math.abs(y1) * 0.1); }
     const pad = (y1 - y0) * 0.08;
     y0 -= pad; y1 += pad;
-    if (state.trendMetric === "a" && y0 < 0) y0 = 0;
+    if (y0 < 0) y0 = 0;
     const X = (t) => L + ((t - x0) / (x1 - x0)) * (W - L - R);
     const Y = (v) => H - B - ((v - y0) / (y1 - y0)) * (H - T - B);
     const f = (n) => (n >= 100 ? String(Math.round(n)) : String(+n.toFixed(1)));
