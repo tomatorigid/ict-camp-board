@@ -1,55 +1,55 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ICT 算子开发 · 队伍题目面板</title>
+<title>ICT 绠楀瓙寮€鍙?路 闃熶紞棰樼洰闈㈡澘</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=20261113a">
+<link rel="stylesheet" href="assets/style.css?v=20261121b">
 </head>
 <body>
 
 <div class="chrome">
   <div class="wrap chrome-in">
-    <span class="mono">ICT · ASCEND C 算子开发</span>
-    <span class="mono dim">第十一届华为 ICT 大赛 · 决赛</span>
-    <span class="mono dim" id="chrome-clock">—</span>
+    <span class="mono">ICT 路 ASCEND C 绠楀瓙寮€鍙?/span>
+    <span class="mono dim">绗崄涓€灞婂崕涓?ICT 澶ц禌 路 鍐宠禌</span>
+    <span class="mono dim" id="chrome-clock">鈥?/span>
   </div>
 </div>
 
 <header class="hero">
   <div class="wrap">
-    <p class="eyebrow mono">TEAM BOARD · 第一批 2026/11/02 → 2026/12/28</p>
+    <p class="eyebrow mono">TEAM BOARD 路 绗竴鎵?2026/11/02 鈫?2026/12/28</p>
     <div class="hero-line">
       <span class="hero-idx">01</span>
-      <h1 id="team-line">队伍题目面板</h1>
+      <h1 id="team-line">闃熶紞棰樼洰闈㈡澘</h1>
     </div>
-    <p class="lede" id="contest-line">第十一届华为IC大赛｜昇腾AI算子开发赛道（决赛）</p>
+    <p class="lede" id="contest-line">绗崄涓€灞婂崕涓篒C澶ц禌锝滄槆鑵続I绠楀瓙寮€鍙戣禌閬擄紙鍐宠禌锛?/p>
 
     <div class="batches" id="batch-line"></div>
 
     <div class="numbers">
       <div class="num-box">
-        <div class="num-k mono">已提交</div>
-        <div class="num-v" id="n-submitted">—</div>
-        <div class="num-sub mono" id="n-submitted-sub">/ 10 题</div>
+        <div class="num-k mono">宸叉彁浜?/div>
+        <div class="num-v" id="n-submitted">鈥?/div>
+        <div class="num-sub mono" id="n-submitted-sub">/ 10 棰?/div>
       </div>
       <div class="num-box">
-        <div class="num-k mono">已通过</div>
-        <div class="num-v" id="n-passed">—</div>
-        <div class="num-sub mono" id="n-passed-sub">/ 10 题</div>
+        <div class="num-k mono">宸查€氳繃</div>
+        <div class="num-v" id="n-passed">鈥?/div>
+        <div class="num-sub mono" id="n-passed-sub">/ 10 棰?/div>
       </div>
       <div class="num-box">
-        <div class="num-k mono">单题合计</div>
-        <div class="num-v" id="n-score">—</div>
-        <div class="num-sub mono">基础分之和</div>
+        <div class="num-k mono">鍗曢鍚堣</div>
+        <div class="num-v" id="n-score">鈥?/div>
+        <div class="num-sub mono">鍩虹鍒嗕箣鍜?/div>
       </div>
       <div class="num-box accent">
-        <div class="num-k mono">难度加权</div>
-        <div class="num-v" id="n-weighted">—</div>
-        <div class="num-sub mono">难 ×3 · 中 ×2 · 易 ×1</div>
+        <div class="num-k mono">闅惧害鍔犳潈</div>
+        <div class="num-v" id="n-weighted">鈥?/div>
+        <div class="num-sub mono">闅?脳3 路 涓?脳2 路 鏄?脳1</div>
       </div>
     </div>
     <p class="meta mono" id="meta-line"></p>
@@ -60,22 +60,22 @@
 
   <section class="toolbar">
     <div class="chips" id="filters">
-      <button class="chip on" data-filter="all">全部</button>
-      <button class="chip" data-filter="pass">已通过</button>
-      <button class="chip" data-filter="pending">未提交</button>
-      <button class="chip" data-filter="behind">未进前 100</button>
+      <button class="chip on" data-filter="all">鍏ㄩ儴</button>
+      <button class="chip" data-filter="pass">宸查€氳繃</button>
+      <button class="chip" data-filter="pending">鏈彁浜?/button>
+      <button class="chip" data-filter="behind">鏈繘鍓?100</button>
     </div>
     <div class="toolbar-right">
-      <label class="sort mono">排序
+      <label class="sort mono">鎺掑簭
         <select id="sort">
-          <option value="id">题目顺序</option>
-          <option value="score">分数 ↓</option>
-          <option value="rank">名次 ↑</option>
-          <option value="gap">差距 ↓</option>
-          <option value="time">提交时间 ↓</option>
+          <option value="id">棰樼洰椤哄簭</option>
+          <option value="score">鍒嗘暟 鈫?/option>
+          <option value="rank">鍚嶆 鈫?/option>
+          <option value="gap">宸窛 鈫?/option>
+          <option value="time">鎻愪氦鏃堕棿 鈫?/option>
         </select>
       </label>
-      <button class="chip refresh" id="btn-refresh">刷新数据</button>
+      <button class="chip refresh" id="btn-refresh">鍒锋柊鏁版嵁</button>
     </div>
     <span class="refresh-status mono" id="refresh-status"></span>
   </section>
@@ -87,10 +87,10 @@
   <section class="detail" id="detail" hidden>
     <div class="detail-head">
       <div>
-        <p class="eyebrow mono" id="detail-eyebrow">测试点明细</p>
+        <p class="eyebrow mono" id="detail-eyebrow">娴嬭瘯鐐规槑缁?/p>
         <h2 id="detail-title"></h2>
       </div>
-      <button class="close" id="detail-close" aria-label="关闭">关闭</button>
+      <button class="close" id="detail-close" aria-label="鍏抽棴">鍏抽棴</button>
     </div>
     <div id="detail-body"></div>
   </section>
@@ -98,11 +98,11 @@
 
 <footer class="foot">
   <div class="wrap foot-in">
-    <p class="mono">数据：<a id="src-link" href="https://cannjudge.cn/public/ictcompetition" target="_blank" rel="noreferrer">CANNJudge 公开接口</a> · 页面每 5 分钟自动重拉 · CI 每 10 分钟抓一次</p>
-    <p class="mono dim">得分模型 score ≈ 100 × ( Σbest / Σours )²　·　同码复测噪声约 ±7.5%</p>
+    <p class="mono">鏁版嵁锛?a id="src-link" href="https://cannjudge.cn/public/ictcompetition" target="_blank" rel="noreferrer">CANNJudge 鍏紑鎺ュ彛</a> 路 椤甸潰姣?5 鍒嗛挓鑷姩閲嶆媺 路 CI 姣?10 鍒嗛挓鎶撲竴娆?/p>
+    <p class="mono dim">寰楀垎妯″瀷 score 鈮?100 脳 ( 危best / 危ours )虏銆€路銆€鍚岀爜澶嶆祴鍣０绾?卤7.5%</p>
   </div>
 </footer>
 
-<script src="assets/app.js?v=20261113a"></script>
+<script src="assets/app.js?v=20261121b"></script>
 </body>
 </html>
