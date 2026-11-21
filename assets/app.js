@@ -473,8 +473,10 @@
       }
     }
     const hasMine = pts.some((p) => p.mine);
+    const mineUsers = [...new Set(pts.filter((p) => p.mine).map((p) => p.u))];
+    const rivalUsers = [...new Set(pts.filter((p) => !p.mine).map((p) => p.u))];
     return `<svg viewBox="0 0 ${W} ${H}" class="tr-svg">${grid}${paths}${dots}</svg>` +
-      `<div class="tr-legend">${hasMine ? `<span><i class="sw mine"></i>本队（每次提交）</span>` : ""}<span><i class="sw rival"></i>对手（排行榜前 30 名快照，随刷新累积）</span><span class="tr-xhint">横轴按提交次序等间距</span></div>`;
+      `<div class="tr-legend">${hasMine ? `<span><i class="sw mine"></i>本队（${esc(mineUsers.join(" / "))}，每次提交）</span>` : ""}<span><i class="sw rival"></i>对手（排行榜前 30 名快照，${rivalUsers.length} 人，随刷新累积）</span><span class="tr-xhint">横轴按提交次序等间距 · 悬停看用户名/时间/状态</span></div>`;
   }
 
   /* ---------- 交互 ---------- */
