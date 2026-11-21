@@ -390,17 +390,18 @@
 
   function buildTrendSvg(pts) {
     const W = 760, H = 240, L = 52, R = 12, T = 14, B = 30;
-    const ts = pts.map(ptTime).filter((x) => x !== null);
+    // 横轴 = 提交次序（等间距），不是真实时间比例：所有点按时间排序后各占一个槽位
+    const ordered = pts.slice().sort((a, b) => (ptTime(a) || 0) - (ptTime(b) || 0));
+    ordered.forEach((p, i) => { p.xi = i; });
+    const N = ordered.length;
+
     const vs = pts.map((x) => x.v);
-    let x0 = Math.min(...ts), x1 = Math.max(...ts);
-    if (x0 === x1) { x0 -= 36e5 * 12; x1 += 36e5 * 12; }
-    else { const xp = (x1 - x0) * 0.02; x0 -= xp; x1 += xp; }
     let y0 = Math.min(...vs), y1 = Math.max(...vs);
     if (y0 === y1) { y0 -= Math.max(1, Math.abs(y0) * 0.1); y1 += Math.max(1, Math.abs(y1) * 0.1); }
     const pad = (y1 - y0) * 0.08;
     y0 -= pad; y1 += pad;
     if (y0 < 0) y0 = 0;
-    const X = (t) => L + ((t - x0) / (x1 - x0)) * (W - L - R);
+    const X = (i) => L + (N > 1 ? (i / (N - 1)) * (W - L - R) : (W - L - R) / 2);
     const Y = (v) => H - B - ((v - y0) / (y1 - y0)) * (H - T - B);
     const f = (n) => (n >= 100 ? String(Math.round(n)) : String(+n.toFixed(1)));
 
@@ -411,11 +412,19 @@
       grid += `<line x1="${L}" y1="${y}" x2="${W - R}" y2="${y}" class="tr-grid"/>` +
         `<text x="${L - 6}" y="${y + 4}" text-anchor="end" class="tr-lab">${f(v)}</text>`;
     }
+    // 日期刻度：5 个等距槽位，标注该槽位那次提交的日期
     for (let i = 0; i <= 4; i += 1) {
-      const t = x0 + ((x1 - x0) * i) / 4;
-      const d = new Date(t);
+      const qi = N > 1 ? Math.round((i * (N - 1)) / 4) : 0;
+      const t = ptTime(ordered[qi]);
+      const d = t === null ? null : new Date(t);
       const anchor = i === 0 ? "start" : i === 4 ? "end" : "middle";
-      grid += `<text x="${X(t).toFixed(1)}" y="${H - 10}" text-anchor="${anchor}" class="tr-lab">${d.getMonth() + 1}/${d.getDate()}</text>`;
+      grid += `<text x="${X(qi).toFixed(1)}" y="${H - 10}" text-anchor="${anchor}" class="tr-lab">${d ? `${d.getMonth() + 1}/${d.getDate()}` : ""}</text>`;
+    }
+    // 槽位引导线（点少时才画，避免糊成一片）
+    if (N > 1 && N <= 40) {
+      for (const p of ordered) {
+        grid += `<line x1="${X(p.xi).toFixed(1)}" y1="${T}" x2="${X(p.xi).toFixed(1)}" y2="${H - B}" class="tr-slot"/>`;
+      }
     }
 
     const byUser = {};
@@ -426,10 +435,10 @@
     let paths = "", dots = "";
     for (const k of Object.keys(byUser)) {
       const s = byUser[k];
-      s.pts.sort((a, b) => (ptTime(a) || 0) - (ptTime(b) || 0));
+      s.pts.sort((a, b) => a.xi - b.xi);
       if (s.pts.length > 1 && (s.mine || s.pts.length >= 3)) {
         const d = s.pts
-          .map((p, i) => `${i ? "L" : "M"}${X(ptTime(p)).toFixed(1)},${Y(p.v).toFixed(1)}`)
+          .map((p, i) => `${i ? "L" : "M"}${X(p.xi).toFixed(1)},${Y(p.v).toFixed(1)}`)
           .join("");
         paths += `<path d="${d}" class="tr-line ${s.mine ? "mine" : "rival"}"/>`;
       }
@@ -438,11 +447,11 @@
         const tip = `${p.u} · ${hhmmss(p.t)} · ${STATUS_ZH[p.st] || p.st || ""} · ` +
           (state.trendMetric === "a" ? `${f(p.v)} μs` : `分数 ${f(p.v)}`) +
           (p.n != null ? ` · 可见通过 ${p.n}` : "");
-        dots += `<circle cx="${X(ptTime(p)).toFixed(1)}" cy="${Y(p.v).toFixed(1)}" r="${s.mine ? 3.6 : 2.2}" class="tr-dot ${cls}"><title>${esc(tip)}</title></circle>`;
+        dots += `<circle cx="${X(p.xi).toFixed(1)}" cy="${Y(p.v).toFixed(1)}" r="${s.mine ? 3.6 : 2.2}" class="tr-dot ${cls}"><title>${esc(tip)}</title></circle>`;
       }
     }
     return `<svg viewBox="0 0 ${W} ${H}" class="tr-svg">${grid}${paths}${dots}</svg>` +
-      `<div class="tr-legend"><span><i class="sw mine"></i>本队（每次提交）</span><span><i class="sw rival"></i>对手（排行榜前 30 名快照，随刷新累积）</span></div>`;
+      `<div class="tr-legend"><span><i class="sw mine"></i>本队（每次提交）</span><span><i class="sw rival"></i>对手（排行榜前 30 名快照，随刷新累积）</span><span class="tr-xhint">横轴按提交次序等间距</span></div>`;
   }
 
   /* ---------- 交互 ---------- */

@@ -243,6 +243,8 @@ tbody tr:hover{background:var(--paper-3)}
 .tr-dot.mine{fill:var(--accent)}
 .tr-dot.mine.fail{fill:var(--ink)}
 .tr-dot.rival{fill:var(--faint);opacity:.75}
+.tr-slot{stroke:var(--line-subtle);stroke-width:.6;opacity:.7}
+.tr-xhint{color:var(--faint)}
 .tr-legend{display:flex;gap:18px;align-items:center;color:var(--muted);font-size:12px;font-family:var(--font-mono);margin-top:2px;flex-wrap:wrap}
 .tr-legend .sw{display:inline-block;width:14px;height:3px;margin-right:6px;vertical-align:middle}
 .tr-legend .sw.mine{background:var(--accent)}
