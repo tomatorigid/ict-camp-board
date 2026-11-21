@@ -412,13 +412,17 @@
       grid += `<line x1="${L}" y1="${y}" x2="${W - R}" y2="${y}" class="tr-grid"/>` +
         `<text x="${L - 6}" y="${y + 4}" text-anchor="end" class="tr-lab">${f(v)}</text>`;
     }
-    // 日期刻度：5 个等距槽位，标注该槽位那次提交的日期
+    // 日期刻度：5 个等距槽位，标注该槽位那次提交的日期（同日期只标一次）
+    let lastLabel = "";
     for (let i = 0; i <= 4; i += 1) {
       const qi = N > 1 ? Math.round((i * (N - 1)) / 4) : 0;
       const t = ptTime(ordered[qi]);
       const d = t === null ? null : new Date(t);
+      const text = d ? `${d.getMonth() + 1}/${d.getDate()}` : "";
       const anchor = i === 0 ? "start" : i === 4 ? "end" : "middle";
-      grid += `<text x="${X(qi).toFixed(1)}" y="${H - 10}" text-anchor="${anchor}" class="tr-lab">${d ? `${d.getMonth() + 1}/${d.getDate()}` : ""}</text>`;
+      const show = text && (i === 0 || i === 4 || text !== lastLabel);
+      if (text) lastLabel = text;
+      if (show) grid += `<text x="${X(qi).toFixed(1)}" y="${H - 10}" text-anchor="${anchor}" class="tr-lab">${text}</text>`;
     }
     // 槽位引导线（点少时才画，避免糊成一片）
     if (N > 1 && N <= 40) {
