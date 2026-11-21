@@ -20,6 +20,13 @@ jobs:
           python-version: "3.11"
 
       - name: 拉取 CANNJudge 公开数据
+        env:
+          # 可选：在仓库 Settings→Secrets 里配 CANNJUDGE_ACCOUNT / CANNJUDGE_PASSWORD
+          # （或直接配一条 CANNJUDGE_COOKIE 字符串），CI 就会自动刷新本队提交历史（history.mine）。
+          # 不配也能跑：mine 历史保留旧数据，对手快照（rivals）照常增量更新。
+          CANNJUDGE_COOKIE: ${{ secrets.CANNJUDGE_COOKIE }}
+          CANNJUDGE_ACCOUNT: ${{ secrets.CANNJUDGE_ACCOUNT }}
+          CANNJUDGE_PASSWORD: ${{ secrets.CANNJUDGE_PASSWORD }}
         run: python fetch_data.py
 
       - name: 有变化才提交

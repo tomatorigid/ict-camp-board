@@ -37,6 +37,7 @@
     sort: "id",
     selected: null,
     loadedAt: Date.now(),
+    trendMetric: "a", // a=平均用时(μs) s=分数
   };
 
   const btnRefresh = $("#btn-refresh");
@@ -339,11 +340,107 @@
             </table>`
           : `<p class="hint mono">该题暂无可见测试点数据。</p>`
       }
+      <div id="trend" class="trend"></div>
       <p class="hint mono">
         ${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noreferrer">题目页</a>` : ""}
         ${p.ranking_url ? `　·　<a href="${esc(p.ranking_url)}" target="_blank" rel="noreferrer">提交排名</a>` : ""}
       </p>`;
     box.hidden = false;
+    renderTrend(p);
+  }
+
+  /* ---------- 提交历史折线图（SVG） ---------- */
+  function renderTrend(p) {
+    const host = $("#trend");
+    if (!host) return;
+    const hist = p.history || {};
+    const mine = hist.mine || [];
+    const rivals = hist.rivals || [];
+    const m = state.trendMetric;
+
+    const head = `<div class="tr-head">
+        <b>提交趋势 · ${m === "a" ? "可见测试点平均用时（μs，越低越好）" : "排行榜分数（越高越好）"}</b>
+        <span class="tr-toggle">
+          <button data-metric="a" class="${m === "a" ? "on" : ""}">平均用时</button>
+          <button data-metric="s" class="${m === "s" ? "on" : ""}">分数</button>
+        </span>
+        <span class="tr-note">本队 ${mine.length} 次提交 · 对手快照 ${rivals.length} 点</span>
+      </div>`;
+
+    if (!mine.length && !rivals.length) {
+      host.innerHTML = head + `<p class="hint mono">暂无历史数据（fetch_data.py 加入 history 后自动出现）。</p>`;
+      return;
+    }
+    const pts = [];
+    for (const pt of mine) if (num(pt[m]) !== null) pts.push({ ...pt, v: num(pt[m]), mine: true });
+    for (const pt of rivals) if (num(pt[m]) !== null) pts.push({ ...pt, v: num(pt[m]), mine: false });
+    host.innerHTML = head + (pts.length ? buildTrendSvg(pts) : `<p class="hint mono">该指标下暂无数据（历史分数只有带登录态时才能补到）。</p>`);
+    host.querySelectorAll(".tr-toggle button").forEach((b) =>
+      b.addEventListener("click", () => {
+        state.trendMetric = b.dataset.metric;
+        renderTrend(p);
+      })
+    );
+  }
+
+  function ptTime(p) {
+    const d = new Date(String(p.t || "").replace(" ", "T"));
+    return Number.isNaN(d.getTime()) ? null : d.getTime();
+  }
+
+  function buildTrendSvg(pts) {
+    const W = 760, H = 240, L = 52, R = 12, T = 14, B = 30;
+    const ts = pts.map(ptTime).filter((x) => x !== null);
+    const vs = pts.map((x) => x.v);
+    let x0 = Math.min(...ts), x1 = Math.max(...ts);
+    if (x0 === x1) { x0 -= 36e5 * 12; x1 += 36e5 * 12; }
+    let y0 = Math.min(...vs), y1 = Math.max(...vs);
+    if (y0 === y1) { y0 -= Math.max(1, Math.abs(y0) * 0.1); y1 += Math.max(1, Math.abs(y1) * 0.1); }
+    const pad = (y1 - y0) * 0.08;
+    y0 -= pad; y1 += pad;
+    if (state.trendMetric === "a" && y0 < 0) y0 = 0;
+    const X = (t) => L + ((t - x0) / (x1 - x0)) * (W - L - R);
+    const Y = (v) => H - B - ((v - y0) / (y1 - y0)) * (H - T - B);
+    const f = (n) => (n >= 100 ? String(Math.round(n)) : String(+n.toFixed(1)));
+
+    let grid = "";
+    for (let i = 0; i <= 3; i += 1) {
+      const v = y0 + ((y1 - y0) * i) / 3;
+      const y = Y(v);
+      grid += `<line x1="${L}" y1="${y}" x2="${W - R}" y2="${y}" class="tr-grid"/>` +
+        `<text x="${L - 6}" y="${y + 4}" text-anchor="end" class="tr-lab">${f(v)}</text>`;
+    }
+    for (let i = 0; i <= 4; i += 1) {
+      const t = x0 + ((x1 - x0) * i) / 4;
+      const d = new Date(t);
+      grid += `<text x="${X(t)}" y="${H - 10}" text-anchor="middle" class="tr-lab">${d.getMonth() + 1}/${d.getDate()}</text>`;
+    }
+
+    const byUser = {};
+    for (const p of pts) {
+      const key = (p.mine ? "M|" : "R|") + p.u;
+      (byUser[key] = byUser[key] || { mine: p.mine, u: p.u, pts: [] }).pts.push(p);
+    }
+    let paths = "", dots = "";
+    for (const k of Object.keys(byUser)) {
+      const s = byUser[k];
+      s.pts.sort((a, b) => (ptTime(a) || 0) - (ptTime(b) || 0));
+      if (s.pts.length > 1 && (s.mine || s.pts.length >= 3)) {
+        const d = s.pts
+          .map((p, i) => `${i ? "L" : "M"}${X(ptTime(p)).toFixed(1)},${Y(p.v).toFixed(1)}`)
+          .join("");
+        paths += `<path d="${d}" class="tr-line ${s.mine ? "mine" : "rival"}"/>`;
+      }
+      for (const p of s.pts) {
+        const cls = s.mine ? `mine ${STATUS_CLS[p.st] || ""}` : "rival";
+        const tip = `${p.u} · ${hhmmss(p.t)} · ${STATUS_ZH[p.st] || p.st || ""} · ` +
+          (state.trendMetric === "a" ? `${f(p.v)} μs` : `分数 ${f(p.v)}`) +
+          (p.n != null ? ` · 可见通过 ${p.n}` : "");
+        dots += `<circle cx="${X(ptTime(p)).toFixed(1)}" cy="${Y(p.v).toFixed(1)}" r="${s.mine ? 3.6 : 2.2}" class="tr-dot ${cls}"><title>${esc(tip)}</title></circle>`;
+      }
+    }
+    return `<svg viewBox="0 0 ${W} ${H}" class="tr-svg">${grid}${paths}${dots}</svg>` +
+      `<div class="tr-legend"><span><i class="sw mine"></i>本队（每次提交）</span><span><i class="sw rival"></i>对手（排行榜前 30 名快照，随刷新累积）</span></div>`;
   }
 
   /* ---------- 交互 ---------- */
