@@ -190,7 +190,8 @@ def fetch_problem(problem, batch_key):
 HISTORY_UID = "6add72601dac5d235b3dd74e"   # tomatorigid：全队提交都挂这个账号
 RIVAL_TOP = 30      # 公开 ranking 取前 N 名做增量快照
 RIVAL_CAP = 240     # 每题保留的对手快照点数
-MINE_CAP = 150      # 每题保留的本队历史点数
+MINE_CAP = 150      # 每题保留的本队登录账号历史点数
+TEAM_CAP = 240      # 每题保留的"队友快照"点数（排行榜行，含其他队友账号）
 
 
 def api_full(path, method="GET", payload=None, cookie=None, timeout=30):
@@ -328,11 +329,28 @@ def fetch_rivals(problem_id):
     return pts
 
 
-def merge_history(old_hist, mine_by_pid, rival_by_pid, refresh_mine):
+def team_snapshot(item):
+    """本队当前排行榜行 → 一个快照点（用于队友账号/匿名 CI 也能累积本队历史）。"""
+    if not item.get("submitted") or not item.get("submission_id"):
+        return None
+    ts = [t.get("time") for t in item.get("testcases") or [] if t.get("time")]
+    npass = sum(1 for t in item.get("testcases") or [] if t.get("status") == "Pass")
+    return {
+        "k": item["submission_id"],
+        "t": item.get("submit_time"),
+        "u": item.get("submitter") or "?",
+        "st": item.get("status"),
+        "a": round(sum(ts) / len(ts), 1) if ts else None,
+        "s": item.get("score"),
+        "n": npass,
+    }
+
+
+def merge_history(old_hist, mine_by_pid, rival_by_pid, refresh_mine, team_by_pid=None):
     """与旧 data.json 里的 history 合并（按 k 去重，点数封顶），返回 {problem_id: history}。
     没出现在本轮新数据里的旧点也原样保留（CI 匿名跑时 mine 不刷新但不会丢）。"""
     merged = {}
-    pids = set(old_hist) | set(mine_by_pid or {}) | set(rival_by_pid or {})
+    pids = set(old_hist) | set(mine_by_pid or {}) | set(rival_by_pid or {}) | set(team_by_pid or {})
     for pid in pids:
         rivals = list((old_hist.get(pid) or {}).get("rivals") or [])
         keep = {p.get("k") for p in rivals}
@@ -341,6 +359,14 @@ def merge_history(old_hist, mine_by_pid, rival_by_pid, refresh_mine):
                 rivals.append(p)
                 keep.add(p.get("k"))
         rivals.sort(key=lambda p: p.get("t") or "")
+
+        team = list((old_hist.get(pid) or {}).get("team") or [])
+        keept = {p.get("k") for p in team}
+        for p in (team_by_pid or {}).get(pid, []):
+            if p and p.get("k") not in keept:
+                team.append(p)
+                keept.add(p.get("k"))
+        team.sort(key=lambda p: p.get("t") or "")
 
         mine = list((old_hist.get(pid) or {}).get("mine") or [])
         if refresh_mine:
@@ -351,7 +377,7 @@ def merge_history(old_hist, mine_by_pid, rival_by_pid, refresh_mine):
                     keepm.add(p.get("k"))
             mine.sort(key=lambda p: p.get("t") or "")
 
-        merged[pid] = {"rivals": rivals[-RIVAL_CAP:], "mine": mine[-MINE_CAP:]}
+        merged[pid] = {"rivals": rivals[-RIVAL_CAP:], "team": team[-TEAM_CAP:], "mine": mine[-MINE_CAP:]}
     return merged
 
 
@@ -382,6 +408,7 @@ def main():
     items = []
     used_batches = []
     rival_by_pid = {}
+    team_by_pid = {}
     for b in BATCHES:
         cid = b.get("contest_id")
         if not cid:
@@ -396,6 +423,9 @@ def main():
             item = fetch_problem(p, b["key"])
             if not args.no_history:
                 rival_by_pid[p["_id"]] = fetch_rivals(p["_id"])
+                snap = team_snapshot(item)
+                if snap:
+                    team_by_pid.setdefault(p["_id"], []).append(snap)
             items.append(item)
             flag = "✅" if item["status"] == "Pass" else ("⬜" if not item["submitted"] else "🟡")
             print(f"{flag} [{b['label']}] {item['id']} {item['title']:<24} rank={item['rank']} "
@@ -404,10 +434,11 @@ def main():
         used_batches[-1]["problem_count"] = len(problems)
 
     if not args.no_history:
-        hist = merge_history(old_hist, mine_by_pid, rival_by_pid, refresh_mine=bool(cookie))
+        hist = merge_history(old_hist, mine_by_pid, rival_by_pid, refresh_mine=bool(cookie), team_by_pid=team_by_pid)
         for item in items:
-            item["history"] = hist.get(item["pid"]) or {"mine": [], "rivals": []}
-        print("[history] 点数：", {i["slug"]: f"{len(i['history']['mine'])}+{len(i['history']['rivals'])}" for i in items})
+            item["history"] = hist.get(item["pid"]) or {"mine": [], "team": [], "rivals": []}
+        print("[history] 点数（mine+team+rivals）：",
+              {i["slug"]: f'{len(i["history"]["mine"])}+{len(i["history"]["team"])}+{len(i["history"]["rivals"])}' for i in items})
 
     contest = contest or {}
     total_score = sum(i["score"] for i in items)
@@ -422,8 +453,9 @@ def main():
             "batches": used_batches,
             "current_batch": next((b["key"] for b in used_batches if b.get("problem_count")), None),
             "source": f"{BASE}/public/ictcompetition",
-            "note": "数据来自 CANNJudge 公开接口 /api/problems/<id>/ranking；history.mine 来自登录接口（本队全量提交），"
-                    "history.rivals 是公开排行榜前 N 名的增量快照。分数与状态以测试界面为准。",
+            "note": "数据来自 CANNJudge 公开接口 /api/problems/<id>/ranking；history.mine 来自登录接口（本队登录账号的全量提交），"
+                    "history.team 是本队排行榜行的增量快照（含其他队友账号），history.rivals 是公开排行榜前 N 名的增量快照。"
+                    "分数与状态以测试界面为准。",
         },
         "summary": {
             "score_sum": round(total_score, 2),

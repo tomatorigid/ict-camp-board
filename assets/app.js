@@ -354,8 +354,12 @@
     const host = $("#trend");
     if (!host) return;
     const hist = p.history || {};
-    const mine = hist.mine || [];
+    const mineRaw = hist.mine || [];
+    const teamRaw = hist.team || [];
     const rivals = hist.rivals || [];
+    // 本队 = 登录账号全量历史（mine） + 排行榜行快照（team，覆盖其他队友账号），按提交 id 去重
+    const mineSids = new Set(mineRaw.map((x) => x.k));
+    const mine = mineRaw.concat(teamRaw.filter((x) => x && !mineSids.has(x.k)));
     const m = state.trendMetric;
 
     const head = `<div class="tr-head">
