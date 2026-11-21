@@ -364,7 +364,7 @@
           <button data-metric="a" class="${m === "a" ? "on" : ""}">平均用时</button>
           <button data-metric="s" class="${m === "s" ? "on" : ""}">分数</button>
         </span>
-        <span class="tr-note">本队 ${mine.length} 次提交 · 对手快照 ${rivals.length} 点</span>
+        <span class="tr-note">本队 ${mine.length} 次提交 · 对手快照 ${rivals.length} 点${m === "s" ? " · 本队历史分数平台不返回，仅对手有" : ""}</span>
       </div>`;
 
     if (!mine.length && !rivals.length) {
@@ -372,7 +372,11 @@
       return;
     }
     const pts = [];
-    for (const pt of mine) if (num(pt[m]) !== null) pts.push({ ...pt, v: num(pt[m]), mine: true });
+    for (const pt of mine) {
+      // 分数模式：平台只给排行榜最新一次的分数，历史提交不返回 → 0 分视为无数据
+      if (m === "s" && !(num(pt.s) > 0)) continue;
+      if (num(pt[m]) !== null) pts.push({ ...pt, v: num(pt[m]), mine: true });
+    }
     for (const pt of rivals) if (num(pt[m]) !== null) pts.push({ ...pt, v: num(pt[m]), mine: false });
     host.innerHTML = head + (pts.length ? buildTrendSvg(pts) : `<p class="hint mono">该指标下暂无数据（历史分数只有带登录态时才能补到）。</p>`);
     host.querySelectorAll(".tr-toggle button").forEach((b) =>
@@ -468,8 +472,9 @@
         dots += `<circle cx="${X(p.xi).toFixed(1)}" cy="${Y(p.v).toFixed(1)}" r="${s.mine ? 3.6 : 2.2}" class="tr-dot ${cls}"><title>${esc(tip)}</title></circle>`;
       }
     }
+    const hasMine = pts.some((p) => p.mine);
     return `<svg viewBox="0 0 ${W} ${H}" class="tr-svg">${grid}${paths}${dots}</svg>` +
-      `<div class="tr-legend"><span><i class="sw mine"></i>本队（每次提交）</span><span><i class="sw rival"></i>对手（排行榜前 30 名快照，随刷新累积）</span><span class="tr-xhint">横轴按提交次序等间距</span></div>`;
+      `<div class="tr-legend">${hasMine ? `<span><i class="sw mine"></i>本队（每次提交）</span>` : ""}<span><i class="sw rival"></i>对手（排行榜前 30 名快照，随刷新累积）</span><span class="tr-xhint">横轴按提交次序等间距</span></div>`;
   }
 
   /* ---------- 交互 ---------- */
