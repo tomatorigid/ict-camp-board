@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-26 15:20:43",
-  "generated_at_utc": "2026-11-26T07:20:43Z",
+  "generated_at": "2026-11-26 15:26:26",
+  "generated_at_utc": "2026-11-26T07:26:26Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -3872,6 +3872,15 @@
       "a": 4466.0,
       "s": 74.39,
       "n": 5
+     },
+     {
+      "k": "6ae54c1f1dac5d235b3edba0|6b07dce485ad43bbe05fe737",
+      "t": "2026-11-26 15:16:52",
+      "u": "liu-watson",
+      "st": "Pass",
+      "a": 4882.7,
+      "s": 67.41,
+      "n": 5
      }
     ],
     "team": [
@@ -5090,6 +5099,15 @@
       "a": 4967.3,
       "s": 61.89,
       "n": 5
+     },
+     {
+      "k": "6aeb3d081dac5d235bc1ac75|6b07dd7f85ad43bbe0618ad3",
+      "t": "2026-11-26 15:19:27",
+      "u": "高梨膏",
+      "st": "Pass",
+      "a": 6502.7,
+      "s": 62.06,
+      "n": 5
      }
     ],
     "team": [
@@ -5121,7 +5139,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/multilabelmarginloss",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/multilabelmarginloss/ranking",
    "submitted": true,
-   "rank": 221,
+   "rank": 219,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 34.37,
@@ -7042,7 +7060,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/padv3grad",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/padv3grad/ranking",
    "submitted": true,
-   "rank": 275,
+   "rank": 277,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 23.93,
@@ -8742,6 +8760,15 @@
       "a": 4314.7,
       "s": 55.85,
       "n": 5
+     },
+     {
+      "k": "6ae963061dac5d235bfde7f6|6b07ddb685ad43bbe0621f9d",
+      "t": "2026-11-26 15:20:22",
+      "u": "风起云渡",
+      "st": "Pass",
+      "a": 4292.7,
+      "s": 54.81,
+      "n": 5
      }
     ],
     "team": [
@@ -10149,6 +10176,15 @@
       "st": "Pass",
       "a": 3809.5,
       "s": 77.54,
+      "n": 5
+     },
+     {
+      "k": "6ad9dc813ff2fef7e828684f|6b07de4985ad43bbe063aa23",
+      "t": "2026-11-26 15:22:49",
+      "u": "哲啊zhe",
+      "st": "Pass",
+      "a": 4026.0,
+      "s": 74.41,
       "n": 5
      }
     ],
