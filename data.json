@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-26 15:32:08",
-  "generated_at_utc": "2026-11-26T07:32:08Z",
+  "generated_at": "2026-11-26 15:37:47",
+  "generated_at_utc": "2026-11-26T07:37:47Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -3881,6 +3881,15 @@
       "a": 4882.7,
       "s": 67.41,
       "n": 5
+     },
+     {
+      "k": "6ae54c1f1dac5d235b3edba0|6b07deed85ad43bbe06564b5",
+      "t": "2026-11-26 15:25:33",
+      "u": "liu-watson",
+      "st": "Pass",
+      "a": 4814.7,
+      "s": 63.46,
+      "n": 5
      }
     ],
     "team": [
@@ -3912,7 +3921,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/layernormv3",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/layernormv3/ranking",
    "submitted": true,
-   "rank": 156,
+   "rank": 157,
    "submitter": "everclover",
    "status": "Pass",
    "score": 43.12,
@@ -5110,12 +5119,30 @@
       "n": 5
      },
      {
+      "k": "6af9733f6bd0f9be37fddabb|6b07de9185ad43bbe06462a2",
+      "t": "2026-11-26 15:24:01",
+      "u": "zty",
+      "st": "Pass",
+      "a": 4972.0,
+      "s": 65.28,
+      "n": 5
+     },
+     {
       "k": "6aeb3d081dac5d235bc1ac75|6b07dec585ad43bbe064ec66",
       "t": "2026-11-26 15:24:53",
       "u": "高梨膏",
       "st": "Pass",
       "a": 6650.7,
       "s": 64.26,
+      "n": 5
+     },
+     {
+      "k": "6aeb3d081dac5d235bc1ac75|6b07dff985ad43bbe0683675",
+      "t": "2026-11-26 15:30:01",
+      "u": "高梨膏",
+      "st": "Pass",
+      "a": 6628.0,
+      "s": 62.87,
       "n": 5
      }
     ],
@@ -7069,7 +7096,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/padv3grad",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/padv3grad/ranking",
    "submitted": true,
-   "rank": 277,
+   "rank": 276,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 23.93,
@@ -8786,6 +8813,24 @@
       "st": "Pass",
       "a": 4151.3,
       "s": 54.14,
+      "n": 5
+     },
+     {
+      "k": "6ae6e3481dac5d235bebad9a|6b07def885ad43bbe0658a0b",
+      "t": "2026-11-26 15:25:44",
+      "u": "AnoyoS",
+      "st": "Pass",
+      "a": 3906.0,
+      "s": 72.07,
+      "n": 5
+     },
+     {
+      "k": "6ae963061dac5d235bfde7f6|6b07e0bd85ad43bbe06a47bc",
+      "t": "2026-11-26 15:33:17",
+      "u": "风起云渡",
+      "st": "Pass",
+      "a": 4429.3,
+      "s": 53.82,
       "n": 5
      }
     ],
@@ -10875,7 +10920,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/quantupdatescatter",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/quantupdatescatter/ranking",
    "submitted": true,
-   "rank": 96,
+   "rank": 95,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 56.67,
@@ -12384,44 +12429,44 @@
    "submitted": true,
    "rank": 456,
    "submitter": "tomatorigid",
-   "status": "Runtime Error",
+   "status": "Time Limit Exceeded",
    "score": 0.0,
-   "submit_time": "2026-11-26 15:10:09",
-   "submission_id": "6b07db5185ad43bbe05b7e4b",
+   "submit_time": "2026-11-26 15:19:59",
+   "submission_id": "6b07dd9f85ad43bbe061d8cd",
    "testcases": [
     {
      "i": 1,
-     "status": "Pass",
-     "time": 9686.7,
-     "precision": 1,
+     "status": "Skipped",
+     "time": null,
+     "precision": 0,
      "best": 3723.3
     },
     {
      "i": 2,
-     "status": "Pass",
-     "time": 5603.3,
-     "precision": 1,
+     "status": "Time Limit Exceeded",
+     "time": null,
+     "precision": 0,
      "best": 3546.7
     },
     {
      "i": 3,
-     "status": "Pass",
-     "time": 6433.3,
-     "precision": 1,
+     "status": "Skipped",
+     "time": null,
+     "precision": 0,
      "best": 3476.7
     },
     {
      "i": 4,
-     "status": "Pass",
-     "time": 5886.7,
-     "precision": 1,
+     "status": "Skipped",
+     "time": null,
+     "precision": 0,
      "best": 3576.7
     },
     {
      "i": 5,
-     "status": "Pass",
-     "time": 6263.3,
-     "precision": 1,
+     "status": "Skipped",
+     "time": null,
+     "precision": 0,
      "best": 3686.7
     },
     {
@@ -13850,6 +13895,15 @@
       "a": 6774.7,
       "s": 0.0,
       "n": 5
+     },
+     {
+      "k": "6b07dd9f85ad43bbe061d8cd",
+      "t": "2026-11-26 15:19:59",
+      "u": "tomatorigid",
+      "st": "Time Limit Exceeded",
+      "a": null,
+      "s": 0.0,
+      "n": 0
      }
     ],
     "mine": [
