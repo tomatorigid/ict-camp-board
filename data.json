@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-26 15:37:47",
-  "generated_at_utc": "2026-11-26T07:37:47Z",
+  "generated_at": "2026-11-26 15:43:26",
+  "generated_at_utc": "2026-11-26T07:43:26Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -2334,7 +2334,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/ctclossv2",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/ctclossv2/ranking",
    "submitted": true,
-   "rank": 524,
+   "rank": 523,
    "submitter": "everclover",
    "status": "Runtime Error",
    "score": 0.0,
@@ -5143,6 +5143,15 @@
       "st": "Pass",
       "a": 6628.0,
       "s": 62.87,
+      "n": 5
+     },
+     {
+      "k": "6aeb3d081dac5d235bc1ac75|6b07e11185ad43bbe06b1557",
+      "t": "2026-11-26 15:34:41",
+      "u": "高梨膏",
+      "st": "Pass",
+      "a": 6655.3,
+      "s": 64.42,
       "n": 5
      }
     ],
@@ -10257,6 +10266,15 @@
       "st": "Pass",
       "a": 3829.3,
       "s": 77.06,
+      "n": 5
+     },
+     {
+      "k": "6ac63fa7694b590c3c10d258|6b07e16d85ad43bbe06c1e68",
+      "t": "2026-11-26 15:36:13",
+      "u": "hufgin",
+      "st": "Pass",
+      "a": 4091.3,
+      "s": 75.5,
       "n": 5
      }
     ],
@@ -15416,6 +15434,15 @@
       "st": "Pass",
       "a": 4164.0,
       "s": 77.8,
+      "n": 5
+     },
+     {
+      "k": "6af0b2cf6bd0f9be37bf91a0|6b07e20b85ad43bbe06dd112",
+      "t": "2026-11-26 15:38:51",
+      "u": "WF_1110",
+      "st": "Pass",
+      "a": 4190.7,
+      "s": 73.54,
       "n": 5
      }
     ],
