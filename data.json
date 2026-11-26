@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-26 23:18:29",
-  "generated_at_utc": "2026-11-26T15:18:29Z",
+  "generated_at": "2026-11-26 23:24:06",
+  "generated_at_utc": "2026-11-26T15:24:06Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -1282,6 +1282,24 @@
       "st": "Pass",
       "a": 3992.7,
       "s": 74.77,
+      "n": 5
+     },
+     {
+      "k": "6ae7da271dac5d235b1a5a9b|6b084d1f85ad43bbe09e2599",
+      "t": "2026-11-26 23:15:43",
+      "u": "Guluu",
+      "st": "Pass",
+      "a": 3915.3,
+      "s": 79.15,
+      "n": 5
+     },
+     {
+      "k": "6ae59d9a1dac5d235b95a984|6b084dc985ad43bbe0a00678",
+      "t": "2026-11-26 23:18:33",
+      "u": "hsyyyy",
+      "st": "Pass",
+      "a": 3924.7,
+      "s": 75.01,
       "n": 5
      }
     ],
@@ -5567,6 +5585,24 @@
       "a": 5593.3,
       "s": 65.99,
       "n": 5
+     },
+     {
+      "k": "6ae7fa8b1dac5d235b4c13eb|6b084d6385ad43bbe09ee276",
+      "t": "2026-11-26 23:16:51",
+      "u": "Clean",
+      "st": "Pass",
+      "a": 5384.0,
+      "s": 65.5,
+      "n": 5
+     },
+     {
+      "k": "6aec3c0b1dac5d235b991ede|6b084e2a85ad43bbe0a10419",
+      "t": "2026-11-26 23:20:10",
+      "u": "ff66ccff",
+      "st": "Pass",
+      "a": 4972.0,
+      "s": 71.28,
+      "n": 5
      }
     ],
     "team": [
@@ -7681,7 +7717,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/padv3grad",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/padv3grad/ranking",
    "submitted": true,
-   "rank": 277,
+   "rank": 276,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 23.91,
@@ -13142,6 +13178,15 @@
       "a": 3927.3,
       "s": 87.22,
       "n": 5
+     },
+     {
+      "k": "6aeb147c1dac5d235b66b7db|6b084d3285ad43bbe09e56b3",
+      "t": "2026-11-26 23:16:02",
+      "u": "ZhaiTong650478",
+      "st": "Pass",
+      "a": 4119.3,
+      "s": 87.89,
+      "n": 5
      }
     ],
     "team": [
@@ -13327,7 +13372,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/stridedslicegrad",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/stridedslicegrad/ranking",
    "submitted": true,
-   "rank": 456,
+   "rank": 455,
    "submitter": "tomatorigid",
    "status": "Wrong Answer",
    "score": 0.0,
