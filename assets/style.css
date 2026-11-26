@@ -129,6 +129,10 @@ h1{
 .chip.refresh{background:transparent;color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent-soft)}
 .chip.refresh:hover{background:var(--accent);color:#fff}
 .chip.refresh[disabled]{opacity:.55;cursor:progress}
+/* 「立即抓取」是主操作：实心强调色，跟只重读的「重读」区分开 */
+.chip.refresh.primary{background:var(--accent);color:#fff;box-shadow:none}
+.chip.refresh.primary:hover{background:var(--accent);color:#fff;filter:brightness(1.12)}
+.chip.refresh.primary[disabled]{filter:none;opacity:.55;cursor:progress}
 .toolbar-right{margin-left:auto;display:flex;align-items:center;gap:var(--sp-4)}
 .sort{display:inline-flex;align-items:center;gap:var(--sp-3);color:var(--faint)}
 select{
@@ -139,6 +143,8 @@ select{
   background-size:5px 5px,5px 5px;background-repeat:no-repeat;
 }
 .refresh-status{width:100%;color:var(--faint)}
+.refresh-status b{color:var(--ink);font-weight:700}
+.refresh-status code{background:var(--paper-3);padding:1px 6px;border-radius:4px;color:var(--ink)}
 
 /* ---------- 题目卡 ---------- */
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-4)}

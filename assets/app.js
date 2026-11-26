@@ -41,7 +41,13 @@
   };
 
   const btnRefresh = $("#btn-refresh");
+  const btnFetch = $("#btn-fetch");
   const statusEl = $("#refresh-status");
+
+  // 按需抓取：判题机接口没有 Access-Control-Allow-Origin，静态页面无法直接连，
+  // 页面也没有后端，所以「抓取」只能交给 GitHub Actions 跑 fetch_data.py。
+  const ACTIONS_URL = "https://github.com/tomatorigid/ict-camp-board/actions/workflows/refresh.yml";
+  const LOCAL_CMD = "powershell -ExecutionPolicy Bypass -File site\\publish.ps1 -Fetch";
 
   /* ---------- 小工具 ---------- */
   const num = (v) => (v === null || v === undefined || v === "" ? null : Number(v));
@@ -592,7 +598,7 @@
   });
 
   function setStatus(text) {
-    if (statusEl) statusEl.textContent = text;
+    if (statusEl) statusEl.innerHTML = text;
   }
 
   async function loadData(manual) {
@@ -617,13 +623,82 @@
         : "";
       setStatus(`页面于 ${p(t.getHours())}:${p(t.getMinutes())}:${p(t.getSeconds())} 重读 data.json${fresh}　·　每 5 分钟自动重读`);
     } catch (err) {
-      setStatus(`拉取失败：${err.message}（保留上次数据）`);
+      setStatus(`拉取失败：${esc(err.message)}（保留上次数据）`);
     } finally {
       if (manual) btnRefresh.disabled = false;
     }
   }
 
   btnRefresh.addEventListener("click", () => loadData(true));
+
+  /* ---------- 按需抓取（点按钮 → GitHub Actions 跑一次 → 本页自动换新数据） ----------
+   * 浏览器直连判题机是**做不到**的：接口没有 Access-Control-Allow-Origin，
+   * 页面又是 GitHub Pages 纯静态、没有后端，所以「抓取」必须由 Actions 执行。
+   * 这个按钮能做的是：打开 Actions 页（点一下 Run workflow），同时本页开始轮询
+   * data.json，一旦 generated_at 变新就自动重渲染——不用再手动点「重读」。
+   */
+  const POLL_MS = 8000;
+  const POLL_BUDGET_MS = 4 * 60 * 1000;
+  let pollTimer = null;
+
+  function stopPolling() {
+    if (pollTimer) {
+      clearInterval(pollTimer);
+      pollTimer = null;
+    }
+  }
+
+  function genAt(d) {
+    return ((d || state.data || {}).meta || {}).generated_at || "";
+  }
+
+  function pollForUpdate(prevGen) {
+    stopPolling();
+    const deadline = Date.now() + POLL_BUDGET_MS;
+    pollTimer = setInterval(async () => {
+      if (Date.now() > deadline) {
+        stopPolling();
+        setStatus(
+          `没等到新数据（Actions 可能还在排队）。过一会儿点「重读」即可，或在本地跑：<code>${esc(LOCAL_CMD)}</code>`
+        );
+        return;
+      }
+      try {
+        const res = await fetch(`data.json?t=${Date.now()}`, { cache: "no-store" });
+        if (!res.ok) return;
+        const d = await res.json();
+        const g = genAt(d);
+        if (g && g !== prevGen) {
+          stopPolling();
+          state.data = d;
+          state.loadedAt = Date.now();
+          renderHeader();
+          renderGrid();
+          renderDetail();
+          setStatus(`✅ 已更新：数据抓取于 ${cstLabel(g)}（${ago(cstMs(g))}）`);
+        }
+      } catch (err) {
+        /* 网络抖动，下一轮再试 */
+      }
+    }, POLL_MS);
+  }
+
+  function triggerFetch() {
+    const prev = genAt();
+    window.open(ACTIONS_URL, "_blank", "noopener");
+    if (btnFetch) {
+      btnFetch.disabled = true;
+      setTimeout(() => (btnFetch.disabled = false), 6000);
+    }
+    setStatus(
+      `已打开 GitHub Actions — 点右上角 <b>Run workflow</b>，本页会在数据更新后自动刷新` +
+        `（判题机没开跨域，网页不能直接抓，抓取只能由 Actions 跑）`
+    );
+    pollForUpdate(prev);
+  }
+
+  if (btnFetch) btnFetch.addEventListener("click", triggerFetch);
+
 
   /* chrome 时钟 */
   function tick() {

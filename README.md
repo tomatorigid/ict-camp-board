@@ -40,15 +40,32 @@
 
 ## 数据怎么刷新
 
-两种方式，效果相同：
+三条路，效果相同，都是让 `fetch_data.py` 跑一次然后提交 `data.json`：
 
-1. **自动**：`.github/workflows/refresh.yml` 每 10 分钟跑一次 `fetch_data.py`，`data.json` 有变化就提交；也可以在 Actions 页手动 `Run workflow`。
-2. **手动**：本地执行
+1. **页面上点「立即抓取」**（最快，见下节）；
+2. **自动**：`.github/workflows/refresh.yml` 由 GitHub 的 schedule 触发，一次 run 里连续抓 8 轮（每 5 分钟一轮），`data.json` 有变化就提交；任何推送到 `main` 也会顺带触发一次；
+3. **本地手动**：
 
    ```bash
    python fetch_data.py        # 覆盖 data.json
    git add data.json && git commit -m "chore: refresh" && git push
    ```
+
+### 按需抓取（「立即抓取」按钮）
+
+点它会发生三件事：
+
+1. 新标签打开 `<仓库>/actions/workflows/refresh.yml`——在那里点 **Run workflow**，GitHub 立刻跑一次 `fetch_data.py`；
+2. 本页每 8 秒重读一次 `data.json`，一旦 `meta.generated_at` 变新，整页自动换成新数据并显示「✅ 已更新」；
+3. 4 分钟没等到就提示你稍后点「重读」，并给出本地命令。
+
+**为什么不能一键直接抓？** 判题机接口 `cannjudge.cn/api/...` 响应里没有 `Access-Control-Allow-Origin`，
+浏览器按同源策略不许页面读它的响应；页面又是 GitHub Pages 的纯静态文件，没有后端可以代抓。
+所以「抓取」只能交给 GitHub Actions 执行——按钮做的是**把这条链路缩短到两个点击**，并把结果自动接回来。
+
+> 想变成真正的一键（页面直接拿到实时数据），需要一个带 CORS 的中转：例如免费部署一个 Cloudflare Worker
+> 转发 `cannjudge.cn/api/...`（顺带也能替你触发 Actions，token 存在 Worker 里）。
+> 公开 CORS 代理（allorigins / codetabs / r.jina.ai 等）实测在境内网络基本不通，不建议依赖。
 
 ### 数据为什么会滞后（重要）
 
@@ -56,12 +73,15 @@ GitHub 的 `schedule` 是**尽力而为**的：实测这个仓库 15 天累计�
 定时任务经常被顺延几个小时。所以 `data.json` 的 `meta.generated_at` 可能比真实时间旧很多，
 页面上的"提交于"就可能是几小时前的快照——**不是页面算错时间**。
 
-为了不再悄悄显示旧数据，页面做了两件事：
+为此工作流改成「一次 run 连续抓 8 轮 × 5 分钟 ≈ 40 分钟」：即使 cron 被跳过几次，数据也不会停在几小时前。
+另外 `push` 触发加了 `paths-ignore: data.json`，避免机器人自己的数据提交反复触发新一轮。
+
+页面这一侧也不再悄悄显示旧数据：
 
 - 页头多一行 **"最近一次提交"**，取全队所有题目里最晚的那次提交（与单张卡片的"提交于"区分开）；
 - 每次加载都显示 **"数据抓取 11/26 11:47（N 分钟前）"**，滞后超过 45 分钟整条变蓝并提示"数据已滞后 N 小时"。
 
-发现滞后想立刻更新，在本地跑一条命令即可（会顺带重新抓取并发布）：
+发现滞后想立刻更新：点页面上的「立即抓取」，或在本地跑一条命令（会顺带抓取并发布）：
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File site\publish.ps1 -Fetch

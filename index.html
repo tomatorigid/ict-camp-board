@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=20261126a">
+<link rel="stylesheet" href="assets/style.css?v=20261126b">
 </head>
 <body>
 
@@ -76,7 +76,8 @@
           <option value="time">提交时间 ↓</option>
         </select>
       </label>
-      <button class="chip refresh" id="btn-refresh">刷新数据</button>
+      <button class="chip refresh primary" id="btn-fetch" title="让 GitHub Actions 立刻抓一次判题机数据（判题机没开跨域，网页自己连不上）">立即抓取</button>
+      <button class="chip refresh" id="btn-refresh" title="重新读取 data.json（不会重新抓取）">重读</button>
     </div>
     <span class="refresh-status mono" id="refresh-status"></span>
   </section>
@@ -99,11 +100,11 @@
 
 <footer class="foot">
   <div class="wrap foot-in">
-    <p class="mono">数据：<a id="src-link" href="https://cannjudge.cn/public/ictcompetition" target="_blank" rel="noreferrer">CANNJudge 公开接口</a> · 页面每 5 分钟重读 data.json · data.json 由 GitHub Actions 定时抓取（定时任务可能延迟，以「数据抓取」时间为准）</p>
+    <p class="mono">数据：<a id="src-link" href="https://cannjudge.cn/public/ictcompetition" target="_blank" rel="noreferrer">CANNJudge 公开接口</a> · 页面每 5 分钟重读 data.json · 抓取由 GitHub Actions 执行：定时任务或点「立即抓取」（判题机未开跨域，网页不能直接连，以「数据抓取」时间为准）</p>
     <p class="mono dim">得分模型 score ≈ 100 × ( Σbest / Σours )²　·　同码复测噪声约 ±7.5%</p>
   </div>
 </footer>
 
-<script src="assets/app.js?v=20261126a"></script>
+<script src="assets/app.js?v=20261126b"></script>
 </body>
 </html>

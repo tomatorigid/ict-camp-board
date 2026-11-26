@@ -5,13 +5,25 @@ on:
     # UTC，每 10 分钟一次（GitHub 定时任务最小粒度 5 分钟，实际常延迟几分钟）
     - cron: "*/10 * * * *"
   workflow_dispatch:
+  # 任何一次推送都会顺带抓一次；但忽略机器人自己只改 data.json 的提交，避免自己触发自己
+  push:
+    branches: [main]
+    paths-ignore:
+      - data.json
 
 permissions:
   contents: write
 
+# 同一时间只跑一个：排队中的旧任务会被新任务顶掉，不会越积越多
+concurrency:
+  group: refresh-data
+  cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    # 8 轮 × 5 分钟 ≈ 40 分钟，给 timeout 留余量
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
 
@@ -19,24 +31,40 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: 拉取 CANNJudge 公开数据
+      # GitHub 的 schedule 是「尽力而为」：实测经常被跳过 2~5 小时。
+      # 所以一次 run 里连续抓 LOOPS 轮（每轮之间 sleep INTERVAL 秒），
+      # 用「跑得久」换「定时准」——即使 cron 被跳过几次，数据也不会停在几小时前。
+      - name: 连续抓取
         env:
+          LOOPS: "8"
+          INTERVAL: "300"
           # 可选：在仓库 Settings→Secrets 里配 CANNJUDGE_ACCOUNT / CANNJUDGE_PASSWORD
-          # （或直接配一条 CANNJUDGE_COOKIE 字符串），CI 就会自动刷新本队提交历史（history.mine）。
+          # （或直接配一条 CANNJUDGE_COOKIE 字符串），就会自动刷新本队提交历史（history.mine）。
           # 不配也能跑：mine 历史保留旧数据，对手快照（rivals）照常增量更新。
           CANNJUDGE_COOKIE: ${{ secrets.CANNJUDGE_COOKIE }}
           CANNJUDGE_ACCOUNT: ${{ secrets.CANNJUDGE_ACCOUNT }}
           CANNJUDGE_PASSWORD: ${{ secrets.CANNJUDGE_PASSWORD }}
-        run: python fetch_data.py
-
-      - name: 有变化才提交
         run: |
-          if git diff --quiet data.json; then
-            echo "数据无变化"
-            exit 0
-          fi
+          set -u
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data.json
-          git commit -m "chore: 刷新 data.json ($(date -u +%Y-%m-%dT%H:%MZ))"
-          git push
+
+          for i in $(seq 1 "$LOOPS"); do
+            echo "=== 第 $i/$LOOPS 轮 · $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
+            python fetch_data.py || echo "⚠ 本轮抓取失败，下一轮重试"
+
+            if git diff --quiet -- data.json; then
+              echo "数据无变化"
+            else
+              git add data.json
+              git commit -q -m "chore: 刷新 data.json ($(date -u +%Y-%m-%dT%H:%MZ))"
+              git pull -q --rebase --autostash || true
+              git push || echo "⚠ 推送失败，下一轮重试"
+            fi
+
+            if [ "$i" -lt "$LOOPS" ]; then
+              echo "…等待 $INTERVAL 秒"
+              sleep "$INTERVAL"
+            fi
+          done
+          echo "本轮 $LOOPS 次抓取结束"
