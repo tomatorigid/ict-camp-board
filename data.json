@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-26 23:29:39",
-  "generated_at_utc": "2026-11-26T15:29:39Z",
+  "generated_at": "2026-11-26 23:35:14",
+  "generated_at_utc": "2026-11-26T15:35:14Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -1319,6 +1319,24 @@
       "a": 3948.7,
       "s": 75.87,
       "n": 5
+     },
+     {
+      "k": "6ae74af41dac5d235b59434a|6b08501185ad43bbe0a5f417",
+      "t": "2026-11-26 23:28:17",
+      "u": "YKNOW",
+      "st": "Pass",
+      "a": 3963.3,
+      "s": 80.2,
+      "n": 5
+     },
+     {
+      "k": "6ae59d9a1dac5d235b95a984|6b08502885ad43bbe0a62edc",
+      "t": "2026-11-26 23:28:40",
+      "u": "hsyyyy",
+      "st": "Pass",
+      "a": 3979.3,
+      "s": 73.6,
+      "n": 5
      }
     ],
     "team": [
@@ -2482,6 +2500,15 @@
       "st": "Pass",
       "a": 3819.3,
       "s": 75.8,
+      "n": 5
+     },
+     {
+      "k": "6ae6e3481dac5d235bebad9a|6b084eb185ad43bbe0a25fb0",
+      "t": "2026-11-26 23:22:25",
+      "u": "AnoyoS",
+      "st": "Pass",
+      "a": 3869.3,
+      "s": 78.35,
       "n": 5
      }
     ],
@@ -4204,6 +4231,24 @@
       "st": "Pass",
       "a": 4274.7,
       "s": 71.55,
+      "n": 5
+     },
+     {
+      "k": "6ae84a931dac5d235be88217|6b084eb485ad43bbe0a2684c",
+      "t": "2026-11-26 23:22:28",
+      "u": "18215908644",
+      "st": "Pass",
+      "a": 4464.7,
+      "s": 73.79,
+      "n": 5
+     },
+     {
+      "k": "6aa8ec032d3dd2c5ae459f72|6b084f8585ad43bbe0a4766e",
+      "t": "2026-11-26 23:25:57",
+      "u": "MinieShu",
+      "st": "Pass",
+      "a": 4164.0,
+      "s": 76.32,
       "n": 5
      }
     ],
@@ -7351,6 +7396,15 @@
       "st": "Pass",
       "a": 4550.7,
       "s": 58.14,
+      "n": 5
+     },
+     {
+      "k": "6ae7fa8b1dac5d235b4c13eb|6b08509585ad43bbe0a759c7",
+      "t": "2026-11-26 23:30:29",
+      "u": "Clean",
+      "st": "Pass",
+      "a": 4509.6,
+      "s": 57.2,
       "n": 5
      }
     ],
@@ -13426,7 +13480,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/stridedslicegrad",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/stridedslicegrad/ranking",
    "submitted": true,
-   "rank": 454,
+   "rank": 455,
    "submitter": "tomatorigid",
    "status": "Wrong Answer",
    "score": 0.0,
