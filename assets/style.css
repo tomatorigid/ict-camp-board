@@ -98,6 +98,22 @@ h1{
 .num-box.accent .num-v{color:#fff}
 
 .meta{margin:var(--sp-6) 0 0;color:var(--faint)}
+.meta.stale{color:var(--accent);font-weight:700}
+
+/* ---------- 最近一次提交 / 数据新鲜度 ---------- */
+.latest{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--sp-3);
+  margin:var(--sp-4) 0 0;padding:var(--sp-4) var(--sp-5);
+  background:var(--paper-2);border-left:2px solid var(--ink);
+  color:var(--muted);
+}
+.latest .latest-l{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--sp-3)}
+.latest .k{color:var(--faint);letter-spacing:.06em}
+.latest b{color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums;font-size:13px}
+.latest .sep{color:var(--line)}
+.latest .fresh{margin-left:auto;color:var(--faint);font-variant-numeric:tabular-nums}
+.latest .fresh.warn{color:var(--accent);font-weight:700}
+.latest.is-stale{border-left-color:var(--accent);background:var(--paper-3)}
 
 /* ---------- toolbar ---------- */
 .toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-4);padding:var(--sp-7) 0 var(--sp-6)}

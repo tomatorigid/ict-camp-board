@@ -70,6 +70,55 @@
     return `${p(d.getMonth() + 1)}/${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;
   }
 
+  /* ---------- 北京时间 / 数据新鲜度 ----------
+   * data.json 里的时间戳（generated_at / submit_time）都是「北京时间字符串」，
+   * 原样显示与访问者时区无关；算「多久以前」必须按 UTC+8 换算成绝对时刻再和本机时钟比。
+   */
+  const CST_MS = 8 * 3600 * 1000;
+
+  function cstMs(v) {
+    if (!v) return null;
+    const m = /^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2}):(\d{2})/.exec(String(v));
+    if (m) return Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6]) - CST_MS;
+    const t = new Date(v).getTime();
+    return Number.isNaN(t) ? null : t;
+  }
+
+  // 按北京时间格式化：月/日 时:分
+  function cstLabel(v) {
+    const t = cstMs(v);
+    if (t === null) return "—";
+    const d = new Date(t + CST_MS); // 用 UTC 字段读北京时间
+    const p = (n) => String(n).padStart(2, "0");
+    return `${d.getUTCMonth() + 1}/${p(d.getUTCDate())} ${p(d.getUTCHours())}:${p(d.getUTCMinutes())}`;
+  }
+
+  function spanText(ms) {
+    if (ms === null) return "";
+    const min = Math.max(0, Math.round((Date.now() - ms) / 60000));
+    if (min < 1) return "不到 1 分钟";
+    if (min < 60) return `${min} 分钟`;
+    const h = Math.floor(min / 60);
+    const m = min % 60;
+    if (h < 24) return m ? `${h} 小时 ${m} 分` : `${h} 小时`;
+    const d = Math.floor(h / 24);
+    return `${d} 天${h % 24 ? ` ${h % 24} 小时` : ""}`;
+  }
+
+  function ago(ms) {
+    if (ms === null) return "";
+    const t = spanText(ms);
+    return t === "不到 1 分钟" ? "刚刚" : `${t}前`;
+  }
+
+  // 数据滞后多久算「不可信」：CI 抓取延迟常达数小时，超过 45 分钟就提示
+  const STALE_MIN = 45;
+
+  function dataAgeMin() {
+    const t = cstMs((state.data.meta || {}).generated_at);
+    return t === null ? null : Math.round((Date.now() - t) / 60000);
+  }
+
   // 平均倍数：可见测试点 Σ(ours) / Σ(best)，越小越好
   function gapOf(p) {
     const rows = (p.testcases || []).filter((t) => num(t.time) !== null && num(t.best) > 0);
@@ -110,12 +159,51 @@
     $("#n-weighted").textContent = fmt(s.weighted_sum, 2);
 
     const bits = [];
-    if (m.generated_at) bits.push(`抓取 ${m.generated_at}`);
+    if (m.generated_at) bits.push(`数据抓取 ${cstLabel(m.generated_at)}（${ago(cstMs(m.generated_at))}）`);
     if (m.contest_end) bits.push(`截止 ${m.contest_end}`);
-    $("#meta-line").textContent = bits.join("　·　");
+    const meta = $("#meta-line");
+    meta.textContent = bits.join("　·　");
+    const age = dataAgeMin();
+    if (meta) meta.classList.toggle("stale", age !== null && age > STALE_MIN);
 
+    renderLatest();
     renderBatches();
     if (m.source) $("#src-link").href = m.source;
+  }
+
+  /* 「最近一次提交」= 全队所有题目里提交时间最晚的那一行。
+   * 放在首屏，避免只看单张卡片的「提交于」误以为整块面板就是最新的。 */
+  function renderLatest() {
+    const el = $("#latest-line");
+    if (!el) return;
+    const list = state.data.problems || [];
+    let top = null;
+    for (const p of list) {
+      const t = cstMs(p.submit_time);
+      if (t === null) continue;
+      if (!top || t > top.t) top = { t, p };
+    }
+    const gen = cstMs((state.data.meta || {}).generated_at);
+    const age = dataAgeMin();
+    const stale = age !== null && age > STALE_MIN;
+
+    const left = top
+      ? `<span class="k">最近一次提交</span><b>${esc(cstLabel(top.p.submit_time))}</b>` +
+        `<span class="sep">·</span><span>${esc(top.p.title)}</span>` +
+        `<span class="sep">·</span><span>${esc(STATUS_ZH[top.p.status] || top.p.status || "—")}</span>` +
+        (num(top.p.rank) === null ? "" : `<span class="sep">·</span><span>#${num(top.p.rank)}</span>`)
+      : `<span class="k">最近一次提交</span><span>暂无记录</span>`;
+
+    const right =
+      gen === null
+        ? ""
+        : stale
+        ? `<span class="fresh warn">数据已滞后 ${esc(spanText(gen))}　·　定时抓取延迟，面板显示的是当时快照</span>`
+        : `<span class="fresh ok">数据 ${esc(ago(gen))}更新</span>`;
+
+    el.innerHTML = `<span class="latest-l">${left}</span>${right}`;
+    el.classList.toggle("stale", stale);
+    el.classList.toggle("is-stale", stale);
   }
 
   function renderBatches() {
@@ -522,7 +610,12 @@
       renderDetail();
       const t = new Date(state.loadedAt);
       const p = (n) => String(n).padStart(2, "0");
-      setStatus(`页面于 ${p(t.getHours())}:${p(t.getMinutes())}:${p(t.getSeconds())} 拉取 · 每 5 分钟自动刷新`);
+      const gen = (state.data.meta || {}).generated_at;
+      const age = dataAgeMin();
+      const fresh = gen
+        ? `　·　数据抓取于 ${cstLabel(gen)}（${ago(cstMs(gen))}）${age !== null && age > STALE_MIN ? " ⚠ 偏旧" : ""}`
+        : "";
+      setStatus(`页面于 ${p(t.getHours())}:${p(t.getMinutes())}:${p(t.getSeconds())} 重读 data.json${fresh}　·　每 5 分钟自动重读`);
     } catch (err) {
       setStatus(`拉取失败：${err.message}（保留上次数据）`);
     } finally {

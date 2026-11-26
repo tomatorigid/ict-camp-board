@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=20261121i">
+<link rel="stylesheet" href="assets/style.css?v=20261126a">
 </head>
 <body>
 
@@ -53,6 +53,7 @@
       </div>
     </div>
     <p class="meta mono" id="meta-line"></p>
+    <p class="latest mono" id="latest-line"></p>
   </div>
 </header>
 
@@ -98,11 +99,11 @@
 
 <footer class="foot">
   <div class="wrap foot-in">
-    <p class="mono">数据：<a id="src-link" href="https://cannjudge.cn/public/ictcompetition" target="_blank" rel="noreferrer">CANNJudge 公开接口</a> · 页面每 5 分钟自动重拉 · CI 每 10 分钟抓一次</p>
+    <p class="mono">数据：<a id="src-link" href="https://cannjudge.cn/public/ictcompetition" target="_blank" rel="noreferrer">CANNJudge 公开接口</a> · 页面每 5 分钟重读 data.json · data.json 由 GitHub Actions 定时抓取（定时任务可能延迟，以「数据抓取」时间为准）</p>
     <p class="mono dim">得分模型 score ≈ 100 × ( Σbest / Σours )²　·　同码复测噪声约 ±7.5%</p>
   </div>
 </footer>
 
-<script src="assets/app.js?v=20261121i"></script>
+<script src="assets/app.js?v=20261126a"></script>
 </body>
 </html>
