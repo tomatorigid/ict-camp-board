@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-28 01:28:50",
-  "generated_at_utc": "2026-11-27T17:28:50Z",
+  "generated_at": "2026-11-28 01:34:29",
+  "generated_at_utc": "2026-11-27T17:34:29Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -1332,7 +1332,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/confusiontransposed",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/confusiontransposed/ranking",
    "submitted": true,
-   "rank": 441,
+   "rank": 439,
    "submitter": "everclover",
    "status": "Pass",
    "score": 34.26,
@@ -5567,6 +5567,15 @@
       "a": 4828.0,
       "s": 78.08,
       "n": 5
+     },
+     {
+      "k": "6ae5f03b1dac5d235bf9422f|6b09bd3e85ad43bbe05f3683",
+      "t": "2026-11-28 01:26:22",
+      "u": "VincentttWang",
+      "st": "Pass",
+      "a": 4742.7,
+      "s": 77.82,
+      "n": 5
      }
     ],
     "team": [
@@ -7261,6 +7270,15 @@
       "st": "Pass",
       "a": 4995.3,
       "s": 60.11,
+      "n": 5
+     },
+     {
+      "k": "6ae5f03b1dac5d235bf9422f|6b09bdf485ad43bbe0613963",
+      "t": "2026-11-28 01:29:24",
+      "u": "VincentttWang",
+      "st": "Pass",
+      "a": 4948.0,
+      "s": 58.02,
       "n": 5
      }
     ],
@@ -9524,6 +9542,15 @@
       "st": "Pass",
       "a": 4135.3,
       "s": 68.39,
+      "n": 5
+     },
+     {
+      "k": "6ab269a90304f72a566f0a8f|6b09bd4985ad43bbe05f543d",
+      "t": "2026-11-28 01:26:33",
+      "u": "zz6",
+      "st": "Pass",
+      "a": 4508.7,
+      "s": 66.74,
       "n": 5
      }
     ],
