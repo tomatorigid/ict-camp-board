@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-28 01:11:57",
-  "generated_at_utc": "2026-11-27T17:11:57Z",
+  "generated_at": "2026-11-28 01:17:36",
+  "generated_at_utc": "2026-11-27T17:17:36Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -1332,7 +1332,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/confusiontransposed",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/confusiontransposed/ranking",
    "submitted": true,
-   "rank": 439,
+   "rank": 440,
    "submitter": "everclover",
    "status": "Pass",
    "score": 34.26,
@@ -4160,6 +4160,15 @@
       "a": 5179.3,
       "s": 57.96,
       "n": 5
+     },
+     {
+      "k": "6ae84a931dac5d235be88217|6b09b81685ad43bbe05025d1",
+      "t": "2026-11-28 01:04:22",
+      "u": "18215908644",
+      "st": "Pass",
+      "a": 4316.0,
+      "s": 78.47,
+      "n": 5
      }
     ],
     "team": [
@@ -5503,6 +5512,15 @@
       "st": "Pass",
       "a": 4697.3,
       "s": 76.84,
+      "n": 5
+     },
+     {
+      "k": "6ae5f03b1dac5d235bf9422f|6b09b89185ad43bbe051a722",
+      "t": "2026-11-28 01:06:25",
+      "u": "VincentttWang",
+      "st": "Pass",
+      "a": 4682.0,
+      "s": 77.14,
       "n": 5
      }
     ],
@@ -7609,7 +7627,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/padv3grad",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/padv3grad/ranking",
    "submitted": true,
-   "rank": 292,
+   "rank": 293,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 23.86,
@@ -9407,6 +9425,33 @@
       "st": "Pass",
       "a": 3942.0,
       "s": 69.14,
+      "n": 5
+     },
+     {
+      "k": "6af6fc356bd0f9be372560f9|6b09b92385ad43bbe0535279",
+      "t": "2026-11-28 01:08:51",
+      "u": "AMIAH2O",
+      "st": "Pass",
+      "a": 4101.3,
+      "s": 69.51,
+      "n": 5
+     },
+     {
+      "k": "6ab269a90304f72a566f0a8f|6b09b93685ad43bbe0538f40",
+      "t": "2026-11-28 01:09:10",
+      "u": "zz6",
+      "st": "Pass",
+      "a": 4162.0,
+      "s": 65.91,
+      "n": 5
+     },
+     {
+      "k": "6ae5f03b1dac5d235bf9422f|6b09b95085ad43bbe053d7b6",
+      "t": "2026-11-28 01:09:36",
+      "u": "VincentttWang",
+      "st": "Pass",
+      "a": 4141.3,
+      "s": 70.52,
       "n": 5
      }
     ],
