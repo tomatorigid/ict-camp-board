@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-28 01:00:39",
-  "generated_at_utc": "2026-11-27T17:00:39Z",
+  "generated_at": "2026-11-28 01:06:18",
+  "generated_at_utc": "2026-11-27T17:06:18Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -29,8 +29,8 @@
   "note": "数据来自 CANNJudge 公开接口 /api/problems/<id>/ranking；history.mine 来自登录接口（本队登录账号的全量提交），history.team 是本队排行榜行的增量快照（含其他队友账号），history.rivals 是公开排行榜前 N 名的增量快照。分数与状态以测试界面为准。"
  },
  "summary": {
-  "score_sum": 298.8,
-  "weighted_sum": 668.92,
+  "score_sum": 297.8,
+  "weighted_sum": 666.92,
   "submitted": 9,
   "passed": 7,
   "total_problems": 10
@@ -4200,7 +4200,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/layernormv3",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/layernormv3/ranking",
    "submitted": true,
-   "rank": 175,
+   "rank": 174,
    "submitter": "everclover",
    "status": "Pass",
    "score": 42.94,
@@ -5494,6 +5494,15 @@
       "st": "Pass",
       "a": 4647.3,
       "s": 78.13,
+      "n": 5
+     },
+     {
+      "k": "6ae5f03b1dac5d235bf9422f|6b09b70685ad43bbe04d0b6e",
+      "t": "2026-11-28 00:59:50",
+      "u": "VincentttWang",
+      "st": "Pass",
+      "a": 4697.3,
+      "s": 76.84,
       "n": 5
      }
     ],
@@ -7600,7 +7609,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/padv3grad",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/padv3grad/ranking",
    "submitted": true,
-   "rank": 292,
+   "rank": 293,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 23.86,
@@ -9371,6 +9380,15 @@
       "st": "Pass",
       "a": 4176.0,
       "s": 67.99,
+      "n": 5
+     },
+     {
+      "k": "6ab269a90304f72a566f0a8f|6b09b69485ad43bbe04b98b9",
+      "t": "2026-11-28 00:57:56",
+      "u": "zz6",
+      "st": "Pass",
+      "a": 4258.7,
+      "s": 65.54,
       "n": 5
      }
     ],
@@ -11541,45 +11559,45 @@
    "url": "https://cannjudge.cn/public/ictcompetition/quantupdatescatter",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/quantupdatescatter/ranking",
    "submitted": true,
-   "rank": 101,
+   "rank": 108,
    "submitter": "tomatorigid",
    "status": "Pass",
-   "score": 57.03,
-   "submit_time": "2026-11-28 00:58:07",
-   "submission_id": "6b09b69f85ad43bbe04bb981",
+   "score": 56.03,
+   "submit_time": "2026-11-28 01:03:53",
+   "submission_id": "6b09b7f985ad43bbe04fdc86",
    "testcases": [
     {
      "i": 1,
      "status": "Pass",
-     "time": 4450.0,
+     "time": 4553.3,
      "precision": 1,
      "best": 3536.7
     },
     {
      "i": 2,
      "status": "Pass",
-     "time": 4623.3,
+     "time": 4803.3,
      "precision": 1,
      "best": 3723.3
     },
     {
      "i": 3,
      "status": "Pass",
-     "time": 4850.0,
+     "time": 4946.7,
      "precision": 1,
      "best": 3770.0
     },
     {
      "i": 4,
      "status": "Pass",
-     "time": 4726.7,
+     "time": 4693.3,
      "precision": 1,
      "best": 3580.0
     },
     {
      "i": 5,
      "status": "Pass",
-     "time": 6230.0,
+     "time": 6303.3,
      "precision": 1,
      "best": 3796.7
     },
@@ -12945,6 +12963,15 @@
       "st": "Pass",
       "a": 4976.0,
       "s": 57.03,
+      "n": 5
+     },
+     {
+      "k": "6b09b7f985ad43bbe04fdc86",
+      "t": "2026-11-28 01:03:53",
+      "u": "tomatorigid",
+      "st": "Pass",
+      "a": 5060.0,
+      "s": 56.03,
       "n": 5
      }
     ],
@@ -14468,6 +14495,15 @@
       "st": "Pass",
       "a": 4752.7,
       "s": 66.49,
+      "n": 5
+     },
+     {
+      "k": "6a9933c0bf41025d60d87c99|6b08d57585ad43bbe0d3100f",
+      "t": "2026-11-27 08:57:25",
+      "u": "JK2401",
+      "st": "Pass",
+      "a": 4134.7,
+      "s": 63.89,
       "n": 5
      },
      {
