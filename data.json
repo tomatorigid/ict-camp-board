@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-27 08:28:29",
-  "generated_at_utc": "2026-11-27T00:28:29Z",
+  "generated_at": "2026-11-27 08:34:11",
+  "generated_at_utc": "2026-11-27T00:34:11Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -29,8 +29,8 @@
   "note": "数据来自 CANNJudge 公开接口 /api/problems/<id>/ranking；history.mine 来自登录接口（本队登录账号的全量提交），history.team 是本队排行榜行的增量快照（含其他队友账号），history.rivals 是公开排行榜前 N 名的增量快照。分数与状态以测试界面为准。"
  },
  "summary": {
-  "score_sum": 296.62,
-  "weighted_sum": 666.33,
+  "score_sum": 296.6,
+  "weighted_sum": 666.29,
   "submitted": 9,
   "passed": 7,
   "total_problems": 10
@@ -1440,7 +1440,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/confusiontransposed",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/confusiontransposed/ranking",
    "submitted": true,
-   "rank": 436,
+   "rank": 435,
    "submitter": "everclover",
    "status": "Pass",
    "score": 34.28,
@@ -5837,6 +5837,15 @@
       "a": 5085.3,
       "s": 67.59,
       "n": 5
+     },
+     {
+      "k": "6af5d0a16bd0f9be37df8df2|6b08cd8c85ad43bbe0c29784",
+      "t": "2026-11-27 08:23:40",
+      "u": "benson",
+      "st": "Pass",
+      "a": 5034.7,
+      "s": 65.87,
+      "n": 5
      }
     ],
     "team": [
@@ -5871,7 +5880,7 @@
    "rank": 220,
    "submitter": "tomatorigid",
    "status": "Pass",
-   "score": 33.4,
+   "score": 33.38,
    "submit_time": "2026-11-23 17:31:38",
    "submission_id": "6b0407fa85ad43bbe050fbcf",
    "testcases": [
@@ -7693,6 +7702,15 @@
       "st": "Pass",
       "a": 4634.7,
       "s": 66.97,
+      "n": 5
+     },
+     {
+      "k": "6ae87bac1dac5d235b4fc246|6b08ce8285ad43bbe0c46e32",
+      "t": "2026-11-27 08:27:46",
+      "u": "苏子竣",
+      "st": "Pass",
+      "a": 4891.3,
+      "s": 64.79,
       "n": 5
      }
     ],
@@ -10001,6 +10019,15 @@
       "st": "Pass",
       "a": 4107.3,
       "s": 70.89,
+      "n": 5
+     },
+     {
+      "k": "6ab269a90304f72a566f0a8f|6b08cd9f85ad43bbe0c2bc9f",
+      "t": "2026-11-27 08:23:59",
+      "u": "zz6",
+      "st": "Pass",
+      "a": 3994.7,
+      "s": 71.82,
       "n": 5
      }
     ],
@@ -13682,6 +13709,24 @@
       "a": 3982.7,
       "s": 78.98,
       "n": 5
+     },
+     {
+      "k": "6aed9097a5348dcef59394ce|6b08ceac85ad43bbe0c4bfe8",
+      "t": "2026-11-27 08:28:28",
+      "u": "YixuAn",
+      "st": "Pass",
+      "a": 4310.4,
+      "s": 74.4,
+      "n": 5
+     },
+     {
+      "k": "6a504260eb903bac17ae5d9b|6b08cf2785ad43bbe0c5c11f",
+      "t": "2026-11-27 08:30:31",
+      "u": "wxy1234444",
+      "st": "Pass",
+      "a": 4284.7,
+      "s": 75.09,
+      "n": 5
      }
     ],
     "team": [
@@ -17144,6 +17189,15 @@
       "st": "Pass",
       "a": 4180.7,
       "s": 77.11,
+      "n": 5
+     },
+     {
+      "k": "6aed9097a5348dcef59394ce|6b08cf8485ad43bbe0c67631",
+      "t": "2026-11-27 08:32:05",
+      "u": "YixuAn",
+      "st": "Pass",
+      "a": 3837.4,
+      "s": 82.71,
       "n": 5
      }
     ],
