@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-27 08:00:11",
-  "generated_at_utc": "2026-11-27T00:00:11Z",
+  "generated_at": "2026-11-27 08:05:51",
+  "generated_at_utc": "2026-11-27T00:05:51Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -29,8 +29,8 @@
   "note": "数据来自 CANNJudge 公开接口 /api/problems/<id>/ranking；history.mine 来自登录接口（本队登录账号的全量提交），history.team 是本队排行榜行的增量快照（含其他队友账号），history.rivals 是公开排行榜前 N 名的增量快照。分数与状态以测试界面为准。"
  },
  "summary": {
-  "score_sum": 296.67,
-  "weighted_sum": 666.38,
+  "score_sum": 296.62,
+  "weighted_sum": 666.33,
   "submitted": 9,
   "passed": 7,
   "total_problems": 10
@@ -2604,7 +2604,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/ctclossv2",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/ctclossv2/ranking",
    "submitted": true,
-   "rank": 531,
+   "rank": 532,
    "submitter": "everclover",
    "status": "Runtime Error",
    "score": 0.0,
@@ -4357,6 +4357,15 @@
       "st": "Pass",
       "a": 4204.7,
       "s": 77.44,
+      "n": 5
+     },
+     {
+      "k": "6b0024a585ad43bbe0791981|6b08c77e85ad43bbe0b672de",
+      "t": "2026-11-27 07:57:50",
+      "u": "LSY",
+      "st": "Pass",
+      "a": 4809.3,
+      "s": 58.91,
       "n": 5
      }
     ],
@@ -7640,6 +7649,15 @@
       "a": 4770.7,
       "s": 62.96,
       "n": 5
+     },
+     {
+      "k": "6ae87bac1dac5d235b4fc246|6b08c7f685ad43bbe0b75afb",
+      "t": "2026-11-27 07:59:50",
+      "u": "苏子竣",
+      "st": "Pass",
+      "a": 5164.0,
+      "s": 67.08,
+      "n": 5
      }
     ],
     "team": [
@@ -10343,7 +10361,7 @@
    "rank": 297,
    "submitter": "tomatorigid",
    "status": "Pass",
-   "score": 45.26,
+   "score": 45.21,
    "submit_time": "2026-11-26 19:18:33",
    "submission_id": "6b08158985ad43bbe0fc1d7f",
    "testcases": [
@@ -11490,6 +11508,15 @@
       "st": "Pass",
       "a": 3979.3,
       "s": 81.81,
+      "n": 5
+     },
+     {
+      "k": "6ab55a77694b590c3c472923|6b08c71585ad43bbe0b59951",
+      "t": "2026-11-27 07:56:05",
+      "u": "QQQ_QWQ",
+      "st": "Pass",
+      "a": 3896.0,
+      "s": 79.87,
       "n": 5
      }
     ],
