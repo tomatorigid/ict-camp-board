@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-27 14:57:14",
-  "generated_at_utc": "2026-11-27T06:57:14Z",
+  "generated_at": "2026-11-27 15:02:46",
+  "generated_at_utc": "2026-11-27T07:02:46Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -1494,7 +1494,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/confusiontransposed",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/confusiontransposed/ranking",
    "submitted": true,
-   "rank": 437,
+   "rank": 438,
    "submitter": "everclover",
    "status": "Pass",
    "score": 34.28,
@@ -4524,7 +4524,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/layernormv3",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/layernormv3/ranking",
    "submitted": true,
-   "rank": 168,
+   "rank": 169,
    "submitter": "everclover",
    "status": "Pass",
    "score": 43.11,
@@ -8392,7 +8392,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/padv3grad",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/padv3grad/ranking",
    "submitted": true,
-   "rank": 282,
+   "rank": 283,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 23.86,
@@ -10397,6 +10397,24 @@
       "st": "Pass",
       "a": 4921.3,
       "s": 51.73,
+      "n": 5
+     },
+     {
+      "k": "6ae834821dac5d235bb8eede|6b09291085ad43bbe0b8d7d8",
+      "t": "2026-11-27 14:54:08",
+      "u": "Usagi537",
+      "st": "Pass",
+      "a": 4718.0,
+      "s": 52.13,
+      "n": 5
+     },
+     {
+      "k": "6aa7fdcf2d3dd2c5aef6d406|6b092a3985ad43bbe0bc272e",
+      "t": "2026-11-27 14:59:05",
+      "u": "BLBK5",
+      "st": "Pass",
+      "a": 4141.3,
+      "s": 65.69,
       "n": 5
      }
     ],
@@ -12666,7 +12684,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/quantupdatescatter",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/quantupdatescatter/ranking",
    "submitted": true,
-   "rank": 101,
+   "rank": 100,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 56.53,
