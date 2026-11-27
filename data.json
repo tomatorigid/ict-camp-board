@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-27 08:05:51",
-  "generated_at_utc": "2026-11-27T00:05:51Z",
+  "generated_at": "2026-11-27 08:11:30",
+  "generated_at_utc": "2026-11-27T00:11:30Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -5859,7 +5859,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/multilabelmarginloss",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/multilabelmarginloss/ranking",
    "submitted": true,
-   "rank": 221,
+   "rank": 220,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 33.4,
@@ -11518,6 +11518,15 @@
       "a": 3896.0,
       "s": 79.87,
       "n": 5
+     },
+     {
+      "k": "6ab55a77694b590c3c472923|6b08c8f985ad43bbe0b979c3",
+      "t": "2026-11-27 08:04:09",
+      "u": "QQQ_QWQ",
+      "st": "Pass",
+      "a": 3929.3,
+      "s": 79.97,
+      "n": 5
      }
     ],
     "team": [
@@ -13804,7 +13813,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/stridedslicegrad",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/stridedslicegrad/ranking",
    "submitted": true,
-   "rank": 457,
+   "rank": 456,
    "submitter": "tomatorigid",
    "status": "Wrong Answer",
    "score": 0.0,
