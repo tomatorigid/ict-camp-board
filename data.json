@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-27 07:54:35",
-  "generated_at_utc": "2026-11-26T23:54:35Z",
+  "generated_at": "2026-11-27 08:00:11",
+  "generated_at_utc": "2026-11-27T00:00:11Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -4349,6 +4349,15 @@
       "a": 4452.7,
       "s": 74.33,
       "n": 5
+     },
+     {
+      "k": "6ae6e3481dac5d235bebad9a|6b08c5bb85ad43bbe0b307fd",
+      "t": "2026-11-27 07:50:19",
+      "u": "AnoyoS",
+      "st": "Pass",
+      "a": 4204.7,
+      "s": 77.44,
+      "n": 5
      }
     ],
     "team": [
@@ -5841,7 +5850,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/multilabelmarginloss",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/multilabelmarginloss/ranking",
    "submitted": true,
-   "rank": 220,
+   "rank": 221,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 33.4,
@@ -7621,6 +7630,15 @@
       "st": "Pass",
       "a": 5381.4,
       "s": 53.47,
+      "n": 5
+     },
+     {
+      "k": "6ae87bac1dac5d235b4fc246|6b08c71585ad43bbe0b59875",
+      "t": "2026-11-27 07:56:05",
+      "u": "苏子竣",
+      "st": "Pass",
+      "a": 4770.7,
+      "s": 62.96,
       "n": 5
      }
     ],
