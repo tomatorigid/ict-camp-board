@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-28 16:52:44",
-  "generated_at_utc": "2026-11-28T08:52:44Z",
+  "generated_at": "2026-11-28 16:58:24",
+  "generated_at_utc": "2026-11-28T08:58:24Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -4430,6 +4430,15 @@
       "a": 5153.3,
       "s": 59.93,
       "n": 5
+     },
+     {
+      "k": "6aba24d1694b590c3cc4f772|6b0a960085ad43bbe0a9f558",
+      "t": "2026-11-28 16:51:12",
+      "u": "budi",
+      "st": "Pass",
+      "a": 5154.0,
+      "s": 60.21,
+      "n": 5
      }
     ],
     "team": [
@@ -4470,7 +4479,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/layernormv3",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/layernormv3/ranking",
    "submitted": true,
-   "rank": 176,
+   "rank": 177,
    "submitter": "everclover",
    "status": "Pass",
    "score": 42.88,
@@ -5818,6 +5827,15 @@
       "st": "Pass",
       "a": 5088.0,
       "s": 66.34,
+      "n": 5
+     },
+     {
+      "k": "6ae9a8c21dac5d235b9c555d|6b0a94f785ad43bbe0a62a68",
+      "t": "2026-11-28 16:46:47",
+      "u": "Xiaoxi",
+      "st": "Pass",
+      "a": 5069.3,
+      "s": 68.82,
       "n": 5
      }
     ],
@@ -7622,6 +7640,15 @@
       "a": 4878.7,
       "s": 56.4,
       "n": 5
+     },
+     {
+      "k": "6af3e30f6bd0f9be3737f822|6b0a964b85ad43bbe0ab10df",
+      "t": "2026-11-28 16:52:27",
+      "u": "zombie",
+      "st": "Pass",
+      "a": 4754.7,
+      "s": 55.39,
+      "n": 5
      }
     ],
     "team": [
@@ -8041,7 +8068,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/padv3grad",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/padv3grad/ranking",
    "submitted": true,
-   "rank": 297,
+   "rank": 298,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 23.86,
@@ -10322,7 +10349,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/prelugradupdate",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/prelugradupdate/ranking",
    "submitted": true,
-   "rank": 278,
+   "rank": 279,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 46.84,
@@ -11535,6 +11562,15 @@
       "st": "Pass",
       "a": 3744.7,
       "s": 81.87,
+      "n": 5
+     },
+     {
+      "k": "6ae9d98b1dac5d235b07f1d6|6b0a93fd85ad43bbe0a2b3f5",
+      "t": "2026-11-28 16:42:37",
+      "u": "Doublesev",
+      "st": "Pass",
+      "a": 3991.3,
+      "s": 79.26,
       "n": 5
      }
     ],
@@ -13664,6 +13700,24 @@
       "a": 3931.3,
       "s": 84.43,
       "n": 5
+     },
+     {
+      "k": "6a5b17ce1336c465ba1deb0a|6b0a960d85ad43bbe0aa2b58",
+      "t": "2026-11-28 16:51:25",
+      "u": "KousakaReina",
+      "st": "Pass",
+      "a": 4042.7,
+      "s": 79.46,
+      "n": 5
+     },
+     {
+      "k": "6aeb147c1dac5d235b66b7db|6b0a964985ad43bbe0ab0b80",
+      "t": "2026-11-28 16:52:25",
+      "u": "ZhaiTong650478",
+      "st": "Pass",
+      "a": 4075.3,
+      "s": 87.99,
+      "n": 5
      }
     ],
     "team": [
@@ -15431,6 +15485,24 @@
       "st": "Pass",
       "a": 4183.3,
       "s": 69.73,
+      "n": 5
+     },
+     {
+      "k": "6ae84a931dac5d235be88217|6b0a969685ad43bbe0ac203d",
+      "t": "2026-11-28 16:53:42",
+      "u": "18215908644",
+      "st": "Pass",
+      "a": 4029.3,
+      "s": 72.25,
+      "n": 5
+     },
+     {
+      "k": "6ae74d5e1dac5d235b5c6d63|6b0a96d485ad43bbe0ad0a0e",
+      "t": "2026-11-28 16:54:44",
+      "u": "K",
+      "st": "Pass",
+      "a": 4098.0,
+      "s": 66.33,
       "n": 5
      }
     ],
