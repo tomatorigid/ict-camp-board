@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-28 08:27:51",
-  "generated_at_utc": "2026-11-28T00:27:51Z",
+  "generated_at": "2026-11-28 08:33:31",
+  "generated_at_utc": "2026-11-28T00:33:31Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -1327,6 +1327,15 @@
       "st": "Pass",
       "a": 3970.7,
       "s": 76.42,
+      "n": 5
+     },
+     {
+      "k": "6a7f8249a52e0f540a9f19b6|6b0a1f3785ad43bbe0488183",
+      "t": "2026-11-28 08:24:23",
+      "u": "louzongzhi",
+      "st": "Pass",
+      "a": 4069.3,
+      "s": 73.62,
       "n": 5
      }
     ],
@@ -4222,6 +4231,15 @@
       "st": "Pass",
       "a": 4370.0,
       "s": 79.29,
+      "n": 5
+     },
+     {
+      "k": "6ae88e711dac5d235b778a20|6b0a1f9085ad43bbe0494865",
+      "t": "2026-11-28 08:25:52",
+      "u": "一家Dumb Rock_四宫宁月",
+      "st": "Pass",
+      "a": 4339.3,
+      "s": 74.49,
       "n": 5
      }
     ],
@@ -7708,7 +7726,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/padv3grad",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/padv3grad/ranking",
    "submitted": true,
-   "rank": 295,
+   "rank": 296,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 23.86,
@@ -10926,6 +10944,15 @@
       "n": 5
      },
      {
+      "k": "6ae9e5ae1dac5d235b23c54a|6b093c7d85ad43bbe0f313dd",
+      "t": "2026-11-27 16:17:01",
+      "u": "Wh666adw",
+      "st": "Pass",
+      "a": 4194.0,
+      "s": 74.26,
+      "n": 5
+     },
+     {
       "k": "6ae7f9421dac5d235b49e15b|6b095f0785ad43bbe0516c8e",
       "t": "2026-11-27 18:44:23",
       "u": "18122956351",
@@ -11031,6 +11058,15 @@
       "st": "Pass",
       "a": 3844.0,
       "s": 79.78,
+      "n": 5
+     },
+     {
+      "k": "6ae9d98b1dac5d235b07f1d6|6b0a1e2a85ad43bbe0464e16",
+      "t": "2026-11-28 08:19:54",
+      "u": "Doublesev",
+      "st": "Pass",
+      "a": 3817.3,
+      "s": 79.31,
       "n": 5
      },
      {
@@ -16469,6 +16505,15 @@
       "st": "Pass",
       "a": 4127.3,
       "s": 77.26,
+      "n": 5
+     },
+     {
+      "k": "6b08321685ad43bbe0512df4|6b0a1f3f85ad43bbe0489155",
+      "t": "2026-11-28 08:24:31",
+      "u": "xinxinxin",
+      "st": "Pass",
+      "a": 4148.7,
+      "s": 77.38,
       "n": 5
      }
     ],
