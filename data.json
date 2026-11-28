@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-28 16:18:55",
-  "generated_at_utc": "2026-11-28T08:18:55Z",
+  "generated_at": "2026-11-28 16:24:31",
+  "generated_at_utc": "2026-11-28T08:24:31Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -4367,6 +4367,24 @@
       "a": 5226.0,
       "s": 60.58,
       "n": 5
+     },
+     {
+      "k": "6a5b17ce1336c465ba1deb0a|6b0a8dee85ad43bbe08db68a",
+      "t": "2026-11-28 16:16:46",
+      "u": "KousakaReina",
+      "st": "Pass",
+      "a": 5221.3,
+      "s": 59.36,
+      "n": 5
+     },
+     {
+      "k": "6aba24d1694b590c3cc4f772|6b0a8e1b85ad43bbe08e4e58",
+      "t": "2026-11-28 16:17:31",
+      "u": "budi",
+      "st": "Pass",
+      "a": 5142.7,
+      "s": 58.8,
+      "n": 5
      }
     ],
     "team": [
@@ -4407,7 +4425,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/layernormv3",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/layernormv3/ranking",
    "submitted": true,
-   "rank": 176,
+   "rank": 177,
    "submitter": "everclover",
    "status": "Pass",
    "score": 42.88,
@@ -10178,7 +10196,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/prelugradupdate",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/prelugradupdate/ranking",
    "submitted": true,
-   "rank": 277,
+   "rank": 276,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 46.84,
@@ -13678,7 +13696,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/stridedslicegrad",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/stridedslicegrad/ranking",
    "submitted": true,
-   "rank": 464,
+   "rank": 465,
    "submitter": "tomatorigid",
    "status": "Wrong Answer",
    "score": 0.0,
