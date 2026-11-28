@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-28 06:40:27",
-  "generated_at_utc": "2026-11-27T22:40:27Z",
+  "generated_at": "2026-11-28 08:27:51",
+  "generated_at_utc": "2026-11-28T00:27:51Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -29,8 +29,8 @@
   "note": "数据来自 CANNJudge 公开接口 /api/problems/<id>/ranking；history.mine 来自登录接口（本队登录账号的全量提交），history.team 是本队排行榜行的增量快照（含其他队友账号），history.rivals 是公开排行榜前 N 名的增量快照。分数与状态以测试界面为准。"
  },
  "summary": {
-  "score_sum": 297.52,
-  "weighted_sum": 666.36,
+  "score_sum": 297.51,
+  "weighted_sum": 666.35,
   "submitted": 9,
   "passed": 7,
   "total_problems": 10
@@ -1319,6 +1319,15 @@
       "a": 3984.0,
       "s": 73.67,
       "n": 5
+     },
+     {
+      "k": "6a7f8249a52e0f540a9f19b6|6b0a1d5885ad43bbe0448e5e",
+      "t": "2026-11-28 08:16:24",
+      "u": "louzongzhi",
+      "st": "Pass",
+      "a": 3970.7,
+      "s": 76.42,
+      "n": 5
      }
     ],
     "team": [
@@ -1350,7 +1359,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/confusiontransposed",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/confusiontransposed/ranking",
    "submitted": true,
-   "rank": 441,
+   "rank": 442,
    "submitter": "everclover",
    "status": "Pass",
    "score": 34.26,
@@ -4204,6 +4213,15 @@
       "st": "Pass",
       "a": 5008.7,
       "s": 60.74,
+      "n": 5
+     },
+     {
+      "k": "6ae88e711dac5d235b778a20|6b0a18bc85ad43bbe03abd5d",
+      "t": "2026-11-28 07:56:44",
+      "u": "一家Dumb Rock_四宫宁月",
+      "st": "Pass",
+      "a": 4370.0,
+      "s": 79.29,
       "n": 5
      }
     ],
@@ -7262,6 +7280,15 @@
       "a": 4854.0,
       "s": 58.86,
       "n": 5
+     },
+     {
+      "k": "6ab212600304f72a563a8b96|6b0a1aeb85ad43bbe03f45b4",
+      "t": "2026-11-28 08:06:03",
+      "u": "negativeone",
+      "st": "Pass",
+      "a": 4926.0,
+      "s": 57.73,
+      "n": 5
      }
     ],
     "team": [
@@ -9471,6 +9498,15 @@
       "a": 3961.3,
       "s": 57.45,
       "n": 5
+     },
+     {
+      "k": "6ae9ae7e1dac5d235ba8caad|6b0a1b0885ad43bbe03f87fd",
+      "t": "2026-11-28 08:06:32",
+      "u": "13339689393",
+      "st": "Pass",
+      "a": 4602.7,
+      "s": 55.13,
+      "n": 5
      }
     ],
     "team": [
@@ -9875,7 +9911,7 @@
    "rank": 276,
    "submitter": "tomatorigid",
    "status": "Pass",
-   "score": 46.86,
+   "score": 46.85,
    "submit_time": "2026-11-27 16:36:24",
    "submission_id": "6b09410885ad43bbe000b997",
    "testcases": [
@@ -10987,6 +11023,24 @@
       "a": 3701.3,
       "s": 81.49,
       "n": 5
+     },
+     {
+      "k": "6ae9d98b1dac5d235b07f1d6|6b0a1b7a85ad43bbe0408219",
+      "t": "2026-11-28 08:08:26",
+      "u": "Doublesev",
+      "st": "Pass",
+      "a": 3844.0,
+      "s": 79.78,
+      "n": 5
+     },
+     {
+      "k": "6ac790c9694b590c3ce44d2e|6b0a1edd85ad43bbe047ced0",
+      "t": "2026-11-28 08:22:54",
+      "u": "Ray汐",
+      "st": "Pass",
+      "a": 4005.3,
+      "s": 74.31,
+      "n": 5
      }
     ],
     "team": [
@@ -11658,7 +11712,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/quantupdatescatter",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/quantupdatescatter/ranking",
    "submitted": true,
-   "rank": 106,
+   "rank": 107,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 56.02,
@@ -14694,6 +14748,24 @@
       "a": 4093.3,
       "s": 71.75,
       "n": 5
+     },
+     {
+      "k": "6aec3c0b1dac5d235b991ede|6b0a123685ad43bbe02cdbc6",
+      "t": "2026-11-28 07:28:54",
+      "u": "ff66ccff",
+      "st": "Pass",
+      "a": 4220.0,
+      "s": 70.05,
+      "n": 5
+     },
+     {
+      "k": "6ae88e711dac5d235b778a20|6b0a1eb985ad43bbe04777c2",
+      "t": "2026-11-28 08:22:17",
+      "u": "一家Dumb Rock_四宫宁月",
+      "st": "Pass",
+      "a": 4114.0,
+      "s": 71.7,
+      "n": 5
      }
     ],
     "team": [
@@ -16388,6 +16460,15 @@
       "st": "Pass",
       "a": 3996.7,
       "s": 81.76,
+      "n": 5
+     },
+     {
+      "k": "6b08321685ad43bbe0512df4|6b0a159c85ad43bbe034195b",
+      "t": "2026-11-28 07:43:24",
+      "u": "xinxinxin",
+      "st": "Pass",
+      "a": 4127.3,
+      "s": 77.26,
       "n": 5
      }
     ],
