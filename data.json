@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-28 09:01:44",
-  "generated_at_utc": "2026-11-28T01:01:44Z",
+  "generated_at": "2026-11-28 09:07:30",
+  "generated_at_utc": "2026-11-28T01:07:30Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -4326,7 +4326,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/layernormv3",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/layernormv3/ranking",
    "submitted": true,
-   "rank": 175,
+   "rank": 176,
    "submitter": "everclover",
    "status": "Pass",
    "score": 42.88,
@@ -7780,7 +7780,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/padv3grad",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/padv3grad/ranking",
    "submitted": true,
-   "rank": 296,
+   "rank": 297,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 23.86,
@@ -11829,7 +11829,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/quantupdatescatter",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/quantupdatescatter/ranking",
    "submitted": true,
-   "rank": 106,
+   "rank": 105,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 56.02,
@@ -16622,6 +16622,15 @@
       "st": "Pass",
       "a": 4204.7,
       "s": 77.88,
+      "n": 5
+     },
+     {
+      "k": "6af5d0a16bd0f9be37df8df2|6b0a282885ad43bbe05cf607",
+      "t": "2026-11-28 09:02:32",
+      "u": "benson",
+      "st": "Pass",
+      "a": 4078.7,
+      "s": 82.67,
       "n": 5
      }
     ],
