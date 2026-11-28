@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-28 16:35:52",
-  "generated_at_utc": "2026-11-28T08:35:52Z",
+  "generated_at": "2026-11-28 16:41:29",
+  "generated_at_utc": "2026-11-28T08:41:29Z",
   "team": "哦不对一一哦对的对的",
   "contest": "第十一届华为ICT大赛｜昇腾AI算子开发赛道（决赛）",
   "contest_end": "2027-03-04 23:59:00",
@@ -1422,7 +1422,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/confusiontransposed",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/confusiontransposed/ranking",
    "submitted": true,
-   "rank": 442,
+   "rank": 443,
    "submitter": "everclover",
    "status": "Pass",
    "score": 34.26,
@@ -2604,7 +2604,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/ctclossv2",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/ctclossv2/ranking",
    "submitted": true,
-   "rank": 551,
+   "rank": 553,
    "submitter": "everclover",
    "status": "Compile Error",
    "score": 0.0,
@@ -5832,7 +5832,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/multilabelmarginloss",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/multilabelmarginloss/ranking",
    "submitted": true,
-   "rank": 220,
+   "rank": 221,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 33.58,
@@ -8005,7 +8005,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/padv3grad",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/padv3grad/ranking",
    "submitted": true,
-   "rank": 297,
+   "rank": 298,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 23.86,
@@ -9867,6 +9867,15 @@
       "a": 4064.0,
       "s": 71.02,
       "n": 5
+     },
+     {
+      "k": "6ae762991dac5d235b78a290|6b0a918d85ad43bbe09a37d4",
+      "t": "2026-11-28 16:32:13",
+      "u": "xielizhi",
+      "st": "Pass",
+      "a": 3996.7,
+      "s": 73.07,
+      "n": 5
      }
     ],
     "team": [
@@ -10268,7 +10277,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/prelugradupdate",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/prelugradupdate/ranking",
    "submitted": true,
-   "rank": 278,
+   "rank": 277,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 46.84,
@@ -11473,6 +11482,15 @@
       "a": 3827.3,
       "s": 77.73,
       "n": 5
+     },
+     {
+      "k": "6ae9d98b1dac5d235b07f1d6|6b0a913f85ad43bbe099258c",
+      "t": "2026-11-28 16:30:55",
+      "u": "Doublesev",
+      "st": "Pass",
+      "a": 3744.7,
+      "s": 81.87,
+      "n": 5
      }
     ],
     "team": [
@@ -12144,7 +12162,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/quantupdatescatter",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/quantupdatescatter/ranking",
    "submitted": true,
-   "rank": 109,
+   "rank": 108,
    "submitter": "tomatorigid",
    "status": "Pass",
    "score": 56.01,
@@ -13574,6 +13592,15 @@
       "a": 4026.0,
       "s": 79.08,
       "n": 5
+     },
+     {
+      "k": "6af6fb506bd0f9be372367d8|6b0a90c985ad43bbe097903c",
+      "t": "2026-11-28 16:28:57",
+      "u": "wingmob",
+      "st": "Pass",
+      "a": 4121.3,
+      "s": 80.91,
+      "n": 5
      }
     ],
     "team": [
@@ -13777,7 +13804,7 @@
    "url": "https://cannjudge.cn/public/ictcompetition/stridedslicegrad",
    "ranking_url": "https://cannjudge.cn/public/ictcompetition/stridedslicegrad/ranking",
    "submitted": true,
-   "rank": 465,
+   "rank": 464,
    "submitter": "tomatorigid",
    "status": "Wrong Answer",
    "score": 0.0,
